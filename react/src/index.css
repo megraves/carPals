@@ -1,0 +1,17 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#map {
+    width: 100vh;  /* Takes half of the screen width */
+    height: 50vh; /* Full height */
+    position: absolute;
+    left: 10;
+    top: 10;
+    border: 1px solid black;
+}
