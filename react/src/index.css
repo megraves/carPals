@@ -14,15 +14,24 @@ body, html {
     left: 10;
     top: 10;
     border: 1px solid black;
-  .navbar {
+}
+
+
+.navbar {
     background-color: rgba(3, 183, 189, 0.634);
     height: 72px;
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     align-items: center;
     gap: 20px;
-    padding: 14px;
+    padding: 14px 10px;
+    position: fixed; /* Keeps the navbar fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures it stays on top */
 }
+
 
 .navbar a {
     background-color: #038286;
@@ -45,6 +54,7 @@ body, html {
     flex-direction: column;
     text-align: left;
     gap: 2px;
+    padding-right: 30px;
 }
 
 .stats p {
