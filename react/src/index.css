@@ -14,7 +14,9 @@ body, html {
     left: 10;
     top: 10;
     border: 1px solid black;
-  .navbar {
+}
+
+.navbar {
     background-color: rgba(3, 183, 189, 0.634);
     height: 72px;
     display: flex;
