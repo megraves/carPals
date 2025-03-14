@@ -8,10 +8,10 @@ body, html {
 }
 
 #map {
-    width: 100vh;  /* Takes half of the screen width */
+    width: 75vh;  /* Takes half of the screen width */
     height: 50vh; /* Full height */
     position: absolute;
-    left: 10;
+    left: 30px;
     top: 10;
     border: 1px solid black;
 }
