@@ -49,6 +49,29 @@ body, html {
     color: black;
 }
 
+.footer {
+    background-color: #022124;
+    color: white;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer p {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    gap: 2px;
+    padding: 30px;
+}
+
 .stats {
     display: flex;
     flex-direction: column;
