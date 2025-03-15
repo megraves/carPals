@@ -18,31 +18,40 @@ body, html {
 
 
 .navbar {
-    background-color: rgba(3, 183, 189, 0.634);
+    background-color: #038286;
     height: 72px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
-    padding: 14px 10px;
-    position: fixed; /* Keeps the navbar fixed at the top */
+    padding: 6px 16px;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Ensures it stays on top */
-}
-
-
-.navbar a {
-    background-color: #038286;
-    border: none;
-    color: white;
-    padding: 15px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
+    z-index: 1000;
+  }
+  
+  .header-logo {
+    height: 50px;
+    width: auto;
+    margin-right: auto; 
+  }
+  
+  
+  .navbar a {
+      background-color: rgba(3, 183, 189, 0.634);
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-left: auto; 
+      margin-right: 20px; 
+      border-radius: 5px;
+  }
+  
 
 .navbar a:hover {
     background-color: #bef3f4;
