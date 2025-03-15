@@ -5,7 +5,7 @@ import RoutesButton from "./components/RoutesButton";
 import RoutesModal from "./components/RoutesModal";
 import MapComponent from "./components/MapComponent";
 
-const App: React.FC = () => {
+function App() {
   const [isModalOpen, setModalOpen] = useState(false);
 
   return (
@@ -19,6 +19,6 @@ const App: React.FC = () => {
       <Footer />
     </div>
   );
-};
+}
 
 export default App;
