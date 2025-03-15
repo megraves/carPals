@@ -1,14 +1,24 @@
-//import React from 'react';
-import Header from './components/header';
-import Footer from './components/footer';
+import React, { useState } from "react";
+import Header from "./components/header";
+import Footer from "./components/footer";
+import RoutesButton from "./components/RoutesButton";
+import RoutesModal from "./components/RoutesModal";
+import MapComponent from "./components/MapComponent";
 
-function App() {
+const App: React.FC = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   return (
     <div className="App">
-      <Header />
+      <RoutesButton openModal={() => setModalOpen(true)} />
+      <RoutesModal
+        isOpen={isModalOpen}
+        closeModal={() => setModalOpen(false)}
+      />
+      <MapComponent />
       <Footer />
     </div>
   );
-}
+};
 
 export default App;
