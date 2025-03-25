@@ -1,0 +1,8 @@
+#map {
+  width: 75vh;  /* Takes half of the screen width */
+  height: 50vh; /* Full height */
+  position: absolute;
+  left: 30px;
+  top: 200px;
+  border: 1px solid black;
+}

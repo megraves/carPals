@@ -1,0 +1,111 @@
+/* Modal Overlay (grays out background) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensures it’s on top */
+}
+
+/* Modal Content */
+.modal-content {
+  background: white;
+  width: 40%; /* Covers 80% of the screen */
+  max-width: 700px; /* Prevents excessive width on large screens */
+  height: 80vh; /* Covers 80% of the viewport height */
+  border-radius: 15px; /* Soft rounded corners */
+  padding: 20px;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Modal Title */
+.modal-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Modal Form */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-form input,
+.modal-form select {
+  width: 90%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Submit Button */
+.submit-button {
+  background-color: #038286;
+  color: white;
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #026c6e;
+}
+
+/* Days Selector Grid */
+.days-selector {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
+  gap: 5px;
+  margin: 10px 0;
+  justify-content: center;
+}
+
+/* Individual Day Boxes */
+.day-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; /* Consistent size */
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid black; /* Strong border */
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Selected Day Styling */
+.day-box.selected {
+  background-color: #038286;
+  color: white;
+}
+
+/* Hover Effect */
+.day-box:hover {
+  background-color: #02a5a7;
+  color: white;
+}

@@ -1,6 +1,6 @@
-import React from 'react';
-import logo from '../assets/CarPals_Logo_And_Name.png';
-import './Header.css';
+import React from "react";
+import logo from "../../assets/CarPals_Logo_And_Name.png";
+import "./Header.css";
 
 const Header: React.FC = () => {
   return (
