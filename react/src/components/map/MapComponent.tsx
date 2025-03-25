@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import "./MapComponent.css";
 
 const MapComponent: React.FC = () => {
   useEffect(() => {
