@@ -6,6 +6,7 @@ import RoutesButton from "./components/RoutesButton/RoutesButton";
 import RoutesModal from "./components/RoutesModal/RoutesModal";
 import MapComponent from "./components/map/MapComponent";
 import MyRidesButton from "./components/MyRidesButton/MyRidesButton";
+import MyPalsButton from "./components/MyPalsButton/MyPalsButton";
 
 function App() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -19,6 +20,7 @@ function App() {
         closeModal={() => setModalOpen(false)}
       />
       <MyRidesButton />
+      <MyPalsButton />
       <MapComponent />
       <Footer />
     </div>
