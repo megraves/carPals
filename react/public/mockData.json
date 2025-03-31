@@ -1,0 +1,89 @@
+[
+  {"firstName": "Edwin",
+   "lastName": "Tran",
+   "pickUpLocation": "180 Aubinwood Rd",
+   "dropOffLocation": "70 Butterfield Terrace",
+   "pickUpTime": "9:00 AM",
+   "daysNeeded": ["Monday", "Wednesday", "Friday"]
+  },
+  {
+    "firstName": "Ava",
+    "lastName": "Kim",
+    "pickUpLocation": "120 Belchertown Rd",
+    "dropOffLocation": "UMass Campus Center",
+    "pickUpTime": "8:30 AM",
+    "daysNeeded": ["Tuesday", "Thursday"]
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Chen",
+    "pickUpLocation": "35 East Hadley Rd",
+    "dropOffLocation": "Goodell Hall",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": ["Monday", "Wednesday"]
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Martinez",
+    "pickUpLocation": "100 Sunset Ave",
+    "dropOffLocation": "W.E.B. Du Bois Library",
+    "pickUpTime": "11:15 AM",
+    "daysNeeded": ["Wednesday", "Friday"]
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Nguyen",
+    "pickUpLocation": "Tobin Hall Parking Lot",
+    "dropOffLocation": "136 Fearing St",
+    "pickUpTime": "7:45 AM",
+    "daysNeeded": ["Monday", "Tuesday", "Thursday"]
+  },
+  {
+    "firstName": "Isabella",
+    "lastName": "Smith",
+    "pickUpLocation": "1010 N Pleasant St",
+    "dropOffLocation": "Bartlett Hall",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": ["Friday"]
+  },
+  {
+    "firstName": "Ethan",
+    "lastName": "Ali",
+    "pickUpLocation": "42 Hobart Ln",
+    "dropOffLocation": "Engineering Quad",
+    "pickUpTime": "8:00 AM",
+    "daysNeeded": ["Tuesday", "Thursday"]
+  },
+  {
+    "firstName": "Mia",
+    "lastName": "Johnson",
+    "pickUpLocation": "33 Rolling Green Dr",
+    "dropOffLocation": "Newman Center",
+    "pickUpTime": "10:30 AM",
+    "daysNeeded": ["Monday", "Friday"]
+  },
+  {
+    "firstName": "James",
+    "lastName": "Patel",
+    "pickUpLocation": "145 Main St",
+    "dropOffLocation": "Integrated Learning Center",
+    "pickUpTime": "9:20 AM",
+    "daysNeeded": ["Wednesday"]
+  },
+  {
+    "firstName": "Charlotte",
+    "lastName": "Rivera",
+    "pickUpLocation": "35 Brandywine Dr",
+    "dropOffLocation": "Mullins Center",
+    "pickUpTime": "8:50 AM",
+    "daysNeeded": ["Tuesday", "Thursday", "Friday"]
+  },
+  {
+    "firstName": "Benjamin",
+    "lastName": "Lee",
+    "pickUpLocation": "64 Meadow St",
+    "dropOffLocation": "Life Science Laboratories",
+    "pickUpTime": "7:30 AM",
+    "daysNeeded": ["Monday", "Wednesday"]
+  }
+]
