@@ -37,21 +37,36 @@ function App() {
         <Route 
           path="/profile"
           element={
-            <h1>profile page</h1>
+            <div className="profile">
+              <Header />
+              <h1>profile page</h1>
+              <Footer />
+            </div>
+
           }
         />
         {/* find rides page */}
         <Route
           path="/rides"
           element={
-            <h1>find rides page</h1>
+            <div className="find-rides">
+              <Header />
+              <h1>find rides page</h1>
+              <Footer />
+            </div>
+
           }
         />
         {/* offer rides page */}
         <Route 
           path="/offer"
           element={
-            <h1>offer rides page</h1>
+            <div className="offer-rides">
+              <Header />
+              <h1>offer rides page</h1>
+              <Footer />
+            </div>
+
           }
         />
       </Routes>
