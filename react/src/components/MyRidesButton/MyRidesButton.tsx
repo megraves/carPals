@@ -1,12 +1,12 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./MyRidesButton.css";
 
 
-const MyRidesButton = () => {
+const MyRidesButton: React.FC = () => {
 
-  const [dropOpen, setDropOpen] = useState(false);
+  const [dropOpen, setDropOpen] = useState<boolean>(false);
   
-  const rides = ["Ride 1", "Ride 2", "Ride 3"];
+  const rides: string[] = ["Ride 1", "Ride 2", "Ride 3"];
 
   return (
 
