@@ -1,0 +1,1102 @@
+[
+  {"firstName": "Edwin",
+   "lastName": "Tran",
+   "pickUpLocation": "180 Aubinwood Rd",
+   "dropOffLocation": "70 Butterfield Terrace",
+   "pickUpTime": "9:00 AM",
+   "daysNeeded": [
+    "Monday", 
+    "Wednesday", 
+    "Friday"
+    ]
+  },
+  {
+    "firstName": "Ava",
+    "lastName": "Kim",
+    "pickUpLocation": "120 Belchertown Rd",
+    "dropOffLocation": "UMass Campus Center",
+    "pickUpTime": "8:30 AM",
+    "daysNeeded": [
+      "Tuesday", 
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Chen",
+    "pickUpLocation": "35 East Hadley Rd",
+    "dropOffLocation": "Goodell Hall",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": [
+      "Monday", 
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Martinez",
+    "pickUpLocation": "100 Sunset Ave",
+    "dropOffLocation": "W.E.B. Du Bois Library",
+    "pickUpTime": "11:15 AM",
+    "daysNeeded": [
+      "Wednesday", 
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Nguyen",
+    "pickUpLocation": "Tobin Hall Parking Lot",
+    "dropOffLocation": "136 Fearing St",
+    "pickUpTime": "7:45 AM",
+    "daysNeeded": [
+      "Monday",
+      "Tuesday", 
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Isabella",
+    "lastName": "Smith",
+    "pickUpLocation": "1010 N Pleasant St",
+    "dropOffLocation": "Bartlett Hall",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": ["Friday"]
+  },
+  {
+    "firstName": "Ethan",
+    "lastName": "Ali",
+    "pickUpLocation": "42 Hobart Ln",
+    "dropOffLocation": "Engineering Quad",
+    "pickUpTime": "8:00 AM",
+    "daysNeeded": [
+      "Tuesday", 
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Mia",
+    "lastName": "Johnson",
+    "pickUpLocation": "33 Rolling Green Dr",
+    "dropOffLocation": "Newman Center",
+    "pickUpTime": "10:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "James",
+    "lastName": "Patel",
+    "pickUpLocation": "145 Main St",
+    "dropOffLocation": "Integrated Learning Center",
+    "pickUpTime": "9:20 AM",
+    "daysNeeded": ["Wednesday"]
+  },
+  {
+    "firstName": "Charlotte",
+    "lastName": "Rivera",
+    "pickUpLocation": "35 Brandywine Dr",
+    "dropOffLocation": "Mullins Center",
+    "pickUpTime": "8:50 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Benjamin",
+    "lastName": "Lee",
+    "pickUpLocation": "64 Meadow St",
+    "dropOffLocation": "Life Science Laboratories",
+    "pickUpTime": "7:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Charlotte",
+    "lastName": "Anderson",
+    "pickUpLocation": "Integrated Learning Center",
+    "dropOffLocation": "Goodell Hall",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Ella",
+    "lastName": "Martinez",
+    "pickUpLocation": "35 East Hadley Rd",
+    "dropOffLocation": "Integrated Learning Center",
+    "pickUpTime": "8:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Daniel",
+    "lastName": "Taylor",
+    "pickUpLocation": "Lincoln Apartments",
+    "dropOffLocation": "Bartlett Hall",
+    "pickUpTime": "9:20 AM",
+    "daysNeeded": [
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Benjamin",
+    "lastName": "Ali",
+    "pickUpLocation": "Tobin Hall Parking Lot",
+    "dropOffLocation": "Hampshire Dining Commons",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": [
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "James",
+    "lastName": "Smith",
+    "pickUpLocation": "Van Meter Hall",
+    "dropOffLocation": "Hampden Building",
+    "pickUpTime": "8:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Tuesday",
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Benjamin",
+    "lastName": "Moore",
+    "pickUpLocation": "Totman Gym",
+    "dropOffLocation": "35 East Hadley Rd",
+    "pickUpTime": "8:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Alexander",
+    "lastName": "Ali",
+    "pickUpLocation": "Hampshire Dining Commons",
+    "dropOffLocation": "University Health Services",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Charlotte",
+    "lastName": "Martinez",
+    "pickUpLocation": "Engineering Quad",
+    "dropOffLocation": "136 Fearing St",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Ava",
+    "lastName": "Davis",
+    "pickUpLocation": "145 Main St",
+    "dropOffLocation": "100 Sunset Ave",
+    "pickUpTime": "9:20 AM",
+    "daysNeeded": [
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Charlotte",
+    "lastName": "Moore",
+    "pickUpLocation": "35 Brandywine Dr",
+    "dropOffLocation": "35 East Hadley Rd",
+    "pickUpTime": "11:15 AM",
+    "daysNeeded": [
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Alexander",
+    "lastName": "Jackson",
+    "pickUpLocation": "Goessmann Laboratory",
+    "dropOffLocation": "Hasbrouck Laboratory",
+    "pickUpTime": "10:30 AM",
+    "daysNeeded": [
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Smith",
+    "pickUpLocation": "Orchard Hill",
+    "dropOffLocation": "Hampden Building",
+    "pickUpTime": "9:20 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "James",
+    "lastName": "Taylor",
+    "pickUpLocation": "35 East Hadley Rd",
+    "dropOffLocation": "33 Rolling Green Dr",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Ella",
+    "lastName": "Thomas",
+    "pickUpLocation": "145 Main St",
+    "dropOffLocation": "Hampden Building",
+    "pickUpTime": "7:30 AM",
+    "daysNeeded": [
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Lucas",
+    "lastName": "White",
+    "pickUpLocation": "Bartlett Hall",
+    "dropOffLocation": "Hasbrouck Laboratory",
+    "pickUpTime": "9:20 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Rivera",
+    "pickUpLocation": "Life Science Laboratories",
+    "dropOffLocation": "Haigis Mall",
+    "pickUpTime": "9:20 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Charlotte",
+    "lastName": "Taylor",
+    "pickUpLocation": "Recreation Center",
+    "dropOffLocation": "100 Sunset Ave",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Tuesday",
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Ava",
+    "lastName": "Jackson",
+    "pickUpLocation": "Recreation Center",
+    "dropOffLocation": "Totman Gym",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Tuesday",
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Alexander",
+    "lastName": "Nguyen",
+    "pickUpLocation": "180 Aubinwood Rd",
+    "dropOffLocation": "35 East Hadley Rd",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Amelia",
+    "lastName": "Davis",
+    "pickUpLocation": "70 Butterfield Terrace",
+    "dropOffLocation": "Sylvan Residential Area",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": [
+      "Monday",
+      "Tuesday",
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Thomas",
+    "pickUpLocation": "Hampden Building",
+    "dropOffLocation": "70 Butterfield Terrace",
+    "pickUpTime": "10:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Harper",
+    "lastName": "Thomas",
+    "pickUpLocation": "Studio Arts Building",
+    "dropOffLocation": "35 East Hadley Rd",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Moore",
+    "pickUpLocation": "35 Brandywine Dr",
+    "dropOffLocation": "70 Butterfield Terrace",
+    "pickUpTime": "8:30 AM",
+    "daysNeeded": [
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Elijah",
+    "lastName": "Moore",
+    "pickUpLocation": "Studio Arts Building",
+    "dropOffLocation": "Recreation Center",
+    "pickUpTime": "10:30 AM",
+    "daysNeeded": [
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Lucas",
+    "lastName": "Johnson",
+    "pickUpLocation": "Goodell Hall",
+    "dropOffLocation": "Durfee Conservatory",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": [
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Johnson",
+    "pickUpLocation": "Van Meter Hall",
+    "dropOffLocation": "145 Main St",
+    "pickUpTime": "8:00 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Charlotte",
+    "lastName": "Smith",
+    "pickUpLocation": "Orchard Hill",
+    "dropOffLocation": "Newman Center",
+    "pickUpTime": "9:20 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Ethan",
+    "lastName": "Patel",
+    "pickUpLocation": "Life Science Laboratories",
+    "dropOffLocation": "Tobin Hall Parking Lot",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Alexander",
+    "lastName": "Brown",
+    "pickUpLocation": "Blue Wall",
+    "dropOffLocation": "1010 N Pleasant St",
+    "pickUpTime": "11:15 AM",
+    "daysNeeded": [
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Elijah",
+    "lastName": "Nguyen",
+    "pickUpLocation": "Goessmann Laboratory",
+    "dropOffLocation": "University Health Services",
+    "pickUpTime": "8:00 AM",
+    "daysNeeded": [
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Daniel",
+    "lastName": "Ali",
+    "pickUpLocation": "Goodell Hall",
+    "dropOffLocation": "Studio Arts Building",
+    "pickUpTime": "10:30 AM",
+    "daysNeeded": [
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Isabella",
+    "lastName": "Martinez",
+    "pickUpLocation": "33 Rolling Green Dr",
+    "dropOffLocation": "UMass Campus Center",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Lucas",
+    "lastName": "Moore",
+    "pickUpLocation": "Bartlett Hall",
+    "dropOffLocation": "Hasbrouck Laboratory",
+    "pickUpTime": "10:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Wilson",
+    "pickUpLocation": "University Health Services",
+    "dropOffLocation": "UMass Transit Services",
+    "pickUpTime": "8:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Emma",
+    "lastName": "Martinez",
+    "pickUpLocation": "Haigis Mall",
+    "dropOffLocation": "Hampden Building",
+    "pickUpTime": "8:30 AM",
+    "daysNeeded": [
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Lee",
+    "pickUpLocation": "Bartlett Hall",
+    "dropOffLocation": "42 Hobart Ln",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Logan",
+    "lastName": "Martinez",
+    "pickUpLocation": "Haigis Mall",
+    "dropOffLocation": "70 Butterfield Terrace",
+    "pickUpTime": "8:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Lucas",
+    "lastName": "Thomas",
+    "pickUpLocation": "Mullins Center",
+    "dropOffLocation": "Hasbrouck Laboratory",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Ava",
+    "lastName": "Nguyen",
+    "pickUpLocation": "Totman Gym",
+    "dropOffLocation": "120 Belchertown Rd",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Benjamin",
+    "lastName": "White",
+    "pickUpLocation": "70 Butterfield Terrace",
+    "dropOffLocation": "100 Sunset Ave",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "James",
+    "lastName": "Kim",
+    "pickUpLocation": "180 Aubinwood Rd",
+    "dropOffLocation": "Haigis Mall",
+    "pickUpTime": "8:30 AM",
+    "daysNeeded": [
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Ethan",
+    "lastName": "Ali",
+    "pickUpLocation": "Hasbrouck Laboratory",
+    "dropOffLocation": "35 Brandywine Dr",
+    "pickUpTime": "8:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Logan",
+    "lastName": "Kim",
+    "pickUpLocation": "Newman Center",
+    "dropOffLocation": "UMass Transit Services",
+    "pickUpTime": "11:15 AM",
+    "daysNeeded": [
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Alexander",
+    "lastName": "Brown",
+    "pickUpLocation": "Sylvan Residential Area",
+    "dropOffLocation": "100 Sunset Ave",
+    "pickUpTime": "10:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Emma",
+    "lastName": "Patel",
+    "pickUpLocation": "Isenberg School of Management",
+    "dropOffLocation": "Newman Center",
+    "pickUpTime": "8:30 AM",
+    "daysNeeded": [
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Lucas",
+    "lastName": "Thomas",
+    "pickUpLocation": "W.E.B. Du Bois Library",
+    "dropOffLocation": "Haigis Mall",
+    "pickUpTime": "7:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Charlotte",
+    "lastName": "Chen",
+    "pickUpLocation": "Isenberg School of Management",
+    "dropOffLocation": "Recreation Center",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Thomas",
+    "pickUpLocation": "Durfee Conservatory",
+    "dropOffLocation": "42 Hobart Ln",
+    "pickUpTime": "7:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Ava",
+    "lastName": "Wilson",
+    "pickUpLocation": "Sylvan Residential Area",
+    "dropOffLocation": "University Health Services",
+    "pickUpTime": "8:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Ella",
+    "lastName": "Lee",
+    "pickUpLocation": "Van Meter Hall",
+    "dropOffLocation": "145 Main St",
+    "pickUpTime": "7:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Ethan",
+    "lastName": "Anderson",
+    "pickUpLocation": "64 Meadow St",
+    "dropOffLocation": "Mullins Center",
+    "pickUpTime": "7:30 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Logan",
+    "lastName": "Thomas",
+    "pickUpLocation": "Lincoln Apartments",
+    "dropOffLocation": "UMass Campus Center",
+    "pickUpTime": "9:20 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Ella",
+    "lastName": "Anderson",
+    "pickUpLocation": "64 Meadow St",
+    "dropOffLocation": "Goodell Hall",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Amelia",
+    "lastName": "Brown",
+    "pickUpLocation": "64 Meadow St",
+    "dropOffLocation": "Hampshire Dining Commons",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Lee",
+    "pickUpLocation": "Goodell Hall",
+    "dropOffLocation": "Lincoln Apartments",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Elijah",
+    "lastName": "Ali",
+    "pickUpLocation": "Integrated Learning Center",
+    "dropOffLocation": "Haigis Mall",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Emma",
+    "lastName": "Martinez",
+    "pickUpLocation": "Engineering Quad",
+    "dropOffLocation": "Durfee Conservatory",
+    "pickUpTime": "11:15 AM",
+    "daysNeeded": [
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Ethan",
+    "lastName": "Wilson",
+    "pickUpLocation": "UMass Campus Center",
+    "dropOffLocation": "Durfee Conservatory",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "James",
+    "lastName": "Rivera",
+    "pickUpLocation": "Lincoln Apartments",
+    "dropOffLocation": "35 East Hadley Rd",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Miller",
+    "pickUpLocation": "120 Belchertown Rd",
+    "dropOffLocation": "UMass Transit Services",
+    "pickUpTime": "8:00 AM",
+    "daysNeeded": [
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Amelia",
+    "lastName": "Rivera",
+    "pickUpLocation": "Franklin Dining Commons",
+    "dropOffLocation": "35 Brandywine Dr",
+    "pickUpTime": "8:30 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Jackson",
+    "pickUpLocation": "Blue Wall",
+    "dropOffLocation": "University Health Services",
+    "pickUpTime": "10:30 AM",
+    "daysNeeded": [
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Kim",
+    "pickUpLocation": "Engineering Quad",
+    "dropOffLocation": "W.E.B. Du Bois Library",
+    "pickUpTime": "7:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Ava",
+    "lastName": "Kim",
+    "pickUpLocation": "136 Fearing St",
+    "dropOffLocation": "42 Hobart Ln",
+    "pickUpTime": "9:20 AM",
+    "daysNeeded": [
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Ella",
+    "lastName": "Thomas",
+    "pickUpLocation": "70 Butterfield Terrace",
+    "dropOffLocation": "University Health Services",
+    "pickUpTime": "9:20 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Daniel",
+    "lastName": "Taylor",
+    "pickUpLocation": "35 East Hadley Rd",
+    "dropOffLocation": "Hampshire Dining Commons",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Benjamin",
+    "lastName": "Chen",
+    "pickUpLocation": "42 Hobart Ln",
+    "dropOffLocation": "35 East Hadley Rd",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "James",
+    "lastName": "Miller",
+    "pickUpLocation": "Goodell Hall",
+    "dropOffLocation": "145 Main St",
+    "pickUpTime": "8:30 AM",
+    "daysNeeded": [
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Daniel",
+    "lastName": "Anderson",
+    "pickUpLocation": "Totman Gym",
+    "dropOffLocation": "Mullins Center",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Elijah",
+    "lastName": "Rivera",
+    "pickUpLocation": "Hampshire Dining Commons",
+    "dropOffLocation": "Goessmann Laboratory",
+    "pickUpTime": "9:20 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Benjamin",
+    "lastName": "Chen",
+    "pickUpLocation": "Tobin Hall Parking Lot",
+    "dropOffLocation": "145 Main St",
+    "pickUpTime": "8:00 AM",
+    "daysNeeded": [
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Moore",
+    "pickUpLocation": "Lincoln Apartments",
+    "dropOffLocation": "100 Sunset Ave",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Amelia",
+    "lastName": "Chen",
+    "pickUpLocation": "64 Meadow St",
+    "dropOffLocation": "Sylvan Residential Area",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": [
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Ella",
+    "lastName": "Johnson",
+    "pickUpLocation": "Bartlett Hall",
+    "dropOffLocation": "Newman Center",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": [
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Daniel",
+    "lastName": "Martinez",
+    "pickUpLocation": "Mullins Center",
+    "dropOffLocation": "Integrated Learning Center",
+    "pickUpTime": "11:15 AM",
+    "daysNeeded": [
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Daniel",
+    "lastName": "Lee",
+    "pickUpLocation": "Bartlett Hall",
+    "dropOffLocation": "42 Hobart Ln",
+    "pickUpTime": "11:15 AM",
+    "daysNeeded": [
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Ava",
+    "lastName": "Anderson",
+    "pickUpLocation": "Life Science Laboratories",
+    "dropOffLocation": "Franklin Dining Commons",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Ella",
+    "lastName": "Moore",
+    "pickUpLocation": "UMass Campus Center",
+    "dropOffLocation": "Hampshire Dining Commons",
+    "pickUpTime": "8:30 AM",
+    "daysNeeded": [
+      "Monday",
+      "Tuesday",
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "Benjamin",
+    "lastName": "Patel",
+    "pickUpLocation": "120 Belchertown Rd",
+    "dropOffLocation": "35 East Hadley Rd",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Amelia",
+    "lastName": "White",
+    "pickUpLocation": "64 Meadow St",
+    "dropOffLocation": "Hasbrouck Laboratory",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Lucas",
+    "lastName": "Nguyen",
+    "pickUpLocation": "Mullins Center",
+    "dropOffLocation": "Tobin Hall Parking Lot",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Ethan",
+    "lastName": "Rivera",
+    "pickUpLocation": "1010 N Pleasant St",
+    "dropOffLocation": "Franklin Dining Commons",
+    "pickUpTime": "11:15 AM",
+    "daysNeeded": [
+      "Wednesday"
+    ]
+  },
+  {
+    "firstName": "Elijah",
+    "lastName": "Brown",
+    "pickUpLocation": "Isenberg School of Management",
+    "dropOffLocation": "Franklin Dining Commons",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Amelia",
+    "lastName": "Wilson",
+    "pickUpLocation": "1010 N Pleasant St",
+    "dropOffLocation": "University Health Services",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": [
+      "Monday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Amelia",
+    "lastName": "Brown",
+    "pickUpLocation": "UMass Campus Center",
+    "dropOffLocation": "35 Brandywine Dr",
+    "pickUpTime": "9:45 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Alexander",
+    "lastName": "Taylor",
+    "pickUpLocation": "Newman Center",
+    "dropOffLocation": "35 East Hadley Rd",
+    "pickUpTime": "8:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Lucas",
+    "lastName": "Miller",
+    "pickUpLocation": "100 Sunset Ave",
+    "dropOffLocation": "Tobin Hall Parking Lot",
+    "pickUpTime": "7:30 AM",
+    "daysNeeded": [
+      "Tuesday",
+      "Thursday"
+    ]
+  },
+  {
+    "firstName": "James",
+    "lastName": "Patel",
+    "pickUpLocation": "Goessmann Laboratory",
+    "dropOffLocation": "UMass Campus Center",
+    "pickUpTime": "8:00 AM",
+    "daysNeeded": [
+      "Wednesday",
+      "Friday"
+    ]
+  },
+  {
+    "firstName": "Mia",
+    "lastName": "Rivera",
+    "pickUpLocation": "136 Fearing St",
+    "dropOffLocation": "35 East Hadley Rd",
+    "pickUpTime": "10:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ]
+  }
+]
