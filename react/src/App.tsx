@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import RoutesButton from "./components/RoutesButton/RoutesButton";
 import RoutesModal from "./components/RoutesModal/RoutesModal";
 import MapComponent from "./components/map/MapComponent";
+import MyRidesButton from "./components/MyRidesButton/MyRidesButton";
 
 function App() {
   const [isModalOpen, setModalOpen] = useState(false);
-
+  
   return (
     <div className="App">
       <Header />
@@ -16,6 +18,7 @@ function App() {
         isOpen={isModalOpen}
         closeModal={() => setModalOpen(false)}
       />
+      <MyRidesButton />
       <MapComponent />
       <Footer />
     </div>
