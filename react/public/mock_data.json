@@ -1,14 +1,16 @@
 [
-  {"firstName": "Edwin",
-   "lastName": "Tran",
-   "pickUpLocation": "180 Aubinwood Rd",
-   "dropOffLocation": "70 Butterfield Terrace",
-   "pickUpTime": "9:00 AM",
-   "daysNeeded": [
-    "Monday", 
-    "Wednesday", 
-    "Friday"
-    ]
+  {
+    "firstName": "Edwin",
+    "lastName": "Tran",
+    "pickUpLocation": "180 Aubinwood Rd",
+    "dropOffLocation": "70 Butterfield Terrace",
+    "pickUpTime": "9:00 AM",
+    "daysNeeded": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Ava",
@@ -17,9 +19,10 @@
     "dropOffLocation": "UMass Campus Center",
     "pickUpTime": "8:30 AM",
     "daysNeeded": [
-      "Tuesday", 
+      "Tuesday",
       "Thursday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Liam",
@@ -28,9 +31,10 @@
     "dropOffLocation": "Goodell Hall",
     "pickUpTime": "10:00 AM",
     "daysNeeded": [
-      "Monday", 
+      "Monday",
       "Wednesday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Sophia",
@@ -39,9 +43,10 @@
     "dropOffLocation": "W.E.B. Du Bois Library",
     "pickUpTime": "11:15 AM",
     "daysNeeded": [
-      "Wednesday", 
+      "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Noah",
@@ -51,9 +56,10 @@
     "pickUpTime": "7:45 AM",
     "daysNeeded": [
       "Monday",
-      "Tuesday", 
+      "Tuesday",
       "Thursday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Isabella",
@@ -61,7 +67,10 @@
     "pickUpLocation": "1010 N Pleasant St",
     "dropOffLocation": "Bartlett Hall",
     "pickUpTime": "9:45 AM",
-    "daysNeeded": ["Friday"]
+    "daysNeeded": [
+      "Friday"
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Ethan",
@@ -70,9 +79,10 @@
     "dropOffLocation": "Engineering Quad",
     "pickUpTime": "8:00 AM",
     "daysNeeded": [
-      "Tuesday", 
+      "Tuesday",
       "Thursday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Mia",
@@ -83,7 +93,8 @@
     "daysNeeded": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "James",
@@ -91,7 +102,10 @@
     "pickUpLocation": "145 Main St",
     "dropOffLocation": "Integrated Learning Center",
     "pickUpTime": "9:20 AM",
-    "daysNeeded": ["Wednesday"]
+    "daysNeeded": [
+      "Wednesday"
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Charlotte",
@@ -103,7 +117,8 @@
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Benjamin",
@@ -114,7 +129,8 @@
     "daysNeeded": [
       "Monday",
       "Wednesday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Charlotte",
@@ -126,7 +142,8 @@
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Ella",
@@ -138,7 +155,8 @@
       "Monday",
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Daniel",
@@ -148,7 +166,8 @@
     "pickUpTime": "9:20 AM",
     "daysNeeded": [
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Benjamin",
@@ -158,7 +177,8 @@
     "pickUpTime": "9:45 AM",
     "daysNeeded": [
       "Wednesday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "James",
@@ -170,7 +190,8 @@
       "Monday",
       "Tuesday",
       "Thursday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Benjamin",
@@ -181,7 +202,8 @@
     "daysNeeded": [
       "Monday",
       "Wednesday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Alexander",
@@ -193,7 +215,8 @@
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Charlotte",
@@ -205,7 +228,8 @@
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Ava",
@@ -215,7 +239,8 @@
     "pickUpTime": "9:20 AM",
     "daysNeeded": [
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Charlotte",
@@ -225,7 +250,8 @@
     "pickUpTime": "11:15 AM",
     "daysNeeded": [
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Alexander",
@@ -235,7 +261,8 @@
     "pickUpTime": "10:30 AM",
     "daysNeeded": [
       "Thursday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Olivia",
@@ -246,7 +273,8 @@
     "daysNeeded": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "James",
@@ -257,7 +285,8 @@
     "daysNeeded": [
       "Monday",
       "Wednesday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Ella",
@@ -267,7 +296,8 @@
     "pickUpTime": "7:30 AM",
     "daysNeeded": [
       "Thursday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Lucas",
@@ -279,7 +309,8 @@
       "Monday",
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Liam",
@@ -291,7 +322,8 @@
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Charlotte",
@@ -303,7 +335,8 @@
       "Monday",
       "Tuesday",
       "Thursday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Ava",
@@ -315,7 +348,8 @@
       "Monday",
       "Tuesday",
       "Thursday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Alexander",
@@ -326,7 +360,8 @@
     "daysNeeded": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Amelia",
@@ -338,7 +373,8 @@
       "Monday",
       "Tuesday",
       "Thursday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Noah",
@@ -349,7 +385,8 @@
     "daysNeeded": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Harper",
@@ -360,7 +397,8 @@
     "daysNeeded": [
       "Monday",
       "Wednesday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Sophia",
@@ -370,7 +408,8 @@
     "pickUpTime": "8:30 AM",
     "daysNeeded": [
       "Wednesday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Elijah",
@@ -380,7 +419,8 @@
     "pickUpTime": "10:30 AM",
     "daysNeeded": [
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Lucas",
@@ -391,7 +431,8 @@
     "daysNeeded": [
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Olivia",
@@ -403,7 +444,8 @@
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Charlotte",
@@ -415,7 +457,8 @@
       "Monday",
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Ethan",
@@ -426,7 +469,8 @@
     "daysNeeded": [
       "Tuesday",
       "Thursday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Alexander",
@@ -436,7 +480,8 @@
     "pickUpTime": "11:15 AM",
     "daysNeeded": [
       "Wednesday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Elijah",
@@ -446,7 +491,8 @@
     "pickUpTime": "8:00 AM",
     "daysNeeded": [
       "Thursday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Daniel",
@@ -456,7 +502,8 @@
     "pickUpTime": "10:30 AM",
     "daysNeeded": [
       "Wednesday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Isabella",
@@ -468,7 +515,8 @@
       "Monday",
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Lucas",
@@ -480,7 +528,8 @@
       "Monday",
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Olivia",
@@ -492,7 +541,8 @@
       "Monday",
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Emma",
@@ -502,7 +552,8 @@
     "pickUpTime": "8:30 AM",
     "daysNeeded": [
       "Thursday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Sophia",
@@ -512,7 +563,8 @@
     "pickUpTime": "9:00 AM",
     "daysNeeded": [
       "Wednesday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Logan",
@@ -523,7 +575,8 @@
     "daysNeeded": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Lucas",
@@ -534,7 +587,8 @@
     "daysNeeded": [
       "Tuesday",
       "Thursday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Ava",
@@ -546,557 +600,608 @@
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "rider"
   },
   {
     "firstName": "Benjamin",
     "lastName": "White",
-    "pickUpLocation": "70 Butterfield Terrace",
-    "dropOffLocation": "100 Sunset Ave",
-    "pickUpTime": "10:00 AM",
-    "daysNeeded": [
+    "startingLocation": "70 Butterfield Terrace",
+    "endingLocation": "100 Sunset Ave",
+    "leavingTime": "10:00 AM",
+    "daysGoing": [
       "Monday",
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "James",
     "lastName": "Kim",
-    "pickUpLocation": "180 Aubinwood Rd",
-    "dropOffLocation": "Haigis Mall",
-    "pickUpTime": "8:30 AM",
-    "daysNeeded": [
+    "startingLocation": "180 Aubinwood Rd",
+    "endingLocation": "Haigis Mall",
+    "leavingTime": "8:30 AM",
+    "daysGoing": [
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Ethan",
     "lastName": "Ali",
-    "pickUpLocation": "Hasbrouck Laboratory",
-    "dropOffLocation": "35 Brandywine Dr",
-    "pickUpTime": "8:30 AM",
-    "daysNeeded": [
+    "startingLocation": "Hasbrouck Laboratory",
+    "endingLocation": "35 Brandywine Dr",
+    "leavingTime": "8:30 AM",
+    "daysGoing": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Logan",
     "lastName": "Kim",
-    "pickUpLocation": "Newman Center",
-    "dropOffLocation": "UMass Transit Services",
-    "pickUpTime": "11:15 AM",
-    "daysNeeded": [
+    "startingLocation": "Newman Center",
+    "endingLocation": "UMass Transit Services",
+    "leavingTime": "11:15 AM",
+    "daysGoing": [
       "Wednesday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Alexander",
     "lastName": "Brown",
-    "pickUpLocation": "Sylvan Residential Area",
-    "dropOffLocation": "100 Sunset Ave",
-    "pickUpTime": "10:30 AM",
-    "daysNeeded": [
+    "startingLocation": "Sylvan Residential Area",
+    "endingLocation": "100 Sunset Ave",
+    "leavingTime": "10:30 AM",
+    "daysGoing": [
       "Monday",
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Emma",
     "lastName": "Patel",
-    "pickUpLocation": "Isenberg School of Management",
-    "dropOffLocation": "Newman Center",
-    "pickUpTime": "8:30 AM",
-    "daysNeeded": [
+    "startingLocation": "Isenberg School of Management",
+    "endingLocation": "Newman Center",
+    "leavingTime": "8:30 AM",
+    "daysGoing": [
       "Thursday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Lucas",
     "lastName": "Thomas",
-    "pickUpLocation": "W.E.B. Du Bois Library",
-    "dropOffLocation": "Haigis Mall",
-    "pickUpTime": "7:30 AM",
-    "daysNeeded": [
+    "startingLocation": "W.E.B. Du Bois Library",
+    "endingLocation": "Haigis Mall",
+    "leavingTime": "7:30 AM",
+    "daysGoing": [
       "Monday",
       "Wednesday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Charlotte",
     "lastName": "Chen",
-    "pickUpLocation": "Isenberg School of Management",
-    "dropOffLocation": "Recreation Center",
-    "pickUpTime": "9:45 AM",
-    "daysNeeded": [
+    "startingLocation": "Isenberg School of Management",
+    "endingLocation": "Recreation Center",
+    "leavingTime": "9:45 AM",
+    "daysGoing": [
       "Monday",
       "Wednesday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Liam",
     "lastName": "Thomas",
-    "pickUpLocation": "Durfee Conservatory",
-    "dropOffLocation": "42 Hobart Ln",
-    "pickUpTime": "7:30 AM",
-    "daysNeeded": [
+    "startingLocation": "Durfee Conservatory",
+    "endingLocation": "42 Hobart Ln",
+    "leavingTime": "7:30 AM",
+    "daysGoing": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Ava",
     "lastName": "Wilson",
-    "pickUpLocation": "Sylvan Residential Area",
-    "dropOffLocation": "University Health Services",
-    "pickUpTime": "8:30 AM",
-    "daysNeeded": [
+    "startingLocation": "Sylvan Residential Area",
+    "endingLocation": "University Health Services",
+    "leavingTime": "8:30 AM",
+    "daysGoing": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Ella",
     "lastName": "Lee",
-    "pickUpLocation": "Van Meter Hall",
-    "dropOffLocation": "145 Main St",
-    "pickUpTime": "7:30 AM",
-    "daysNeeded": [
+    "startingLocation": "Van Meter Hall",
+    "endingLocation": "145 Main St",
+    "leavingTime": "7:30 AM",
+    "daysGoing": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Ethan",
     "lastName": "Anderson",
-    "pickUpLocation": "64 Meadow St",
-    "dropOffLocation": "Mullins Center",
-    "pickUpTime": "7:30 AM",
-    "daysNeeded": [
+    "startingLocation": "64 Meadow St",
+    "endingLocation": "Mullins Center",
+    "leavingTime": "7:30 AM",
+    "daysGoing": [
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Logan",
     "lastName": "Thomas",
-    "pickUpLocation": "Lincoln Apartments",
-    "dropOffLocation": "UMass Campus Center",
-    "pickUpTime": "9:20 AM",
-    "daysNeeded": [
+    "startingLocation": "Lincoln Apartments",
+    "endingLocation": "UMass Campus Center",
+    "leavingTime": "9:20 AM",
+    "daysGoing": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Ella",
     "lastName": "Anderson",
-    "pickUpLocation": "64 Meadow St",
-    "dropOffLocation": "Goodell Hall",
-    "pickUpTime": "9:45 AM",
-    "daysNeeded": [
+    "startingLocation": "64 Meadow St",
+    "endingLocation": "Goodell Hall",
+    "leavingTime": "9:45 AM",
+    "daysGoing": [
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Amelia",
     "lastName": "Brown",
-    "pickUpLocation": "64 Meadow St",
-    "dropOffLocation": "Hampshire Dining Commons",
-    "pickUpTime": "10:00 AM",
-    "daysNeeded": [
+    "startingLocation": "64 Meadow St",
+    "endingLocation": "Hampshire Dining Commons",
+    "leavingTime": "10:00 AM",
+    "daysGoing": [
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Olivia",
     "lastName": "Lee",
-    "pickUpLocation": "Goodell Hall",
-    "dropOffLocation": "Lincoln Apartments",
-    "pickUpTime": "9:45 AM",
-    "daysNeeded": [
+    "startingLocation": "Goodell Hall",
+    "endingLocation": "Lincoln Apartments",
+    "leavingTime": "9:45 AM",
+    "daysGoing": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Elijah",
     "lastName": "Ali",
-    "pickUpLocation": "Integrated Learning Center",
-    "dropOffLocation": "Haigis Mall",
-    "pickUpTime": "10:00 AM",
-    "daysNeeded": [
+    "startingLocation": "Integrated Learning Center",
+    "endingLocation": "Haigis Mall",
+    "leavingTime": "10:00 AM",
+    "daysGoing": [
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Emma",
     "lastName": "Martinez",
-    "pickUpLocation": "Engineering Quad",
-    "dropOffLocation": "Durfee Conservatory",
-    "pickUpTime": "11:15 AM",
-    "daysNeeded": [
+    "startingLocation": "Engineering Quad",
+    "endingLocation": "Durfee Conservatory",
+    "leavingTime": "11:15 AM",
+    "daysGoing": [
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Ethan",
     "lastName": "Wilson",
-    "pickUpLocation": "UMass Campus Center",
-    "dropOffLocation": "Durfee Conservatory",
-    "pickUpTime": "9:45 AM",
-    "daysNeeded": [
+    "startingLocation": "UMass Campus Center",
+    "endingLocation": "Durfee Conservatory",
+    "leavingTime": "9:45 AM",
+    "daysGoing": [
       "Monday",
       "Wednesday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "James",
     "lastName": "Rivera",
-    "pickUpLocation": "Lincoln Apartments",
-    "dropOffLocation": "35 East Hadley Rd",
-    "pickUpTime": "9:00 AM",
-    "daysNeeded": [
+    "startingLocation": "Lincoln Apartments",
+    "endingLocation": "35 East Hadley Rd",
+    "leavingTime": "9:00 AM",
+    "daysGoing": [
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Liam",
     "lastName": "Miller",
-    "pickUpLocation": "120 Belchertown Rd",
-    "dropOffLocation": "UMass Transit Services",
-    "pickUpTime": "8:00 AM",
-    "daysNeeded": [
+    "startingLocation": "120 Belchertown Rd",
+    "endingLocation": "UMass Transit Services",
+    "leavingTime": "8:00 AM",
+    "daysGoing": [
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Amelia",
     "lastName": "Rivera",
-    "pickUpLocation": "Franklin Dining Commons",
-    "dropOffLocation": "35 Brandywine Dr",
-    "pickUpTime": "8:30 AM",
-    "daysNeeded": [
+    "startingLocation": "Franklin Dining Commons",
+    "endingLocation": "35 Brandywine Dr",
+    "leavingTime": "8:30 AM",
+    "daysGoing": [
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Liam",
     "lastName": "Jackson",
-    "pickUpLocation": "Blue Wall",
-    "dropOffLocation": "University Health Services",
-    "pickUpTime": "10:30 AM",
-    "daysNeeded": [
+    "startingLocation": "Blue Wall",
+    "endingLocation": "University Health Services",
+    "leavingTime": "10:30 AM",
+    "daysGoing": [
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Olivia",
     "lastName": "Kim",
-    "pickUpLocation": "Engineering Quad",
-    "dropOffLocation": "W.E.B. Du Bois Library",
-    "pickUpTime": "7:30 AM",
-    "daysNeeded": [
+    "startingLocation": "Engineering Quad",
+    "endingLocation": "W.E.B. Du Bois Library",
+    "leavingTime": "7:30 AM",
+    "daysGoing": [
       "Monday",
       "Wednesday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Ava",
     "lastName": "Kim",
-    "pickUpLocation": "136 Fearing St",
-    "dropOffLocation": "42 Hobart Ln",
-    "pickUpTime": "9:20 AM",
-    "daysNeeded": [
+    "startingLocation": "136 Fearing St",
+    "endingLocation": "42 Hobart Ln",
+    "leavingTime": "9:20 AM",
+    "daysGoing": [
       "Wednesday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Ella",
     "lastName": "Thomas",
-    "pickUpLocation": "70 Butterfield Terrace",
-    "dropOffLocation": "University Health Services",
-    "pickUpTime": "9:20 AM",
-    "daysNeeded": [
+    "startingLocation": "70 Butterfield Terrace",
+    "endingLocation": "University Health Services",
+    "leavingTime": "9:20 AM",
+    "daysGoing": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Daniel",
     "lastName": "Taylor",
-    "pickUpLocation": "35 East Hadley Rd",
-    "dropOffLocation": "Hampshire Dining Commons",
-    "pickUpTime": "9:00 AM",
-    "daysNeeded": [
+    "startingLocation": "35 East Hadley Rd",
+    "endingLocation": "Hampshire Dining Commons",
+    "leavingTime": "9:00 AM",
+    "daysGoing": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Benjamin",
     "lastName": "Chen",
-    "pickUpLocation": "42 Hobart Ln",
-    "dropOffLocation": "35 East Hadley Rd",
-    "pickUpTime": "10:00 AM",
-    "daysNeeded": [
+    "startingLocation": "42 Hobart Ln",
+    "endingLocation": "35 East Hadley Rd",
+    "leavingTime": "10:00 AM",
+    "daysGoing": [
       "Monday",
       "Wednesday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "James",
     "lastName": "Miller",
-    "pickUpLocation": "Goodell Hall",
-    "dropOffLocation": "145 Main St",
-    "pickUpTime": "8:30 AM",
-    "daysNeeded": [
+    "startingLocation": "Goodell Hall",
+    "endingLocation": "145 Main St",
+    "leavingTime": "8:30 AM",
+    "daysGoing": [
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Daniel",
     "lastName": "Anderson",
-    "pickUpLocation": "Totman Gym",
-    "dropOffLocation": "Mullins Center",
-    "pickUpTime": "9:00 AM",
-    "daysNeeded": [
+    "startingLocation": "Totman Gym",
+    "endingLocation": "Mullins Center",
+    "leavingTime": "9:00 AM",
+    "daysGoing": [
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Elijah",
     "lastName": "Rivera",
-    "pickUpLocation": "Hampshire Dining Commons",
-    "dropOffLocation": "Goessmann Laboratory",
-    "pickUpTime": "9:20 AM",
-    "daysNeeded": [
+    "startingLocation": "Hampshire Dining Commons",
+    "endingLocation": "Goessmann Laboratory",
+    "leavingTime": "9:20 AM",
+    "daysGoing": [
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Benjamin",
     "lastName": "Chen",
-    "pickUpLocation": "Tobin Hall Parking Lot",
-    "dropOffLocation": "145 Main St",
-    "pickUpTime": "8:00 AM",
-    "daysNeeded": [
+    "startingLocation": "Tobin Hall Parking Lot",
+    "endingLocation": "145 Main St",
+    "leavingTime": "8:00 AM",
+    "daysGoing": [
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Olivia",
     "lastName": "Moore",
-    "pickUpLocation": "Lincoln Apartments",
-    "dropOffLocation": "100 Sunset Ave",
-    "pickUpTime": "9:00 AM",
-    "daysNeeded": [
+    "startingLocation": "Lincoln Apartments",
+    "endingLocation": "100 Sunset Ave",
+    "leavingTime": "9:00 AM",
+    "daysGoing": [
       "Wednesday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Amelia",
     "lastName": "Chen",
-    "pickUpLocation": "64 Meadow St",
-    "dropOffLocation": "Sylvan Residential Area",
-    "pickUpTime": "9:45 AM",
-    "daysNeeded": [
+    "startingLocation": "64 Meadow St",
+    "endingLocation": "Sylvan Residential Area",
+    "leavingTime": "9:45 AM",
+    "daysGoing": [
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Ella",
     "lastName": "Johnson",
-    "pickUpLocation": "Bartlett Hall",
-    "dropOffLocation": "Newman Center",
-    "pickUpTime": "9:45 AM",
-    "daysNeeded": [
+    "startingLocation": "Bartlett Hall",
+    "endingLocation": "Newman Center",
+    "leavingTime": "9:45 AM",
+    "daysGoing": [
       "Thursday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Daniel",
     "lastName": "Martinez",
-    "pickUpLocation": "Mullins Center",
-    "dropOffLocation": "Integrated Learning Center",
-    "pickUpTime": "11:15 AM",
-    "daysNeeded": [
+    "startingLocation": "Mullins Center",
+    "endingLocation": "Integrated Learning Center",
+    "leavingTime": "11:15 AM",
+    "daysGoing": [
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Daniel",
     "lastName": "Lee",
-    "pickUpLocation": "Bartlett Hall",
-    "dropOffLocation": "42 Hobart Ln",
-    "pickUpTime": "11:15 AM",
-    "daysNeeded": [
+    "startingLocation": "Bartlett Hall",
+    "endingLocation": "42 Hobart Ln",
+    "leavingTime": "11:15 AM",
+    "daysGoing": [
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Ava",
     "lastName": "Anderson",
-    "pickUpLocation": "Life Science Laboratories",
-    "dropOffLocation": "Franklin Dining Commons",
-    "pickUpTime": "10:00 AM",
-    "daysNeeded": [
+    "startingLocation": "Life Science Laboratories",
+    "endingLocation": "Franklin Dining Commons",
+    "leavingTime": "10:00 AM",
+    "daysGoing": [
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Ella",
     "lastName": "Moore",
-    "pickUpLocation": "UMass Campus Center",
-    "dropOffLocation": "Hampshire Dining Commons",
-    "pickUpTime": "8:30 AM",
-    "daysNeeded": [
+    "startingLocation": "UMass Campus Center",
+    "endingLocation": "Hampshire Dining Commons",
+    "leavingTime": "8:30 AM",
+    "daysGoing": [
       "Monday",
       "Tuesday",
       "Thursday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Benjamin",
     "lastName": "Patel",
-    "pickUpLocation": "120 Belchertown Rd",
-    "dropOffLocation": "35 East Hadley Rd",
-    "pickUpTime": "10:00 AM",
-    "daysNeeded": [
+    "startingLocation": "120 Belchertown Rd",
+    "endingLocation": "35 East Hadley Rd",
+    "leavingTime": "10:00 AM",
+    "daysGoing": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Amelia",
     "lastName": "White",
-    "pickUpLocation": "64 Meadow St",
-    "dropOffLocation": "Hasbrouck Laboratory",
-    "pickUpTime": "9:45 AM",
-    "daysNeeded": [
+    "startingLocation": "64 Meadow St",
+    "endingLocation": "Hasbrouck Laboratory",
+    "leavingTime": "9:45 AM",
+    "daysGoing": [
       "Monday",
       "Wednesday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Lucas",
     "lastName": "Nguyen",
-    "pickUpLocation": "Mullins Center",
-    "dropOffLocation": "Tobin Hall Parking Lot",
-    "pickUpTime": "9:00 AM",
-    "daysNeeded": [
+    "startingLocation": "Mullins Center",
+    "endingLocation": "Tobin Hall Parking Lot",
+    "leavingTime": "9:00 AM",
+    "daysGoing": [
       "Wednesday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Ethan",
     "lastName": "Rivera",
-    "pickUpLocation": "1010 N Pleasant St",
-    "dropOffLocation": "Franklin Dining Commons",
-    "pickUpTime": "11:15 AM",
-    "daysNeeded": [
+    "startingLocation": "1010 N Pleasant St",
+    "endingLocation": "Franklin Dining Commons",
+    "leavingTime": "11:15 AM",
+    "daysGoing": [
       "Wednesday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Elijah",
     "lastName": "Brown",
-    "pickUpLocation": "Isenberg School of Management",
-    "dropOffLocation": "Franklin Dining Commons",
-    "pickUpTime": "9:00 AM",
-    "daysNeeded": [
+    "startingLocation": "Isenberg School of Management",
+    "endingLocation": "Franklin Dining Commons",
+    "leavingTime": "9:00 AM",
+    "daysGoing": [
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Amelia",
     "lastName": "Wilson",
-    "pickUpLocation": "1010 N Pleasant St",
-    "dropOffLocation": "University Health Services",
-    "pickUpTime": "9:45 AM",
-    "daysNeeded": [
+    "startingLocation": "1010 N Pleasant St",
+    "endingLocation": "University Health Services",
+    "leavingTime": "9:45 AM",
+    "daysGoing": [
       "Monday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Amelia",
     "lastName": "Brown",
-    "pickUpLocation": "UMass Campus Center",
-    "dropOffLocation": "35 Brandywine Dr",
-    "pickUpTime": "9:45 AM",
-    "daysNeeded": [
+    "startingLocation": "UMass Campus Center",
+    "endingLocation": "35 Brandywine Dr",
+    "leavingTime": "9:45 AM",
+    "daysGoing": [
       "Tuesday",
       "Thursday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Alexander",
     "lastName": "Taylor",
-    "pickUpLocation": "Newman Center",
-    "dropOffLocation": "35 East Hadley Rd",
-    "pickUpTime": "8:00 AM",
-    "daysNeeded": [
+    "startingLocation": "Newman Center",
+    "endingLocation": "35 East Hadley Rd",
+    "leavingTime": "8:00 AM",
+    "daysGoing": [
       "Monday",
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Lucas",
     "lastName": "Miller",
-    "pickUpLocation": "100 Sunset Ave",
-    "dropOffLocation": "Tobin Hall Parking Lot",
-    "pickUpTime": "7:30 AM",
-    "daysNeeded": [
+    "startingLocation": "100 Sunset Ave",
+    "endingLocation": "Tobin Hall Parking Lot",
+    "leavingTime": "7:30 AM",
+    "daysGoing": [
       "Tuesday",
       "Thursday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "James",
     "lastName": "Patel",
-    "pickUpLocation": "Goessmann Laboratory",
-    "dropOffLocation": "UMass Campus Center",
-    "pickUpTime": "8:00 AM",
-    "daysNeeded": [
+    "startingLocation": "Goessmann Laboratory",
+    "endingLocation": "UMass Campus Center",
+    "leavingTime": "8:00 AM",
+    "daysGoing": [
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   },
   {
     "firstName": "Mia",
     "lastName": "Rivera",
-    "pickUpLocation": "136 Fearing St",
-    "dropOffLocation": "35 East Hadley Rd",
-    "pickUpTime": "10:00 AM",
-    "daysNeeded": [
+    "startingLocation": "136 Fearing St",
+    "endingLocation": "35 East Hadley Rd",
+    "leavingTime": "10:00 AM",
+    "daysGoing": [
       "Monday",
       "Wednesday",
       "Friday"
-    ]
+    ],
+    "role": "driver"
   }
 ]
