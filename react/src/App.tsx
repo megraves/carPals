@@ -25,18 +25,20 @@ function App() {
         event.preventDefault();
         const form = event.target as HTMLFormElement;
 
-        // Extract form data using FormData
         const formData = new FormData(form);
         const startingLocation = formData.get("startingLocation") as string;
         const endingLocation = formData.get("endingLocation") as string;
         const pickupTime = formData.get("pickupTime") as string;
 
-        // Extract selected days from DOM
         const selectedDays = Array.from(
-          document.querySelectorAll(".day-box.selected")
+          document.querySelectorAll(".day-box.selected") || []
         ).map((dayElement) => dayElement.getAttribute("title") || "");
 
-        // Update state with ride details
+        if (!startingLocation || !endingLocation || !pickupTime || selectedDays.length === 0) {
+          alert("Please fill out all fields before submitting.");
+          return;
+        }
+
         setRideDetails({
           startingLocation,
           endingLocation,
@@ -44,11 +46,9 @@ function App() {
           daysNeeded: selectedDays,
         });
 
-        // Close modal after submission
         setModalOpen(false);
       };
 
-      // Attach event listener to the form
       const form = document.querySelector(".modal-form");
       form?.addEventListener("submit", handleFormSubmit);
 
@@ -62,19 +62,23 @@ function App() {
     <div className="App">
       <Header />
       <RoutesButton openModal={() => setModalOpen(true)} />
-      <RoutesModal isOpen={isModalOpen} closeModal={() => setModalOpen(false)} />
+      <RoutesModal
+        isOpen={isModalOpen}
+        closeModal={() => setModalOpen(false)}
+      />
       
-      {/* Confirmation Popup */}
       {rideDetails && (
-        <RideConfirmation 
-          rideDetails={rideDetails} 
-          onClose={() => setRideDetails(null)}
-        />
+        <div className="confirmation-section">
+          <RideConfirmation 
+            rideDetails={rideDetails} 
+            onClose={() => setRideDetails(null)} 
+          />
+        </div>
       )}
 
       <MyRidesButton />
       <MyPalsButton />
-      <MapComponent /> {/* Confirmation appears above this */}
+      <MapComponent />
       <Footer />
     </div>
   );
