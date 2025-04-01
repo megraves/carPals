@@ -34,7 +34,12 @@ function App() {
           document.querySelectorAll(".day-box.selected") || []
         ).map((dayElement) => dayElement.getAttribute("title") || "");
 
-        if (!startingLocation || !endingLocation || !pickupTime || selectedDays.length === 0) {
+        if (
+          !startingLocation ||
+          !endingLocation ||
+          !pickupTime ||
+          selectedDays.length === 0
+        ) {
           alert("Please fill out all fields before submitting.");
           return;
         }
@@ -66,16 +71,15 @@ function App() {
         isOpen={isModalOpen}
         closeModal={() => setModalOpen(false)}
       />
-      
+
       {rideDetails && (
         <div className="confirmation-section">
-          <RideConfirmation 
-            rideDetails={rideDetails} 
-            onClose={() => setRideDetails(null)} 
+          <RideConfirmation
+            rideDetails={rideDetails}
+            onClose={() => setRideDetails(null)}
           />
         </div>
       )}
-
       <MyRidesButton />
       <MyPalsButton />
       <MapComponent />
