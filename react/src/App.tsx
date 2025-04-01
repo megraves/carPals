@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
-import RoutesButton from "./components/RoutesButton/RoutesButton";
+import ActionButton from "./components/ActionButton/ActionButton";
 import RoutesModal from "./components/RoutesModal/RoutesModal";
 import MapComponent from "./components/map/MapComponent";
 import MyRidesButton from "./components/MyRidesButton/MyRidesButton";
@@ -109,7 +109,10 @@ function App() {
           element={
             <div className="plan-rides">
               <Header />
-              <RoutesButton openModal={() => setModalOpen(true)} />
+              <ActionButton
+                label="Find a Ride"
+                action={() => setModalOpen(true)}
+              />
               <RoutesModal
                 isOpen={isModalOpen}
                 closeModal={() => setModalOpen(false)}
