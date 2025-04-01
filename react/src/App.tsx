@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { JSX, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import ActionButton from "./components/ActionButton/ActionButton";
 import RoutesModal from "./components/RoutesModal/RoutesModal";
 import MapComponent from "./components/map/MapComponent";
-import MyRidesButton from "./components/MyRidesButton/MyRidesButton";
-import MyPalsButton from "./components/MyPalsButton/MyPalsButton";
+
+
 
 function App() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"find" | "offer" | null>(null);
+  
+  const [dropOpen, setDropOpen] = useState(false);
+  const [rideList, setRideList] = useState<JSX.Element[] | null>(null);
+  const rides = ["ride 1", "ride 2", "ride 3"];
 
   const openFindModal = () => {
     setModalMode("find");
@@ -22,6 +26,28 @@ function App() {
     setModalOpen(true);
   };
 
+  const mapRidesToList = (rides: string[]) => {
+    return rides.map((ride, index) => (
+      <li key={index} className="ride-item">
+        <button className="ride-button">
+        {ride}
+        </button>
+      </li>
+    ));
+  };
+
+  const ridesDropDown = () => {
+    setDropOpen(!dropOpen);
+    if (!dropOpen) {
+      setRideList(mapRidesToList(rides));
+    } else {
+      setRideList(null);
+    }
+  }
+
+
+
+
   return (
     <Router>
       <Routes>
@@ -31,8 +57,18 @@ function App() {
           element={
             <div className="App">
               <Header />
-              <MyRidesButton />
-              <MyPalsButton />
+              <div className="ride-list">
+                <ActionButton
+                  label="My Rides"
+                  action={ridesDropDown}
+                  id="my-rides"
+                />
+                {dropOpen && (
+                  <ul className="rides-dropdown">
+                    {rideList}
+                  </ul>
+                )}
+              </div>
               <MapComponent />
               <Footer />
             </div>
