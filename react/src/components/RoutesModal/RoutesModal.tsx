@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./RoutesModal.css";
+import "../FindingRidesModal/FindingRidesModal";
+import MatchingRidesModal from "../FindingRidesModal/FindingRidesModal";
+import { RideMatch } from "../FindingRidesModal/FindingRidesModal";
 
 interface RoutesModalProps {
   isOpen: boolean;
@@ -29,6 +32,8 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
     pickupTime: "",
   });
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showMatchingModal, setShowMatchingModal] = useState(false);
+  const [matchedRides, setMatchedRides] = useState<RideMatch[]>([]);
 
   // Reset selected days when modal closes
   useEffect(() => {
@@ -53,7 +58,34 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setShowConfirmation(true);
+
+    // Simulate matched rides (in real use, fetch from backend)
+    const mockResults = [
+      {
+        firstName: "Ava",
+        lastName: "Nguyen",
+        pickUpLocation: formData.startingLocation,
+        dropOffLocation: formData.endingLocation,
+        pickUpTime: formData.pickupTime,
+        daysNeeded: selectedDays,
+      },
+      {
+        firstName: "Leo",
+        lastName: "Smith",
+        pickUpLocation: "123 Maple St",
+        dropOffLocation: "456 Oak St",
+        pickUpTime: "8:30 AM",
+        daysNeeded: ["Monday", "Wednesday"],
+      },
+    ];
+
+    setMatchedRides(mockResults);
+    setShowMatchingModal(true);
+  };
+
+  const handleConfirmRide = () => {
+    setShowMatchingModal(false);
+    setShowConfirmation(true); // now show final confirmation
   };
 
   if (!isOpen) return null;
@@ -152,6 +184,12 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
           </>
         )}
       </div>
+      <MatchingRidesModal
+        isOpen={showMatchingModal}
+        closeModal={() => setShowMatchingModal(false)}
+        matchedRides={matchedRides}
+        onConfirm={handleConfirmRide}
+      />
     </div>
   );
 };
