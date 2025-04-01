@@ -6,11 +6,3 @@
   padding: 2rem;
   text-align: center;
 }
-
-.ride-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  height: 50vh;
-}

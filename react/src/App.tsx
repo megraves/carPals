@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
@@ -7,62 +7,20 @@ import RoutesModal from "./components/RoutesModal/RoutesModal";
 import MapComponent from "./components/map/MapComponent";
 import MyRidesButton from "./components/MyRidesButton/MyRidesButton";
 import MyPalsButton from "./components/MyPalsButton/MyPalsButton";
-import RideConfirmation from "./components/RideConfirmation/RideConfirmation";
-
-interface RideDetails {
-  startingLocation: string;
-  endingLocation: string;
-  pickupTime: string;
-  daysNeeded: string[];
-}
 
 function App() {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [rideDetails, setRideDetails] = useState<RideDetails | null>(null);
+  const [modalMode, setModalMode] = useState<"find" | "offer" | null>(null);
 
-  useEffect(() => {
-    if (isModalOpen) {
-      const handleFormSubmit = (event: Event) => {
-        event.preventDefault();
-        const form = event.target as HTMLFormElement;
+  const openFindModal = () => {
+    setModalMode("find");
+    setModalOpen(true);
+  };
 
-        const formData = new FormData(form);
-        const startingLocation = formData.get("startingLocation") as string;
-        const endingLocation = formData.get("endingLocation") as string;
-        const pickupTime = formData.get("pickupTime") as string;
-
-        const selectedDays = Array.from(
-          document.querySelectorAll(".day-box.selected") || []
-        ).map((dayElement) => dayElement.getAttribute("title") || "");
-
-        if (
-          !startingLocation ||
-          !endingLocation ||
-          !pickupTime ||
-          selectedDays.length === 0
-        ) {
-          alert("Please fill out all fields before submitting.");
-          return;
-        }
-
-        setRideDetails({
-          startingLocation,
-          endingLocation,
-          pickupTime,
-          daysNeeded: selectedDays,
-        });
-
-        setModalOpen(false);
-      };
-
-      const form = document.querySelector(".modal-form");
-      form?.addEventListener("submit", handleFormSubmit);
-
-      return () => {
-        form?.removeEventListener("submit", handleFormSubmit);
-      };
-    }
-  }, [isModalOpen]);
+  const openOfferModal = () => {
+    setModalMode("offer");
+    setModalOpen(true);
+  };
 
   return (
     <Router>
@@ -73,16 +31,6 @@ function App() {
           element={
             <div className="App">
               <Header />
-
-              {rideDetails && (
-                <div className="confirmation-section">
-                  <RideConfirmation
-                    rideDetails={rideDetails}
-                    onClose={() => setRideDetails(null)}
-                  />
-                </div>
-              )}
-
               <MyRidesButton />
               <MyPalsButton />
               <MapComponent />
@@ -112,12 +60,12 @@ function App() {
               <div className="ride-buttons">
                 <ActionButton
                   label="Find a Ride"
-                  action={() => setModalOpen(true)}
+                  action={openFindModal}
                   id="find-a-ride"
                 />
                 <ActionButton
                   label="Offer a Ride"
-                  action={() => setModalOpen(true)}
+                  action={openOfferModal}
                   id="offer-a-ride"
                 />
               </div>
@@ -125,6 +73,7 @@ function App() {
               <RoutesModal
                 isOpen={isModalOpen}
                 closeModal={() => setModalOpen(false)}
+                mode={modalMode}
               />
               <Footer />
             </div>
