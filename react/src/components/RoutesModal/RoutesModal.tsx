@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./RoutesModal.css";
 
 interface RoutesModalProps {
@@ -19,12 +19,18 @@ const daysOfWeek = [
 const RoutesModal: React.FC<RoutesModalProps> = ({ isOpen, closeModal }) => {
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
 
+  // Reset selected days when modal closes
+  useEffect(() => {
+    if (!isOpen) {
+      setSelectedDays([]); // Clear selected days when modal is closed
+    }
+  }, [isOpen]);
+
   const toggleDaySelection = (day: string) => {
-    setSelectedDays(
-      (prevSelected) =>
-        prevSelected.includes(day)
-          ? prevSelected.filter((d) => d !== day) // Deselect if selected
-          : [...prevSelected, day] // Select if not selected
+    setSelectedDays((prevSelected) =>
+      prevSelected.includes(day)
+        ? prevSelected.filter((d) => d !== day) // Deselect if selected
+        : [...prevSelected, day] // Select if not selected
     );
   };
 
@@ -39,13 +45,23 @@ const RoutesModal: React.FC<RoutesModalProps> = ({ isOpen, closeModal }) => {
         <h2 className="modal-title">Plan Your Route</h2>
         <form className="modal-form">
           <label>Starting Location:</label>
-          <input type="text" placeholder="Enter starting location" required />
+          <input
+            type="text"
+            name="startingLocation"
+            placeholder="Enter starting location"
+            required
+          />
 
           <label>Ending Location:</label>
-          <input type="text" placeholder="Enter ending location" required />
+          <input
+            type="text"
+            name="endingLocation"
+            placeholder="Enter ending location"
+            required
+          />
 
           <label>Pickup Time:</label>
-          <input type="time" required />
+          <input type="time" name="pickupTime" required />
 
           <label>Days Needed:</label>
           <div className="days-selector">
