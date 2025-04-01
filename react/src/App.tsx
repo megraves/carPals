@@ -109,10 +109,19 @@ function App() {
           element={
             <div className="plan-rides">
               <Header />
-              <ActionButton
-                label="Find a Ride"
-                action={() => setModalOpen(true)}
-              />
+              <div className="ride-buttons">
+                <ActionButton
+                  label="Find a Ride"
+                  action={() => setModalOpen(true)}
+                  id="find-a-ride"
+                />
+                <ActionButton
+                  label="Offer a Ride"
+                  action={() => setModalOpen(true)}
+                  id="offer-a-ride"
+                />
+              </div>
+
               <RoutesModal
                 isOpen={isModalOpen}
                 closeModal={() => setModalOpen(false)}

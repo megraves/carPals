@@ -3,6 +3,7 @@ import "./ActionButton.css";
 
 interface ActionButton {
   label: string;
+  id: string;
   action: () => void;
 }
 

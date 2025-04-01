@@ -1,16 +1,22 @@
+.button-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; /* space between buttons */
+  margin-top: 5rem; /* push it down from nav */
+  height: 50vh; /* centers vertically relative to content */
+}
+
 .action-button {
-  position: absolute;
-  top: 120px;
-  left: 30px;
-  background-color: #038286;
+  background-color: #008080;
   color: white;
-  font-size: 20px;
-  padding: 12px 24px;
+  padding: 0.8rem 1.5rem;
   border: none;
-  border-radius: 20px;
+  border-radius: 9999px;
+  font-size: 1.1rem;
   cursor: pointer;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background 0.3 ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
 }
 
 .action-button:hover {
