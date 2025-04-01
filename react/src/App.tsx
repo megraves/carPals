@@ -73,11 +73,6 @@ function App() {
           element={
             <div className="App">
               <Header />
-              <RoutesButton openModal={() => setModalOpen(true)} />
-              <RoutesModal
-                isOpen={isModalOpen}
-                closeModal={() => setModalOpen(false)}
-              />
 
               {rideDetails && (
                 <div className="confirmation-section">
@@ -114,7 +109,11 @@ function App() {
           element={
             <div className="plan-rides">
               <Header />
-              <h1>plan rides</h1>
+              <RoutesButton openModal={() => setModalOpen(true)} />
+              <RoutesModal
+                isOpen={isModalOpen}
+                closeModal={() => setModalOpen(false)}
+              />
               <Footer />
             </div>
           }
