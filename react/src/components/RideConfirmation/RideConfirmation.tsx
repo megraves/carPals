@@ -9,11 +9,16 @@ interface RideDetails {
 }
 
 interface RideConfirmationProps {
-  rideDetails: RideDetails;
+  rideDetails: RideDetails | null;
+  isVisible: boolean;
   onClose: () => void;
 }
 
-const RideConfirmation: React.FC<RideConfirmationProps> = ({ rideDetails, onClose }) => {
+const RideConfirmation: React.FC<RideConfirmationProps> = ({ rideDetails, isVisible, onClose }) => {
+  if (!isVisible || !rideDetails) {
+    return null;
+  }
+
   return (
     <div className="confirmation-overlay">
       <div className="confirmation-content">

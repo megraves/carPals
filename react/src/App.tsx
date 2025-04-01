@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import RoutesButton from "./components/RoutesButton/RoutesButton";
@@ -60,64 +59,25 @@ function App() {
   }, [isModalOpen]);
 
   return (
-    <Router>
-       <Routes>
+    <div className="App">
+      <Header />
+      <RoutesButton openModal={() => setModalOpen(true)} />
+      <RoutesModal
+        isOpen={isModalOpen}
+        closeModal={() => setModalOpen(false)}
+      />
+      
+      <RideConfirmation 
+        rideDetails={rideDetails} 
+        isVisible={!!rideDetails} 
+        onClose={() => setRideDetails(null)} 
+      />
 
-         {/* homepage */}
-         <Route
-           path="/"
-           element={
-            <div className="App">
-              <Header />
-              <RoutesButton openModal={() => setModalOpen(true)} />
-              <RoutesModal
-                isOpen={isModalOpen}
-                closeModal={() => setModalOpen(false)}
-              />
-              
-              {rideDetails && (
-                <div className="confirmation-section">
-                  <RideConfirmation 
-                    rideDetails={rideDetails} 
-                    onClose={() => setRideDetails(null)} 
-                  />
-                </div>
-              )}
-
-              <MyRidesButton />
-              <MyPalsButton />
-              <MapComponent />
-              <Footer />
-            </div>
-          }
-        />
-
-        {/* profile page */}
-        <Route 
-           path="/profile"
-           element={
-             <div className="profile">
-               <Header />
-               <h1>profile page</h1>
-               <Footer />
-             </div>
- 
-           }
-         />
-
-         {/* plan a ride page */}
-         <Route 
-           path="/plan-rides"
-           element={
-             <div className="plan-rides">
-               <Header />
-               <h1>plan rides</h1>
-               <Footer />
-             </div>
-           }
-         />
-       </Routes>
-     </Router>
+      <MyRidesButton />
+      <MyPalsButton />
+      <MapComponent />
+      <Footer />
+    </div>
   );
 }
 
