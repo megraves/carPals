@@ -4,6 +4,7 @@ import "./RoutesModal.css";
 interface RoutesModalProps {
   isOpen: boolean;
   closeModal: () => void;
+  mode: "find" | "offer" | null;
 }
 
 const daysOfWeek = [
@@ -16,7 +17,11 @@ const daysOfWeek = [
   { short: "Sa", full: "Saturday" },
 ];
 
-const RoutesModal: React.FC<RoutesModalProps> = ({ isOpen, closeModal }) => {
+const RoutesModal: React.FC<RoutesModalProps> = ({
+  isOpen,
+  closeModal,
+  mode,
+}) => {
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
 
   // Reset selected days when modal closes
@@ -27,10 +32,11 @@ const RoutesModal: React.FC<RoutesModalProps> = ({ isOpen, closeModal }) => {
   }, [isOpen]);
 
   const toggleDaySelection = (day: string) => {
-    setSelectedDays((prevSelected) =>
-      prevSelected.includes(day)
-        ? prevSelected.filter((d) => d !== day) // Deselect if selected
-        : [...prevSelected, day] // Select if not selected
+    setSelectedDays(
+      (prevSelected) =>
+        prevSelected.includes(day)
+          ? prevSelected.filter((d) => d !== day) // Deselect if selected
+          : [...prevSelected, day] // Select if not selected
     );
   };
 
@@ -42,7 +48,9 @@ const RoutesModal: React.FC<RoutesModalProps> = ({ isOpen, closeModal }) => {
         <button className="close-button" onClick={closeModal}>
           &times;
         </button>
-        <h2 className="modal-title">Plan Your Route</h2>
+        <h2 className="modal-title">
+          {mode === "find" ? "Find a Ride" : "Offer a Ride"}
+        </h2>
         <form className="modal-form">
           <label>Starting Location:</label>
           <input
@@ -60,10 +68,10 @@ const RoutesModal: React.FC<RoutesModalProps> = ({ isOpen, closeModal }) => {
             required
           />
 
-          <label>Pickup Time:</label>
+          <label>{mode === "find" ? "Pick Up Time:" : "Leaving Time:"}</label>
           <input type="time" name="pickupTime" required />
 
-          <label>Days Needed:</label>
+          <label>{mode === "find" ? "Days Needed:" : "Days Going:"}</label>
           <div className="days-selector">
             {daysOfWeek.map(({ short, full }) => (
               <div
@@ -72,7 +80,7 @@ const RoutesModal: React.FC<RoutesModalProps> = ({ isOpen, closeModal }) => {
                   selectedDays.includes(full) ? "selected" : ""
                 }`}
                 onClick={() => toggleDaySelection(full)}
-                title={full} // Show full name on hover
+                title={full}
               >
                 {short}
               </div>

@@ -1,0 +1,20 @@
+.ride-card {
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 100px;
+  margin-left: 1000px;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.ride-card:hover {
+  transform: scale(1.02);
+}
+
+.ride-name {
+  margin-bottom: 0.5rem;
+  color: #1f2937;
+}
