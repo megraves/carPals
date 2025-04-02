@@ -5,16 +5,19 @@ import Footer from "./components/footer/footer";
 import ActionButton from "./components/ActionButton/ActionButton";
 import RoutesModal from "./components/RoutesModal/RoutesModal";
 import MapComponent from "./components/map/MapComponent";
-
+import "./App.css"
 
 
 function App() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"find" | "offer" | null>(null);
   
-  const [dropOpen, setDropOpen] = useState(false);
+  const [ridesOpen, setRidesOpen] = useState(false);
+  const [palsOpen, setPalsOpen] = useState(false);
   const [rideList, setRideList] = useState<JSX.Element[] | null>(null);
-  const rides = ["ride 1", "ride 2", "ride 3"];
+  const [palsList, setPalsList] = useState<JSX.Element[] | null>(null);
+  const rides = ["Ride 1", "Ride 2", "Ride 3"];
+  const pals = ["Edwin Tran", "Macy Graves", "Sofia Simonoff", "Lauren Shea"];
 
   const openFindModal = () => {
     setModalMode("find");
@@ -26,26 +29,25 @@ function App() {
     setModalOpen(true);
   };
 
-  const mapRidesToList = (rides: string[]) => {
-    return rides.map((ride, index) => (
-      <li key={index} className="ride-item">
-        <button className="ride-button">
-        {ride}
-        </button>
-      </li>
-    ));
-  };
 
-  const ridesDropDown = () => {
-    setDropOpen(!dropOpen);
-    if (!dropOpen) {
-      setRideList(mapRidesToList(rides));
-    } else {
-      setRideList(null);
+    const mapToList = (inputs: string[]) => {
+      return inputs.map((input, index) => (
+        <li key={index} className="input-item">
+          <button className="input-button">
+          {input}
+          </button>
+        </li>
+      ));
+    };
+
+    const dropDown = (inputs: string[], listSetter: React.Dispatch<React.SetStateAction<JSX.Element[] | null>>,  setOpen: React.Dispatch<React.SetStateAction<boolean>>, isOpen: boolean) => {
+      setOpen(!isOpen);
+      if (!isOpen) {
+        listSetter(mapToList(inputs));
+      } else {
+        listSetter(null);
+      }
     }
-  }
-
-
 
 
   return (
@@ -55,21 +57,35 @@ function App() {
         <Route
           path="/"
           element={
-            <div className="App">
+            <div className="home-page">
               <Header />
-              <div className="ride-list">
-                <ActionButton
-                  label="My Rides"
-                  action={ridesDropDown}
-                  id="my-rides"
-                />
-                {dropOpen && (
-                  <ul className="rides-dropdown">
-                    {rideList}
-                  </ul>
-                )}
+              <div className="home-content">
+                <div className="ride-list-button">
+                  <ActionButton
+                    label="My Rides"
+                    action={() => dropDown(rides, setRideList, setRidesOpen, ridesOpen)}
+                    id="my-rides"
+                  />
+                  {ridesOpen && (
+                    <ul className="rides-dropdown">
+                      {rideList}
+                    </ul>
+                  )}
+                </div>
+                <div className="pal-list-button">
+                  <ActionButton
+                    label="My Pals"
+                    action={() => dropDown(pals, setPalsList, setPalsOpen, palsOpen)}
+                    id="my-pals"
+                  />
+                  {palsOpen && (
+                    <ul className="pals-dropdown">
+                      {palsList}
+                    </ul>
+                  )}
+                </div>
+                <MapComponent />
               </div>
-              <MapComponent />
               <Footer />
             </div>
           }

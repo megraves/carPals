@@ -1,9 +1,62 @@
 @import "tailwindcss";
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.home-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
 }
 
+.home-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.ride-list-button {
+  position: absolute;
+  top: 120px;
+  right: 40px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.rides-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0; 
+  background: #e5f9fa;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 0;
+  width: 120px;
+  margin-top: 10px;
+  z-index: 10; 
+}
+
+.pal-list-button {
+  position: absolute;
+  top: 120px;
+  right: 180px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.pals-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0; 
+  background: #e5f9fa;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 0;
+  width: 120px;
+  margin-top: 10px;
+  z-index: 10; 
+}
