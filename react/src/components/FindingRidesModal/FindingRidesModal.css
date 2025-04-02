@@ -1,0 +1,65 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-large {
+  background: white;
+  width: 90%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  padding: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-layout {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+}
+
+.modal-map {
+  flex: 2;
+  position: relative;
+}
+
+.modal-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.ride-list-item {
+  background-color: #f0f0f0;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.ride-list-item.expanded {
+  background-color: #e0f7fa;
+}
+
+.confirm-ok-button {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: teal;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}

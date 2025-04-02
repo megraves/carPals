@@ -4,8 +4,10 @@ import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import ActionButton from "./components/ActionButton/ActionButton";
 import RoutesModal from "./components/RoutesModal/RoutesModal";
-import MapComponent from "./components/map/MapComponent";
 import "./App.css"
+import MapComponent from "./components/MapComponent/MapComponent";
+import MyRidesButton from "./components/MyRidesButton/MyRidesButton";
+import MyPalsButton from "./components/MyPalsButton/MyPalsButton";
 
 
 function App() {
