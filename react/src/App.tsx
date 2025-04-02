@@ -33,25 +33,26 @@ function App() {
     setModalOpen(true);
   };
 
+  const showAlert = () => {
+    alert("test alert");
+  }
 
-    const mapToList = (inputs: string[]) => {
-      return inputs.map((input, index) => (
-        <li key={index} className="input-item">
-          <button className="input-button">
-          {input}
-          </button>
-        </li>
-      ));
-    };
+  const mapToList = (inputs: string[]) => {
+    return inputs.map((input, index) => (
+      <li key={index} className="input-item">
+        <button className="input-button" 
+        onClick={showAlert}
+        >
+        {input}
+        </button>
+      </li>
+    ));
+  };
 
-    const dropDown = (inputs: string[], listSetter: React.Dispatch<React.SetStateAction<JSX.Element[] | null>>,  setOpen: React.Dispatch<React.SetStateAction<boolean>>, isOpen: boolean) => {
-      setOpen(!isOpen);
-      if (!isOpen) {
-        listSetter(mapToList(inputs));
-      } else {
-        listSetter(null);
-      }
-    }
+  const dropDown = (inputs: string[], listSetter: React.Dispatch<React.SetStateAction<JSX.Element[] | null>>,  setOpen: React.Dispatch<React.SetStateAction<boolean>>) => {
+    setOpen(prev => !prev);
+    listSetter(prev => (prev ? null : mapToList(inputs))); 
+  }
 
 
   return (
@@ -67,7 +68,7 @@ function App() {
                 <div className="ride-list-button">
                   <ActionButton
                     label="My Rides"
-                    action={() => dropDown(rides, setRideList, setRidesOpen, ridesOpen)}
+                    action={() => dropDown(rides, setRideList, setRidesOpen)}
                     id="my-rides"
                   />
                   {ridesOpen && (
@@ -79,7 +80,7 @@ function App() {
                 <div className="pal-list-button">
                   <ActionButton
                     label="My Pals"
-                    action={() => dropDown(pals, setPalsList, setPalsOpen, palsOpen)}
+                    action={() => dropDown(pals, setPalsList, setPalsOpen)}
                     id="my-pals"
                   />
                   {palsOpen && (

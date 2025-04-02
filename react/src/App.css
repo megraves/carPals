@@ -18,7 +18,7 @@
 .ride-list-button {
   position: absolute;
   top: 120px;
-  right: 40px;
+  right: 100px;
   font-size: 20px;
   cursor: pointer;
 }
@@ -42,7 +42,7 @@
 .pal-list-button {
   position: absolute;
   top: 120px;
-  right: 220px;
+  right: 280px;
   font-size: 20px;
   cursor: pointer;
 }
@@ -71,4 +71,9 @@
   margin-bottom: 0.75rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+  .input-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
 
