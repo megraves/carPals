@@ -7,6 +7,8 @@ import RoutesModal from "./components/RoutesModal/RoutesModal";
 import MapComponent from "./components/MapComponent/MapComponent";
 import MyRidesButton from "./components/MyRidesButton/MyRidesButton";
 import MyPalsButton from "./components/MyPalsButton/MyPalsButton";
+import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
+import ProfileRides from "./components/ProfileRides/ProfileRides";
 
 function App() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -45,7 +47,8 @@ function App() {
           element={
             <div className="profile">
               <Header />
-              <h1>profile page</h1>
+              <ProfileInfo />
+              <ProfileRides />
               <Footer />
             </div>
           }
