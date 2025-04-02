@@ -1,18 +1,27 @@
-import { useState } from "react";
+import { JSX, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import ActionButton from "./components/ActionButton/ActionButton";
 import RoutesModal from "./components/RoutesModal/RoutesModal";
+import "./App.css"
 import MapComponent from "./components/MapComponent/MapComponent";
 import MyRidesButton from "./components/MyRidesButton/MyRidesButton";
 import MyPalsButton from "./components/MyPalsButton/MyPalsButton";
 import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
 import ProfileRides from "./components/ProfileRides/ProfileRides";
 
+
 function App() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"find" | "offer" | null>(null);
+  
+  const [ridesOpen, setRidesOpen] = useState(false);
+  const [palsOpen, setPalsOpen] = useState(false);
+  const [rideList, setRideList] = useState<JSX.Element[] | null>(null);
+  const [palsList, setPalsList] = useState<JSX.Element[] | null>(null);
+  const rides = ["Ride 1", "Ride 2", "Ride 3"];
+  const pals = ["Edwin Tran", "Macy Graves", "Sofia Simonoff", "Lauren Shea"];
 
   const openFindModal = () => {
     setModalMode("find");
@@ -24,6 +33,27 @@ function App() {
     setModalOpen(true);
   };
 
+
+    const mapToList = (inputs: string[]) => {
+      return inputs.map((input, index) => (
+        <li key={index} className="input-item">
+          <button className="input-button">
+          {input}
+          </button>
+        </li>
+      ));
+    };
+
+    const dropDown = (inputs: string[], listSetter: React.Dispatch<React.SetStateAction<JSX.Element[] | null>>,  setOpen: React.Dispatch<React.SetStateAction<boolean>>, isOpen: boolean) => {
+      setOpen(!isOpen);
+      if (!isOpen) {
+        listSetter(mapToList(inputs));
+      } else {
+        listSetter(null);
+      }
+    }
+
+
   return (
     <Router>
       <Routes>
@@ -31,11 +61,35 @@ function App() {
         <Route
           path="/"
           element={
-            <div className="App">
+            <div className="home-page">
               <Header />
-              <MyRidesButton />
-              <MyPalsButton />
-              <MapComponent />
+              <div className="home-content">
+                <div className="ride-list-button">
+                  <ActionButton
+                    label="My Rides"
+                    action={() => dropDown(rides, setRideList, setRidesOpen, ridesOpen)}
+                    id="my-rides"
+                  />
+                  {ridesOpen && (
+                    <ul className="rides-dropdown">
+                      {rideList}
+                    </ul>
+                  )}
+                </div>
+                <div className="pal-list-button">
+                  <ActionButton
+                    label="My Pals"
+                    action={() => dropDown(pals, setPalsList, setPalsOpen, palsOpen)}
+                    id="my-pals"
+                  />
+                  {palsOpen && (
+                    <ul className="pals-dropdown">
+                      {palsList}
+                    </ul>
+                  )}
+                </div>
+                <MapComponent />
+              </div>
               <Footer />
             </div>
           }
