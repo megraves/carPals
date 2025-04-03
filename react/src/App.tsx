@@ -82,7 +82,9 @@ function App() {
                   />
                   {palsOpen && <ul className="pals-dropdown">{palsList}</ul>}
                 </div>
-                <MapComponent />
+                <div className="map-wrapper-home">
+                  <MapComponent />
+                </div>
               </div>
               <Footer />
             </div>
@@ -93,7 +95,7 @@ function App() {
         <Route
           path="/profile"
           element={
-            <div className="profile">
+            <div className="profile-page">
               <Header />
               <ProfileInfo />
               <ProfileRides />
@@ -108,24 +110,28 @@ function App() {
           element={
             <div className="plan-rides">
               <Header />
-              <div className="ride-buttons">
-                <ActionButton
-                  label="Find a Ride"
-                  action={openFindModal}
-                  id="find-a-ride"
-                />
-                <ActionButton
-                  label="Offer a Ride"
-                  action={openOfferModal}
-                  id="offer-a-ride"
+              <div className="plan-rides-content">
+                <div className="button-section">
+                  <ActionButton
+                    label="Find a Ride"
+                    action={openFindModal}
+                    id="find-a-ride"
+                  />
+                  <ActionButton
+                    label="Offer a Ride"
+                    action={openOfferModal}
+                    id="offer-a-ride"
+                  />
+                </div>
+                <div className="map-wrapper-plan">
+                  <MapComponent />
+                </div>
+                <RoutesModal
+                  isOpen={isModalOpen}
+                  closeModal={() => setModalOpen(false)}
+                  mode={modalMode}
                 />
               </div>
-
-              <RoutesModal
-                isOpen={isModalOpen}
-                closeModal={() => setModalOpen(false)}
-                mode={modalMode}
-              />
               <Footer />
             </div>
           }
