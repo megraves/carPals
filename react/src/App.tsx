@@ -6,8 +6,6 @@ import ActionButton from "./components/ActionButton/ActionButton";
 import RoutesModal from "./components/RoutesModal/RoutesModal";
 import "./App.css";
 import MapComponent from "./components/MapComponent/MapComponent";
-// import MyRidesButton from "./components/MyRidesButton/MyRidesButton";
-// import MyPalsButton from "./components/MyPalsButton/MyPalsButton";
 import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
 import ProfileRides from "./components/ProfileRides/ProfileRides";
 
