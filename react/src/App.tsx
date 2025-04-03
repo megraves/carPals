@@ -4,24 +4,25 @@ import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import ActionButton from "./components/ActionButton/ActionButton";
 import RoutesModal from "./components/RoutesModal/RoutesModal";
-import "./App.css"
+import "./App.css";
 import MapComponent from "./components/MapComponent/MapComponent";
 // import MyRidesButton from "./components/MyRidesButton/MyRidesButton";
 // import MyPalsButton from "./components/MyPalsButton/MyPalsButton";
 import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
 import ProfileRides from "./components/ProfileRides/ProfileRides";
 
-
 function App() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"find" | "offer" | null>(null);
-  
+
   const [ridesOpen, setRidesOpen] = useState(false);
   const [palsOpen, setPalsOpen] = useState(false);
   const [rideList, setRideList] = useState<JSX.Element[] | null>(null);
   const [palsList, setPalsList] = useState<JSX.Element[] | null>(null);
   const rides = ["Ride 1", "Ride 2", "Ride 3"];
   const pals = ["Edwin Tran", "Macy Graves", "Sofia Simonoff", "Lauren Shea"];
+
+  const [showPageMap, setShowPageMap] = useState(true);
 
   const openFindModal = () => {
     setModalMode("find");
@@ -71,11 +72,7 @@ function App() {
                     action={() => dropDown(rides, setRideList, setRidesOpen)}
                     id="my-rides"
                   />
-                  {ridesOpen && (
-                    <ul className="rides-dropdown">
-                      {rideList}
-                    </ul>
-                  )}
+                  {ridesOpen && <ul className="rides-dropdown">{rideList}</ul>}
                 </div>
                 <div className="pal-list-button">
                   <ActionButton
@@ -83,13 +80,11 @@ function App() {
                     action={() => dropDown(pals, setPalsList, setPalsOpen)}
                     id="my-pals"
                   />
-                  {palsOpen && (
-                    <ul className="pals-dropdown">
-                      {palsList}
-                    </ul>
-                  )}
+                  {palsOpen && <ul className="pals-dropdown">{palsList}</ul>}
                 </div>
-                <MapComponent />
+                <div className="map-wrapper-home">
+                  <MapComponent mapId="home-map" className="home-container" />
+                </div>
               </div>
               <Footer />
             </div>
@@ -100,7 +95,7 @@ function App() {
         <Route
           path="/profile"
           element={
-            <div className="profile">
+            <div className="profile-page">
               <Header />
               <ProfileInfo />
               <ProfileRides />
@@ -115,24 +110,34 @@ function App() {
           element={
             <div className="plan-rides">
               <Header />
-              <div className="ride-buttons">
-                <ActionButton
-                  label="Find a Ride"
-                  action={openFindModal}
-                  id="find-a-ride"
-                />
-                <ActionButton
-                  label="Offer a Ride"
-                  action={openOfferModal}
-                  id="offer-a-ride"
+              <div className="plan-rides-content">
+                <div className="button-section">
+                  <ActionButton
+                    label="Find a Ride"
+                    action={openFindModal}
+                    id="find-a-ride"
+                  />
+                  <ActionButton
+                    label="Offer a Ride"
+                    action={openOfferModal}
+                    id="offer-a-ride"
+                  />
+                </div>
+                <div className="map-wrapper-plan">
+                  {showPageMap && (
+                    <MapComponent mapId="plan-map" className="plan-container" />
+                  )}
+                </div>
+                <RoutesModal
+                  isOpen={isModalOpen}
+                  closeModal={() => {
+                    setModalOpen(false);
+                    setShowPageMap(true);
+                  }}
+                  mode={modalMode}
+                  setShowPageMap={setShowPageMap}
                 />
               </div>
-
-              <RoutesModal
-                isOpen={isModalOpen}
-                closeModal={() => setModalOpen(false)}
-                mode={modalMode}
-              />
               <Footer />
             </div>
           }

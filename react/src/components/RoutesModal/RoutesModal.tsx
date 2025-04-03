@@ -8,6 +8,7 @@ interface RoutesModalProps {
   isOpen: boolean;
   closeModal: () => void;
   mode: "find" | "offer" | null;
+  setShowPageMap: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const daysOfWeek = [
@@ -24,6 +25,7 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
   isOpen,
   closeModal,
   mode,
+  setShowPageMap,
 }) => {
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [formData, setFormData] = useState({
@@ -81,6 +83,7 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
 
     setMatchedRides(mockResults);
     setShowMatchingModal(true);
+    setShowPageMap(false);
   };
 
   const handleConfirmRide = () => {
@@ -187,8 +190,8 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
       <MatchingRidesModal
         isOpen={showMatchingModal}
         closeModal={() => setShowMatchingModal(false)}
-        matchedRides={matchedRides}
         onConfirm={handleConfirmRide}
+        restoreMap={() => setShowPageMap(true)}
       />
     </div>
   );

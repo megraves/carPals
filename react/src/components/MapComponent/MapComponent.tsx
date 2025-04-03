@@ -3,9 +3,17 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./MapComponent.css";
 
-const MapComponent: React.FC = () => {
+interface MapComponentProps {
+  mapId?: string;
+  className?: string;
+}
+
+const MapComponent: React.FC<MapComponentProps> = ({
+  mapId = "map",
+  className = "map-container",
+}) => {
   useEffect(() => {
-    const map = L.map("map").setView([42.3601, -71.0589], 13); // Default to Boston
+    const map = L.map(mapId).setView([42.3601, -71.0589], 13); // Default to Boston
 
     // Load OpenStreetMap tiles
     const tileLayer = L.tileLayer(
@@ -45,9 +53,9 @@ const MapComponent: React.FC = () => {
     return () => {
       map.remove(); // Clean up when unmounting
     };
-  }, []);
+  }, [mapId]);
 
-  return <div id="map" className="map-container"></div>;
+  return <div id={mapId} className={className}></div>;
 };
 
 export default MapComponent;
