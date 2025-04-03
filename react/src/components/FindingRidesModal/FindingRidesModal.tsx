@@ -56,11 +56,14 @@ const MatchingRidesModal: React.FC<MatchingRidesModalProps> = ({
           {/* Left: Map */}
           <div className="modal-map">
             <MapComponent mapId="modal-map" className="modal-container" />
+            <button className="back-button" onClick={handleCloseModal}>
+              Back
+            </button>
           </div>
 
           {/* Right: Scrollable List with Fixed Submit Button */}
           <div className="modal-list">
-            <h2>Nearby Drivers</h2>
+            <h2 className="title">Nearby Drivers</h2>
             <div className="ride-list-scroll">
               {matchedRides.map((ride, index) => (
                 <div

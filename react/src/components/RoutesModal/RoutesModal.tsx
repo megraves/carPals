@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./RoutesModal.css";
-import MatchingRidesModal from "../FindingRidesModal/FindingRidesModal";
-import { RideMatch } from "../FindingRidesModal/FindingRidesModal";
+import MatchingRidesModal, {
+  RideMatch,
+} from "../FindingRidesModal/FindingRidesModal";
 
 interface RoutesModalProps {
   isOpen: boolean;

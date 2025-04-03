@@ -36,13 +36,15 @@
 
 .modal-container {
   width: 35vw;
-  height: 74.5vh;
+  height: 67vh;
   border-radius: 12px;
   border: 1px solid black;
 }
 
 .modal-list {
   flex: 1;
+    width: 35vw;
+  height: 72.9vh;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -54,6 +56,7 @@
   overflow-y: auto;
   padding-right: 0.5rem;
   padding-bottom: 0.5rem;
+  margin-bottom: 12px;
 }
 
 .confirm-container {
@@ -65,11 +68,10 @@
 
 .confirm-ok-button {
   width: 100%;
-  padding: 0.75rem;
+  padding: 8px 16px;
   background-color: teal;
   color: white;
-  border: none;
-  border-radius: 8px 8px 0 0;
+  border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -85,4 +87,21 @@
 
 .ride-list-item.expanded {
   background-color: #e0f7fa;
+}
+
+.back-button {
+  width: 35vw;
+  margin-top: 12px;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #e0e0e0;
 }
