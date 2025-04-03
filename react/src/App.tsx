@@ -85,7 +85,7 @@ function App() {
                   {palsOpen && <ul className="pals-dropdown">{palsList}</ul>}
                 </div>
                 <div className="map-wrapper-home">
-                  <MapComponent />
+                  <MapComponent mapId="home-map" className="home-container" />
                 </div>
               </div>
               <Footer />
@@ -126,7 +126,9 @@ function App() {
                   />
                 </div>
                 <div className="map-wrapper-plan">
-                  {showPageMap && <MapComponent />}
+                  {showPageMap && (
+                    <MapComponent mapId="plan-map" className="plan-container" />
+                  )}
                 </div>
                 <RoutesModal
                   isOpen={isModalOpen}

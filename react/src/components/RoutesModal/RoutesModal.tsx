@@ -190,7 +190,6 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
       <MatchingRidesModal
         isOpen={showMatchingModal}
         closeModal={() => setShowMatchingModal(false)}
-        matchedRides={matchedRides}
         onConfirm={handleConfirmRide}
         restoreMap={() => setShowPageMap(true)}
       />
