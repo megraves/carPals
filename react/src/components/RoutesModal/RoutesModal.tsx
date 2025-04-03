@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./RoutesModal.css";
-import "../FindingRidesModal/FindingRidesModal";
 import MatchingRidesModal from "../FindingRidesModal/FindingRidesModal";
 import { RideMatch } from "../FindingRidesModal/FindingRidesModal";
 
@@ -9,6 +8,17 @@ interface RoutesModalProps {
   closeModal: () => void;
   mode: "find" | "offer" | null;
   setShowPageMap: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+type Step = "select" | "form" | "confirm" | "match";
+
+interface SavedRoute {
+  id: number;
+  label: string;
+  startingLocation: string;
+  endingLocation: string;
+  pickupTime: string;
+  selectedDays: string[];
 }
 
 const daysOfWeek = [
@@ -27,26 +37,25 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
   mode,
   setShowPageMap,
 }) => {
-  const [selectedDays, setSelectedDays] = useState<string[]>([]);
+  const [step, setStep] = useState<Step>("select");
+
   const [formData, setFormData] = useState({
     startingLocation: "",
     endingLocation: "",
     pickupTime: "",
   });
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [showMatchingModal, setShowMatchingModal] = useState(false);
+
+  const [selectedDays, setSelectedDays] = useState<string[]>([]);
+  const [savedRoutes, setSavedRoutes] = useState<SavedRoute[]>([]);
+  const [currentRoute, setCurrentRoute] = useState<SavedRoute | null>(null);
   const [matchedRides, setMatchedRides] = useState<RideMatch[]>([]);
 
-  // Reset selected days when modal closes
   useEffect(() => {
     if (!isOpen) {
+      setStep("select");
+      setFormData({ startingLocation: "", endingLocation: "", pickupTime: "" });
       setSelectedDays([]);
-      setFormData({
-        startingLocation: "",
-        endingLocation: "",
-        pickupTime: "",
-      });
-      setShowConfirmation(false);
+      setCurrentRoute(null);
     }
   }, [isOpen]);
 
@@ -58,37 +67,25 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmitForm = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Simulate matched rides (in real use, fetch from backend)
-    const mockResults = [
-      {
-        firstName: "Ava",
-        lastName: "Nguyen",
-        pickUpLocation: formData.startingLocation,
-        dropOffLocation: formData.endingLocation,
-        pickUpTime: formData.pickupTime,
-        daysNeeded: selectedDays,
-      },
-      {
-        firstName: "Leo",
-        lastName: "Smith",
-        pickUpLocation: "123 Maple St",
-        dropOffLocation: "456 Oak St",
-        pickUpTime: "8:30 AM",
-        daysNeeded: ["Monday", "Wednesday"],
-      },
-    ];
+    const newRoute: SavedRoute = {
+      id: savedRoutes.length + 1,
+      label: `Route ${savedRoutes.length + 1}`,
+      startingLocation: formData.startingLocation,
+      endingLocation: formData.endingLocation,
+      pickupTime: formData.pickupTime,
+      selectedDays,
+    };
 
-    setMatchedRides(mockResults);
-    setShowMatchingModal(true);
-    setShowPageMap(false);
+    setCurrentRoute(newRoute);
+    setStep("confirm");
   };
 
   const handleConfirmRide = () => {
-    setShowMatchingModal(false);
-    setShowConfirmation(true); // now show final confirmation
+    setStep("select");
+    setShowPageMap(true);
   };
 
   if (!isOpen) return null;
@@ -100,38 +97,45 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
           &times;
         </button>
 
-        {showConfirmation ? (
+        {step === "select" && (
           <>
-            <h2>Ride Request Confirmed! 🚗</h2>
-            <div className="confirmation-details">
-              <p>
-                <strong>From:</strong> {formData.startingLocation}
-              </p>
-              <p>
-                <strong>To:</strong> {formData.endingLocation}
-              </p>
-              <p>
-                <strong>Time:</strong> {formData.pickupTime}
-              </p>
-              <p>
-                <strong>Days:</strong> {selectedDays.join(", ")}
-              </p>
-            </div>
-            <button className="confirm-ok-button" onClick={closeModal}>
-              OK
+            <h2 className="title">Your Routes</h2>
+            <button className="submit-button" onClick={() => setStep("form")}>
+              Add New Route +
             </button>
+
+            {savedRoutes.length === 0 ? (
+              <p className="empty-message">
+                No routes yet. Add one to get started!
+              </p>
+            ) : (
+              <div className="route-list">
+                {savedRoutes.map((route) => (
+                  <div
+                    key={route.id}
+                    className="route-item"
+                    onClick={() => {
+                      setCurrentRoute(route);
+                      setStep("match");
+                    }}
+                  >
+                    {route.label}
+                  </div>
+                ))}
+              </div>
+            )}
           </>
-        ) : (
+        )}
+
+        {step === "form" && (
           <>
             <h2 className="modal-title">
               {mode === "find" ? "Find a Ride" : "Offer a Ride"}
             </h2>
-            <form className="modal-form" onSubmit={handleSubmit}>
+            <form className="modal-form" onSubmit={handleSubmitForm}>
               <label>Starting Location:</label>
               <input
                 type="text"
-                name="startingLocation"
-                placeholder="Enter starting location"
                 required
                 value={formData.startingLocation}
                 onChange={(e) =>
@@ -142,8 +146,6 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
               <label>Ending Location:</label>
               <input
                 type="text"
-                name="endingLocation"
-                placeholder="Enter ending location"
                 required
                 value={formData.endingLocation}
                 onChange={(e) =>
@@ -156,7 +158,6 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
               </label>
               <input
                 type="time"
-                name="pickupTime"
                 required
                 value={formData.pickupTime}
                 onChange={(e) =>
@@ -184,12 +185,51 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
                 Submit
               </button>
             </form>
+            <button onClick={() => setStep("select")}>Back</button>
+          </>
+        )}
+
+        {step === "confirm" && currentRoute && (
+          <>
+            <h2>Confirm Route</h2>
+            <div className="confirmation-details">
+              <p>
+                <strong>From:</strong> {currentRoute.startingLocation}
+              </p>
+              <p>
+                <strong>To:</strong> {currentRoute.endingLocation}
+              </p>
+              <p>
+                <strong>Time:</strong> {currentRoute.pickupTime}
+              </p>
+              <p>
+                <strong>Days:</strong> {currentRoute.selectedDays.join(", ")}
+              </p>
+            </div>
+            <button
+              className="submit-button"
+              onClick={() => {
+                setSavedRoutes([...savedRoutes, currentRoute]);
+                setFormData({
+                  startingLocation: "",
+                  endingLocation: "",
+                  pickupTime: "",
+                });
+                setSelectedDays([]);
+                setCurrentRoute(null);
+                setStep("select");
+              }}
+            >
+              Submit
+            </button>
+            <button onClick={() => setStep("form")}>Back</button>
           </>
         )}
       </div>
+
       <MatchingRidesModal
-        isOpen={showMatchingModal}
-        closeModal={() => setShowMatchingModal(false)}
+        isOpen={step === "match"}
+        closeModal={() => setStep("select")}
         onConfirm={handleConfirmRide}
         restoreMap={() => setShowPageMap(true)}
       />

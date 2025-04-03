@@ -85,6 +85,7 @@ const MatchingRidesModal: React.FC<MatchingRidesModalProps> = ({
               <button
                 className="confirm-ok-button"
                 onClick={() => {
+                  closeModal();
                   restoreMap();
                 }}
               >

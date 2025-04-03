@@ -36,25 +36,26 @@ function App() {
 
   const showAlert = () => {
     alert("test alert");
-  }
+  };
 
   const mapToList = (inputs: string[]) => {
     return inputs.map((input, index) => (
       <li key={index} className="input-item">
-        <button className="input-button" 
-        onClick={showAlert}
-        >
-        {input}
+        <button className="input-button" onClick={showAlert}>
+          {input}
         </button>
       </li>
     ));
   };
 
-  const dropDown = (inputs: string[], listSetter: React.Dispatch<React.SetStateAction<JSX.Element[] | null>>,  setOpen: React.Dispatch<React.SetStateAction<boolean>>) => {
-    setOpen(prev => !prev);
-    listSetter(prev => (prev ? null : mapToList(inputs))); 
-  }
-
+  const dropDown = (
+    inputs: string[],
+    listSetter: React.Dispatch<React.SetStateAction<JSX.Element[] | null>>,
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    setOpen((prev) => !prev);
+    listSetter((prev) => (prev ? null : mapToList(inputs)));
+  };
 
   return (
     <Router>
