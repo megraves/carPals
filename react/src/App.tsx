@@ -6,6 +6,8 @@ import ActionButton from "./components/ActionButton/ActionButton";
 import RoutesModal from "./components/RoutesModal/RoutesModal";
 import "./App.css";
 import MapComponent from "./components/MapComponent/MapComponent";
+// import MyRidesButton from "./components/MyRidesButton/MyRidesButton";
+// import MyPalsButton from "./components/MyPalsButton/MyPalsButton";
 import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
 import ProfileRides from "./components/ProfileRides/ProfileRides";
 
@@ -32,27 +34,27 @@ function App() {
     setModalOpen(true);
   };
 
+  const showAlert = () => {
+    alert("test alert");
+  }
+
   const mapToList = (inputs: string[]) => {
     return inputs.map((input, index) => (
       <li key={index} className="input-item">
-        <button className="input-button">{input}</button>
+        <button className="input-button" 
+        onClick={showAlert}
+        >
+        {input}
+        </button>
       </li>
     ));
   };
 
-  const dropDown = (
-    inputs: string[],
-    listSetter: React.Dispatch<React.SetStateAction<JSX.Element[] | null>>,
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>,
-    isOpen: boolean
-  ) => {
-    setOpen(!isOpen);
-    if (!isOpen) {
-      listSetter(mapToList(inputs));
-    } else {
-      listSetter(null);
-    }
-  };
+  const dropDown = (inputs: string[], listSetter: React.Dispatch<React.SetStateAction<JSX.Element[] | null>>,  setOpen: React.Dispatch<React.SetStateAction<boolean>>) => {
+    setOpen(prev => !prev);
+    listSetter(prev => (prev ? null : mapToList(inputs))); 
+  }
+
 
   return (
     <Router>
@@ -67,9 +69,7 @@ function App() {
                 <div className="ride-list-button">
                   <ActionButton
                     label="My Rides"
-                    action={() =>
-                      dropDown(rides, setRideList, setRidesOpen, ridesOpen)
-                    }
+                    action={() => dropDown(rides, setRideList, setRidesOpen)}
                     id="my-rides"
                   />
                   {ridesOpen && <ul className="rides-dropdown">{rideList}</ul>}
@@ -77,9 +77,7 @@ function App() {
                 <div className="pal-list-button">
                   <ActionButton
                     label="My Pals"
-                    action={() =>
-                      dropDown(pals, setPalsList, setPalsOpen, palsOpen)
-                    }
+                    action={() => dropDown(pals, setPalsList, setPalsOpen)}
                     id="my-pals"
                   />
                   {palsOpen && <ul className="pals-dropdown">{palsList}</ul>}

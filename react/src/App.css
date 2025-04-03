@@ -31,7 +31,7 @@
 .ride-list-button {
   position: absolute;
   top: 120px;
-  right: 40px;
+  right: 100px;
   font-size: 20px;
   cursor: pointer;
 }
@@ -40,31 +40,7 @@
   position: absolute;
   top: 100%;
   right: 0; 
-  background: #e5f9fa;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  line-height: 2;
-  padding: 10px;
-  width: 120px;
-  margin-top: 10px;
-  z-index: 10; 
-}
-
-.pal-list-button {
-  position: absolute;
-  top: 120px;
-  right: 180px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.pals-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0; 
-  background: #e5f9fa;
+  background-image: linear-gradient(to right, #f3f4f6, #bdeaeb);
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -75,6 +51,44 @@
   margin-top: 10px;
   z-index: 10; 
 }
+
+.pal-list-button {
+  position: absolute;
+  top: 120px;
+  right: 280px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.pals-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-image: linear-gradient(to right, #f3f4f6, #bdeaeb);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  line-height: 2;
+  padding: 10px;
+  width: 200px;
+  margin-top: 10px;
+  z-index: 10; 
+}
+
+.input-item {
+  background-color: #fff;
+  padding: .5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+  .input-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
 
 .home-container {
   width: 45vw;
