@@ -8,17 +8,24 @@ import "./App.css";
 import MapComponent from "./components/MapComponent/MapComponent";
 import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
 import ProfileRides from "./components/ProfileRides/ProfileRides";
+import DropDownModal from "./components/DropDownModal/DropDownModal";
 
 function App() {
+
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"find" | "offer" | null>(null);
+  const [DropModalContent, setDropModalContent] = useState("");
 
   const [ridesOpen, setRidesOpen] = useState(false);
-  const [palsOpen, setPalsOpen] = useState(false);
   const [rideList, setRideList] = useState<JSX.Element[] | null>(null);
-  const [palsList, setPalsList] = useState<JSX.Element[] | null>(null);
   const rides = ["Ride 1", "Ride 2", "Ride 3"];
+
+  const [palsOpen, setPalsOpen] = useState(false);
+  const [palsList, setPalsList] = useState<JSX.Element[] | null>(null);
   const pals = ["Edwin Tran", "Macy Graves", "Sofia Simonoff", "Lauren Shea"];
+
+
+
 
   const [showPageMap, setShowPageMap] = useState(true);
 
@@ -32,15 +39,13 @@ function App() {
     setModalOpen(true);
   };
 
-  const showAlert = () => {
-    alert("test alert");
-  }
+
 
   const mapToList = (inputs: string[]) => {
     return inputs.map((input, index) => (
       <li key={index} className="input-item">
         <button className="input-button" 
-        onClick={showAlert}
+        onClick={() => handleItemClick(input)}
         >
         {input}
         </button>
@@ -52,6 +57,16 @@ function App() {
     setOpen(prev => !prev);
     listSetter(prev => (prev ? null : mapToList(inputs))); 
   }
+
+  const handleItemClick = (item: string) => {
+    setDropModalContent(`Information about ${item}`);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setDropModalContent(""); // Clear modal content after closing
+  };
 
 
   return (
@@ -80,6 +95,7 @@ function App() {
                   />
                   {palsOpen && <ul className="pals-dropdown">{palsList}</ul>}
                 </div>
+                <DropDownModal showModal={isModalOpen} closeModal={closeModal} content={DropModalContent} />
                 <div className="map-wrapper-home">
                   <MapComponent mapId="home-map" className="home-container" />
                 </div>
