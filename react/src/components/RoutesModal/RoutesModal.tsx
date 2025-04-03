@@ -40,6 +40,7 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
   const [step, setStep] = useState<Step>("select");
 
   const [formData, setFormData] = useState({
+    label: "",
     startingLocation: "",
     endingLocation: "",
     pickupTime: "",
@@ -53,11 +54,28 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
   useEffect(() => {
     if (!isOpen) {
       setStep("select");
-      setFormData({ startingLocation: "", endingLocation: "", pickupTime: "" });
+      setFormData({
+        label: "",
+        startingLocation: "",
+        endingLocation: "",
+        pickupTime: "",
+      });
       setSelectedDays([]);
       setCurrentRoute(null);
     }
   }, [isOpen]);
+
+  const formatTime = (timeStr: string) => {
+    const [hourStr, minuteStr] = timeStr.split(":");
+    const hour = parseInt(hourStr, 10);
+    const minute = parseInt(minuteStr, 10);
+
+    const isPM = hour >= 12;
+    const formattedHour = hour % 12 === 0 ? 12 : hour % 12;
+    const formattedTime = `${formattedHour}:${minuteStr} ${isPM ? "PM" : "AM"}`;
+
+    return formattedTime;
+  };
 
   const toggleDaySelection = (day: string) => {
     setSelectedDays((prevSelected) =>
@@ -72,7 +90,7 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
 
     const newRoute: SavedRoute = {
       id: savedRoutes.length + 1,
-      label: `Route ${savedRoutes.length + 1}`,
+      label: formData.label,
       startingLocation: formData.startingLocation,
       endingLocation: formData.endingLocation,
       pickupTime: formData.pickupTime,
@@ -81,6 +99,16 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
 
     setCurrentRoute(newRoute);
     setStep("confirm");
+  };
+  const handleBack = () => {
+    setStep("select");
+    setFormData({
+      label: "",
+      startingLocation: "",
+      endingLocation: "",
+      pickupTime: "",
+    });
+    setSelectedDays([]);
   };
 
   const handleConfirmRide = () => {
@@ -133,6 +161,15 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
               {mode === "find" ? "Find a Ride" : "Offer a Ride"}
             </h2>
             <form className="modal-form" onSubmit={handleSubmitForm}>
+              <label>Route Name: </label>
+              <input
+                type="text"
+                required
+                value={formData.label}
+                onChange={(e) =>
+                  setFormData({ ...formData, label: e.target.value })
+                }
+              ></input>
               <label>Starting Location:</label>
               <input
                 type="text"
@@ -185,13 +222,15 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
                 Submit
               </button>
             </form>
-            <button onClick={() => setStep("select")}>Back</button>
+            <button className="back-button" onClick={() => handleBack()}>
+              Back
+            </button>
           </>
         )}
 
         {step === "confirm" && currentRoute && (
           <>
-            <h2>Confirm Route</h2>
+            <h2 className="title">Confirm Route</h2>
             <div className="confirmation-details">
               <p>
                 <strong>From:</strong> {currentRoute.startingLocation}
@@ -200,7 +239,7 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
                 <strong>To:</strong> {currentRoute.endingLocation}
               </p>
               <p>
-                <strong>Time:</strong> {currentRoute.pickupTime}
+                <strong>Time:</strong> {formatTime(currentRoute.pickupTime)}
               </p>
               <p>
                 <strong>Days:</strong> {currentRoute.selectedDays.join(", ")}
@@ -211,6 +250,7 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
               onClick={() => {
                 setSavedRoutes([...savedRoutes, currentRoute]);
                 setFormData({
+                  label: "",
                   startingLocation: "",
                   endingLocation: "",
                   pickupTime: "",
@@ -222,7 +262,9 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
             >
               Submit
             </button>
-            <button onClick={() => setStep("form")}>Back</button>
+            <button className="back-button" onClick={() => handleBack()}>
+              Back
+            </button>
           </>
         )}
       </div>
