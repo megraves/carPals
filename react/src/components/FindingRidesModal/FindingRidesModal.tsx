@@ -17,6 +17,7 @@ interface MatchingRidesModalProps {
   closeModal: () => void;
   matchedRides: RideMatch[];
   onConfirm: (ride: RideMatch) => void;
+  restoreMap: () => void;
 }
 
 const MatchingRidesModal: React.FC<MatchingRidesModalProps> = ({
@@ -24,6 +25,7 @@ const MatchingRidesModal: React.FC<MatchingRidesModalProps> = ({
   closeModal,
   matchedRides,
   onConfirm,
+  restoreMap,
 }) => {
   const [selectedRide, setSelectedRide] = useState<RideMatch | null>(null);
 
@@ -66,7 +68,10 @@ const MatchingRidesModal: React.FC<MatchingRidesModalProps> = ({
             {selectedRide && (
               <button
                 className="confirm-ok-button"
-                onClick={() => onConfirm(selectedRide)}
+                onClick={() => {
+                  onConfirm(selectedRide);
+                  restoreMap();
+                }}
               >
                 Submit
               </button>

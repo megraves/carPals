@@ -20,6 +20,8 @@ function App() {
   const rides = ["Ride 1", "Ride 2", "Ride 3"];
   const pals = ["Edwin Tran", "Macy Graves", "Sofia Simonoff", "Lauren Shea"];
 
+  const [showPageMap, setShowPageMap] = useState(true);
+
   const openFindModal = () => {
     setModalMode("find");
     setModalOpen(true);
@@ -124,12 +126,16 @@ function App() {
                   />
                 </div>
                 <div className="map-wrapper-plan">
-                  <MapComponent />
+                  {showPageMap && <MapComponent />}
                 </div>
                 <RoutesModal
                   isOpen={isModalOpen}
-                  closeModal={() => setModalOpen(false)}
+                  closeModal={() => {
+                    setModalOpen(false);
+                    setShowPageMap(true);
+                  }}
                   mode={modalMode}
+                  setShowPageMap={setShowPageMap}
                 />
               </div>
               <Footer />
