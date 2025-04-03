@@ -1,12 +1,3 @@
-.button-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem; /* space between buttons */
-  margin-top: 5rem; /* push it down from nav */
-  height: 50vh; /* centers vertically relative to content */
-}
-
 .action-button {
   background-color: #008080;
   color: white;

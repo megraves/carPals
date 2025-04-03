@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Home Page CSS */
 .home-page {
   display: flex;
   flex-direction: column;
@@ -8,11 +9,23 @@
 }
 
 .home-content {
-  flex-grow: 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 20; /* Make sure it's above everything else */
 }
 
 .ride-list-button {
@@ -63,3 +76,48 @@
   z-index: 10; 
 }
 
+.home-container {
+  width: 45vw;
+  height: 60vh;
+  border-radius: 12px;
+  border: 1px solid black;
+}
+
+/* Plan a Ride Page CSS*/
+
+.plan-rides {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  width: 100%;
+}
+
+.plan-rides-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      
+  justify-content: center;  
+  padding: 5rem;
+  gap: 2rem;
+  flex-grow: 1;
+}
+
+.plan-container {
+  width: 50vw;
+  height: 60vh;
+  border-radius: 12px;
+  border: 1px solid black;
+}
+
+.map-wrapper-plan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

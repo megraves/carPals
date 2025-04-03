@@ -1,8 +1,20 @@
-#map {
-  width: 75vh;  /* Takes half of the screen width */
-  height: 50vh; /* Full height */
-  position: absolute;
-  left: 30px;
-  top: 200px;
+.map-container {
+  width: 100%;
+  height: 60vh;
+  border-radius: 12px;
+  border: 1px solid black;
+}
+
+.map-modal {
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid black;
+}
+
+.map-homepage {
+  height: 40vh;
+  width: 100%;
+  border-radius: 12px;
   border: 1px solid black;
 }
