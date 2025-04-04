@@ -1,0 +1,66 @@
+.invite-friends {
+    padding: 2rem;
+    background-image: linear-gradient(to right, #f3f4f6, #bdeaeb);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    margin-top: 2rem;
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.invite-friends h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.invite-message {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 0.5rem;
+    resize: vertical;
+    min-height: 100px;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+}
+
+.generate-btn, .copy-btn {
+    background-color: #38b2ac;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    margin: 0.25rem;
+}
+
+.generate-btn:hover, .copy-btn:hover {
+    background-color: #319795;
+}
+
+.link-section {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.invite-link {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 0.5rem 0 0 0.5rem;
+    font-size: 0.9rem;
+}
+
+.copy-btn {
+    border-radius: 0 0.5rem 0.5rem 0;
+    white-space: nowrap;
+}

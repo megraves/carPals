@@ -9,6 +9,8 @@ import MapComponent from "./components/MapComponent/MapComponent";
 import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
 import ProfileRides from "./components/ProfileRides/ProfileRides";
 import DropDownModal from "./components/DropDownModal/DropDownModal";
+import InviteFriends from "./components/InviteFriends/InviteFriends";
+
 
 function App() {
 
@@ -113,6 +115,7 @@ function App() {
               <Header />
               <ProfileInfo />
               <ProfileRides />
+              <InviteFriends userId="current-user-id" />
               <Footer />
             </div>
           }
