@@ -9,19 +9,28 @@ interface DropDownModalProps {
 
 
 
-const DropDownModal: React.FC<DropDownModalProps> = ({ showModal, closeModal, content }) => {
+  const DropDownModal: React.FC<DropDownModalProps> = ({ showModal, closeModal, content }) => {
     if (!showModal) return null;
-
+  
+    const lines = content.split("\n");
+  
     return (
-        <div className="drop-modal-overlay">
-        <div className="drop-modal-content">
+      <div className="drop-modal-overlay">
+        <div className="drop-modal-box">
           <button className="close-button" onClick={closeModal}>
             &times;
           </button>
-          <p>{content}</p>
+          <div className="drop-modal-content">
+            {lines.map((line, index) => (
+              <span key={index}>
+                {line}
+                <br />
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     );
-}
+  };
 
-export default DropDownModal
+  export default DropDownModal
