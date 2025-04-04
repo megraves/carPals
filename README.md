@@ -18,5 +18,8 @@ Carpals is an easy-to-use platform that connects commuters in need of a ride wit
 <npm install>   install the node modules
 <npm run dev>   run vite and open local host browser:  http://localhost:5173/
 
+# UI/UX Design and Style Guidelines Document
+[Link to document: ] (https://docs.google.com/document/d/1jewEByGbgYzrDl6XzVTZxdZ3uMgZQSFG5pJnXJYFSW0/edit?tab=t.0)
+
 # Placeholder for future setup instructions
 *(This section will be expanded in later sprints.)*
