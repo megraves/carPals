@@ -57,7 +57,7 @@ const DropDown = () => {
         `${item.firstName} ${item.lastName}:`,
         `Shared Route: ${item.pickUpLocation} to ${item.dropOffLocation}`,
         `on ${item.daysNeeded.join(", ")}`
-      ].join("\n")
+      ].join("\n\n")
     );
     setModalOpen(true);
   };
