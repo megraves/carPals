@@ -1,4 +1,4 @@
-import React, { JSX, useState } from "react";
+import {  useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
@@ -8,8 +8,8 @@ import "./App.css";
 import MapComponent from "./components/MapComponent/MapComponent";
 import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
 import ProfileRides from "./components/ProfileRides/ProfileRides";
-import DropDownModal from "./components/DropDownModal/DropDownModal";
 import InviteFriends from "./components/InviteFriends/InviteFriends";
+import DropDown from "./components/DropDown/DropDown";
 import OfferingRidesModal from "./components/OfferingRidesModal/OfferingRidesModal";
 
 
@@ -17,16 +17,8 @@ function App() {
 
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"find" | "offer" | null>(null);
-  const [DropModalContent, setDropModalContent] = useState("");
   
-  const [ridesOpen, setRidesOpen] = useState(false);
-  const [rideList, setRideList] = useState<JSX.Element[] | null>(null);
-  const rides = ["Ride 1", "Ride 2", "Ride 3"];
 
-  const [palsOpen, setPalsOpen] = useState(false);
-  const [palsList, setPalsList] = useState<JSX.Element[] | null>(null);
-  const pals = ["Edwin Tran", "Macy Graves", "Sofia Simonoff", "Lauren Shea"];
-  
   const [showPageMap, setShowPageMap] = useState(true);
   const [showOfferingRidesModal, setShowOfferingRidesModal] = useState(false);
 
@@ -42,37 +34,6 @@ function App() {
   };
 
 
-  const mapToList = (inputs: string[]) => {
-    return inputs.map((input, index) => (
-      <li key={index} className="input-item">
-        <button className="input-button" onClick={() => handleItemClick(input)}>
-          {input}
-        </button>
-      </li>
-    ));
-  };
-
-
-  const dropDown = (
-    inputs: string[],
-    listSetter: React.Dispatch<React.SetStateAction<JSX.Element[] | null>>,
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>
-  ) => {
-    setOpen((prev) => !prev);
-    listSetter((prev) => (prev ? null : mapToList(inputs)));
-  };
-
-
-  const handleItemClick = (item: string) => {
-    setDropModalContent(`Information about ${item}`);
-    setModalOpen(true);
-  };
-
-
-  const closeModal = () => {
-    setModalOpen(false);
-    setDropModalContent("");
-  };
 
 
   return (
@@ -84,27 +45,9 @@ function App() {
             <div className="home-page">
               <Header />
               <div className="home-content">
-                <div className="ride-list-button">
-                  <ActionButton
-                    label="My Rides"
-                    action={() => dropDown(rides, setRideList, setRidesOpen)}
-                    id="my-rides"
-                  />
-                  {ridesOpen && <ul className="rides-dropdown">{rideList}</ul>}
+                <div className="rides-pals-button">
+                  <DropDown/>
                 </div>
-                <div className="pal-list-button">
-                  <ActionButton
-                    label="My Pals"
-                    action={() => dropDown(pals, setPalsList, setPalsOpen)}
-                    id="my-pals"
-                  />
-                  {palsOpen && <ul className="pals-dropdown">{palsList}</ul>}
-                </div>
-                <DropDownModal
-                  showModal={isModalOpen}
-                  closeModal={closeModal}
-                  content={DropModalContent}
-                />
                 <div className="map-wrapper-home">
                   <MapComponent mapId="home-map" className="home-container" />
                 </div>
