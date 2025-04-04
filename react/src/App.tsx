@@ -10,30 +10,35 @@ import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
 import ProfileRides from "./components/ProfileRides/ProfileRides";
 import InviteFriends from "./components/InviteFriends/InviteFriends";
 import DropDown from "./components/DropDown/DropDown";
+import OfferingRidesModal from "./components/OfferingRidesModal/OfferingRidesModal";
 
 
 function App() {
 
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"find" | "offer" | null>(null);
+  
 
   const [showPageMap, setShowPageMap] = useState(true);
+  const [showOfferingRidesModal, setShowOfferingRidesModal] = useState(false);
+
   const openFindModal = () => {
     setModalMode("find");
     setModalOpen(true);
   };
 
+
   const openOfferModal = () => {
-    setModalMode("offer");
-    setModalOpen(true);
+    setShowOfferingRidesModal(true);
+    setShowPageMap(false);
   };
+
 
 
 
   return (
     <Router>
       <Routes>
-        {/* homepage */}
         <Route
           path="/"
           element={
@@ -52,7 +57,7 @@ function App() {
           }
         />
 
-        {/* profile page */}
+
         <Route
           path="/profile"
           element={
@@ -66,7 +71,7 @@ function App() {
           }
         />
 
-        {/* plan a ride page */}
+
         <Route
           path="/plan-rides"
           element={
@@ -99,6 +104,18 @@ function App() {
                   mode={modalMode}
                   setShowPageMap={setShowPageMap}
                 />
+                <OfferingRidesModal
+                  isOpen={showOfferingRidesModal}
+                  closeModal={() => {
+                    setShowOfferingRidesModal(false);
+                    setShowPageMap(true);
+                  }}
+                  restoreMap={() => setShowPageMap(true)}
+                  onSuccess={() => {
+                    setShowOfferingRidesModal(false);
+                    setShowPageMap(true);
+                  }}
+                />
               </div>
               <Footer />
             </div>
@@ -108,5 +125,8 @@ function App() {
     </Router>
   );
 }
+
+
+
 
 export default App;
