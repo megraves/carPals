@@ -17,15 +17,8 @@
   gap: 2rem;
 }
 
-.close-button {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 20; /* Make sure it's above everything else */
+.map-wrapper-home {
+  margin-top: 16px;
 }
 
 .ride-list-button {
@@ -85,10 +78,10 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-  .input-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
+.input-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
 .input-button {
   cursor: pointer;

@@ -10,10 +10,9 @@ import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
 import ProfileRides from "./components/ProfileRides/ProfileRides";
 import DropDownModal from "./components/DropDownModal/DropDownModal";
 import InviteFriends from "./components/InviteFriends/InviteFriends";
-
+import Reminders from "./components/reminders/reminders";
 
 function App() {
-
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"find" | "offer" | null>(null);
   const [DropModalContent, setDropModalContent] = useState("");
@@ -25,9 +24,6 @@ function App() {
   const [palsOpen, setPalsOpen] = useState(false);
   const [palsList, setPalsList] = useState<JSX.Element[] | null>(null);
   const pals = ["Edwin Tran", "Macy Graves", "Sofia Simonoff", "Lauren Shea"];
-
-
-
 
   const [showPageMap, setShowPageMap] = useState(true);
 
@@ -41,24 +37,24 @@ function App() {
     setModalOpen(true);
   };
 
-
-
   const mapToList = (inputs: string[]) => {
     return inputs.map((input, index) => (
       <li key={index} className="input-item">
-        <button className="input-button" 
-        onClick={() => handleItemClick(input)}
-        >
-        {input}
+        <button className="input-button" onClick={() => handleItemClick(input)}>
+          {input}
         </button>
       </li>
     ));
   };
 
-  const dropDown = (inputs: string[], listSetter: React.Dispatch<React.SetStateAction<JSX.Element[] | null>>,  setOpen: React.Dispatch<React.SetStateAction<boolean>>) => {
-    setOpen(prev => !prev);
-    listSetter(prev => (prev ? null : mapToList(inputs))); 
-  }
+  const dropDown = (
+    inputs: string[],
+    listSetter: React.Dispatch<React.SetStateAction<JSX.Element[] | null>>,
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    setOpen((prev) => !prev);
+    listSetter((prev) => (prev ? null : mapToList(inputs)));
+  };
 
   const handleItemClick = (item: string) => {
     setDropModalContent(`Information about ${item}`);
@@ -69,7 +65,6 @@ function App() {
     setModalOpen(false);
     setDropModalContent(""); // Clear modal content after closing
   };
-
 
   return (
     <Router>
@@ -97,9 +92,16 @@ function App() {
                   />
                   {palsOpen && <ul className="pals-dropdown">{palsList}</ul>}
                 </div>
-                <DropDownModal showModal={isModalOpen} closeModal={closeModal} content={DropModalContent} />
+                <DropDownModal
+                  showModal={isModalOpen}
+                  closeModal={closeModal}
+                  content={DropModalContent}
+                />
                 <div className="map-wrapper-home">
                   <MapComponent mapId="home-map" className="home-container" />
+                </div>
+                <div className="reminder-list">
+                  <Reminders />
                 </div>
               </div>
               <Footer />
