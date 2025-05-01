@@ -69,9 +69,8 @@ async function handleProxy(
 }
 
 // Routes
-app.post("/react", (req, res) => handleProxy("react", req, res));
-app.post("/database", (req, res) => handleProxy("database", req, res));
-//app.post("/backend", (req, res) => handleProxy("backend", req, res));
+app.post("/react", (req: Request, res: Response) => handleProxy("react", req, res));
+app.post("/database", (req: Request, res: Response) => handleProxy("database", req, res));
 
 app.listen(PORT, () => {
   log.info(`API Gateway listening on port ${PORT}`);

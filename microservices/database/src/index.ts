@@ -1,9 +1,12 @@
 import express from "express";
+import fs from 'fs';
+//import path from 'path';
 import { pino } from "pino";
 import { Request, Response } from "express";
 
 const PORT = 3000;
 const REGISTRY_URL = "http://registry:3000";
+const DATA_FILE = "./data.json";
 
 // Set up pino to log to the console
 const log = pino({
@@ -40,26 +43,36 @@ async function registerWithRetry(name: string, url: string, maxRetries = 5) {
     process.exit(1);
 }
 
-// Check if service exists
-async function lookupService(name: string): Promise<string | null> {
-    try {
-      const res = await fetch(`${REGISTRY_URL}/lookup?name=${name}`);
-      if (!res.ok) throw new Error(`Status ${res.status}`);
-      const { url } = await res.json();
-      return url;
-    } catch (err) {
-      log.error(`Lookup failed for ${name}: ${(err as Error).message}`);
-      return null;
-    }
-}
-
 // Add POST route
 app.post("/", async (req: Request, res: Response) => {
 
     // Log communication with api-gateway
-    log.info({ source: 'gateway', body: req.body }, 'Received request from api-gateway');
+  log.info({ source: 'gateway', body: req.body }, 'Received request from api-gateway');
 
-    //TODO: set up database and post to it
+  const data = req.body;
+  let existingData: unknown[] = [];
+
+  if (fs.existsSync(DATA_FILE)) {
+    try {
+      const raw = fs.readFileSync(DATA_FILE, 'utf8');
+      existingData = JSON.parse(raw) || [];
+      if (!Array.isArray(existingData)) {
+        existingData = [existingData];
+      }
+    } catch (err) {
+      console.error('Error reading file:', err);
+    }
+  }
+
+  existingData.push(data);
+
+  try {
+    fs.writeFileSync(DATA_FILE, JSON.stringify(existingData, null, 2));
+    res.status(200).json({ message: 'Data received and stored.' });
+  } catch (err) {
+    console.error('Error writing file:', err);
+    res.status(500).json({ error: 'Failed to write data.' });
+  }
 });
 
 app.get("/", async (req: Request, res: Response) => {
