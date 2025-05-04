@@ -174,22 +174,22 @@
  }
 
 
- .route-item:hover {
+.route-item:hover {
   transform: translateY(-1px);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   border-color: #cbd5e0;
- }
+}
 
 
- .route-actions {
+.route-actions {
   display: flex;
   justify-content: center;
   margin-top: 12px;
   gap: 8px;
- }
+}
 
 
- .route-actions button {
+.route-actions button {
   margin: 0;
   padding: 8px 16px;
   cursor: pointer;
@@ -198,30 +198,57 @@
   font-size: 14px;
   transition: all 0.2s ease;
   border: 1px solid transparent;
- }
+}
 
 
- /* Delete Button */
- .route-actions button:first-child {
+/* Delete Button */
+.route-actions button:first-child {
   background-color: #fff5f5;
   color: #e53e3e;
   border-color: #fed7d7;
- }
+}
 
 
- .route-actions button:first-child:hover {
+.route-actions button:first-child:hover {
   background-color: #fed7d7;
- }
+}
 
 
- /* See Drivers Button */
- .route-actions button:last-child {
+/* See Drivers Button */
+.route-actions button:last-child {
   background-color: #ebf8ff;
   color: #3182ce;
   border-color: #bee3f8;
- }
+}
 
 
- .route-actions button:last-child:hover {
+.route-actions button:last-child:hover {
   background-color: #bee3f8;
- }
+}
+
+.autocomplete-list {
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  left: 0;
+  background-color: black;
+  color: white;
+  border: 1px solid #555;
+  width: 100%;
+  margin-top: 4px;
+  padding: 0;
+  list-style: none;
+  max-height: 150px;
+  overflow-y: auto;
+  border-radius: 4px;
+}
+
+
+.autocomplete-list li {
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.autocomplete-list li:hover {
+  background-color: #333;
+}
