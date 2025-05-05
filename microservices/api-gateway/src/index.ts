@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import { pino } from "pino";
+import cors from "cors";
 
 const PORT = 3000;
 const REGISTRY_URL = "http://registry:3000";
@@ -8,7 +9,10 @@ const REGISTRY_URL = "http://registry:3000";
 const log = pino({ transport: { target: "pino-pretty" } });
 
 const app = express();
-
+app.use(cors({
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "OPTIONS"],
+}));
 app.use(express.json());
 
 // Retry logic for registering with the registry
@@ -71,6 +75,32 @@ async function handleProxy(
 // Routes
 app.post("/react", (req: Request, res: Response) => handleProxy("react", req, res));
 app.post("/database", (req: Request, res: Response) => handleProxy("database", req, res));
+app.post("/signup", async (req, res) => {
+  const url = await lookupService("database");
+  if (!url) return res.status(502).send("Could not resolve database");
+
+  try {
+    const response = await fetch(`${url}/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(req.body),
+    });
+
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    console.error("Signup forwarding failed:", error);
+    res.status(500).json({ error: "Failed to forward to database" });
+  }
+});
+
+
+app.options("*", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.sendStatus(200);
+});
 
 app.listen(PORT, () => {
   log.info(`API Gateway listening on port ${PORT}`);
