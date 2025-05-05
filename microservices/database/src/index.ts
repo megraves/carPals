@@ -46,39 +46,49 @@ async function registerWithRetry(name: string, url: string, maxRetries = 5) {
 // Add POST route
 app.post("/", async (req: Request, res: Response) => {
 
-    // Log communication with api-gateway
+  log.info({source: 'TEST', body: {message: "TEST"}}, 'This is a test');
+  // Log communication with api-gateway
   log.info({ source: 'gateway', body: req.body }, 'Received request from api-gateway');
+  log.info(`This message has been reached.`);
+  res.status(200).json(req.body);
 
-  const data = req.body;
-  let existingData: unknown[] = [];
+  // const data = req.body;
+  // let existingData: unknown[] = [];
+  // log.info({msg: "data made", data: data, existing: existingData})
 
-  if (fs.existsSync(DATA_FILE)) {
-    try {
-      const raw = fs.readFileSync(DATA_FILE, 'utf8');
-      existingData = JSON.parse(raw) || [];
-      if (!Array.isArray(existingData)) {
-        existingData = [existingData];
-      }
-    } catch (err) {
-      console.error('Error reading file:', err);
-    }
-  }
+  // if (fs.existsSync(DATA_FILE)) {
+  //   try {
+  //     const raw = fs.readFileSync(DATA_FILE, 'utf8');
+  //     existingData = JSON.parse(raw) || [];
+  //     if (!Array.isArray(existingData)) {
+  //       existingData = [existingData];
+  //     }
+  //   } catch (err) {
+  //     log.info('Error reading file:', err);
+  //     res.status(502).json({error: "failed to read file", msg: err})
+  //   }
+  // }
+  // else {
+  //   log.info("Data file path does not exist")
+  //   res.status(501).json({error: "Failed to find file"})
+  // }
 
-  existingData.push(data);
+  // existingData.push(data);
 
-  try {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(existingData, null, 2));
-    res.status(200).json({ message: 'Data received and stored.' });
-  } catch (err) {
-    console.error('Error writing file:', err);
-    res.status(500).json({ error: 'Failed to write data.' });
-  }
+  // try {
+  //   fs.writeFileSync(DATA_FILE, JSON.stringify(existingData, null, 2));
+  //   res.status(200).json({ message: 'Data received and stored.' });
+  // } catch (err) {
+  //   console.error('Error writing file:', err);
+  //   res.status(500).json({ error: 'Failed to write data.', msg: err });
+  // }
 });
 
 app.get("/", async (req: Request, res: Response) => {
 
   // Log communication with api-gateway
   log.info({ source: 'gateway', body: req.body }, 'Received request from api-gateway');
+  res.status(500).json({error: 'this is the get request'})
 
   //TODO: set up database and get info in it
 });

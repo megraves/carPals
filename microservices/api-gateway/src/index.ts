@@ -35,8 +35,11 @@ async function registerWithRetry(name: string, url: string, maxRetries = 5) {
 }
 
 async function lookupService(name: string): Promise<string | null> {
+  log.info(`lookupService called with name: ${name}`);
   try {
+    log.info(`Trying to get url`)
     const res = await fetch(`${REGISTRY_URL}/lookup?name=${name}`);
+    log.info(`Registry responded with status: ${res.status}`);
     if (!res.ok) throw new Error(`Status ${res.status}`);
     const { url } = await res.json();
     return url;
@@ -52,9 +55,11 @@ async function handleProxy(
   req: express.Request,
   res: express.Response,
 ) {
+  log.info(`handleProxy called for service: ${serviceName}`);
   const url = await lookupService(serviceName);
   if (!url) return res.status(502).send(`Could not resolve ${serviceName}`);
   try {
+    log.info(`Trying to fetch with ${url}`)
     const response = await fetch(url, {
       method: req.method,
       headers: { "Content-Type": "application/json" },
@@ -69,8 +74,14 @@ async function handleProxy(
 }
 
 // Routes
-app.post("/react", (req: Request, res: Response) => handleProxy("react", req, res));
-app.post("/database", (req: Request, res: Response) => handleProxy("database", req, res));
+app.post("/react", (req: Request, res: Response) => {
+  log.info("Gateway forwarding request to react");
+  handleProxy("react", req, res);
+});
+app.post("/database", (req: Request, res: Response) => {
+  log.info("Gateway forwarding request to database");
+  handleProxy("database", req, res);
+});
 
 app.listen(PORT, () => {
   log.info(`API Gateway listening on port ${PORT}`);
