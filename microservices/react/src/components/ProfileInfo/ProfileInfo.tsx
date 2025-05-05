@@ -8,6 +8,12 @@ interface ProfileInfoProps {
   } | null;
 }
 
+const handleLogout = () => {
+  localStorage.removeItem("userSession");
+  localStorage.removeItem("userId");
+  window.location.href = "/"; // or use navigate("/") if using `react-router`
+};
+
 const ProfileInfo: React.FC<ProfileInfoProps> = ({ user }) => {
   if (!user) return <p>Loading User Datas...</p>;
 
@@ -23,6 +29,9 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ user }) => {
       <p>
         <strong>Phone:</strong> {user.phone}
       </p>
+      <button onClick={handleLogout} className="logout-button">
+        Log Out
+      </button>
     </div>
   );
 };

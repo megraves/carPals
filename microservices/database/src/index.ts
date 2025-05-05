@@ -117,7 +117,7 @@ app.post("/signup", async (req: Request, res: Response) => {
 // Add route for a user
 app.post("/users/:userId/routes", (req: Request, res: Response) => {
   const { userId } = req.params;
-  const { startLocation, endLocation, pickupTime, daysOfWeek } = req.body;
+  const { type, startLocation, endLocation, pickupTime, daysOfWeek } = req.body;
 
   const data = loadData();
   const user = data.users.find((u: any) => u.id === userId);
@@ -128,6 +128,7 @@ app.post("/users/:userId/routes", (req: Request, res: Response) => {
 
   const newRoute = {
     id: uuidv4(),
+    type,
     startLocation,
     endLocation,
     pickupTime,

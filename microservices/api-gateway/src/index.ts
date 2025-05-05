@@ -59,7 +59,7 @@ async function handleProxy(
   const url = await lookupService(serviceName);
   if (!url) return res.status(502).send(`Could not resolve ${serviceName}`);
   try {
-    const response = await fetch(url, {
+    const response = await fetch(`${url}${req.originalUrl}`, {
       method: req.method,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req.body),
@@ -75,6 +75,7 @@ async function handleProxy(
 // Routes
 app.post("/react", (req: Request, res: Response) => handleProxy("react", req, res));
 app.post("/database", (req: Request, res: Response) => handleProxy("database", req, res));
+app.post("/users/:userId/routes", (req, res) => handleProxy("database", req, res));
 app.post("/signup", async (req, res) => {
   const url = await lookupService("database");
   if (!url) return res.status(502).send("Could not resolve database");
