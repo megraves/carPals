@@ -1,5 +1,5 @@
 import React from "react";
-import "./RideCard.css";
+//import "./RideCard.css";
 
 interface RideCardProps {
   firstName: string;

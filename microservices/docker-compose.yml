@@ -1,0 +1,70 @@
+# This is a docker compose file for defining and running
+# the multi-container environment.The following commands 
+# are useful in running the containers simultaneously:
+#
+#   docker compose up          - "runs" the entire system
+#   docker compose up --build  - force a build and "runs" system
+#   docker compose up -d       - "runs" system in detached mode
+#   docker compose down        - "closes" the entire system and deletes everything
+#   docker compose stop        - stop running containers without removing them
+#   docker compose start       - start previously stopped containers
+#
+version: '3.9'
+name: microservices
+
+# List of services to be run
+services:
+
+  # Registry service to keep track of all the services and how they communicate
+  registry:
+    build:
+      context: ./registry
+    container_name: registry
+    networks:
+      - palnet
+
+  # The frontend of our application that runs on port 5173
+  react:
+    build:
+      context: ./react
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./react:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    container_name: react
+    depends_on:
+      - registry
+    networks:
+      - palnet
+
+  # A database to store and retrieve information
+  database:
+    build:
+      context: ./database
+    container_name: database
+    depends_on:
+      - registry
+    networks:
+      - palnet
+
+  # Api-gateway that directs requests from and to each service
+  api-gateway:
+    build:
+      context: ./api-gateway
+    container_name: api-gateway
+    depends_on:
+      - react
+      - database
+      # - backend
+    networks:
+      - palnet
+    ports:
+      - "3000:3000"
+
+# The network that the services communicate over
+networks:
+  palnet:
+    driver: bridge
