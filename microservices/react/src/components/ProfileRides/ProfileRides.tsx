@@ -1,4 +1,4 @@
-import './ProfileRides.css';
+import "./ProfileRides.css";
 
 const MyRides = () => {
   const mockRides = [
@@ -13,8 +13,14 @@ const MyRides = () => {
         {mockRides.map((ride) => (
           <li key={ride.id} className="ride-item">
             <div className="ride-header">
-              <p><strong>{ride.route}</strong></p>
-              <p><span>{ride.date} at {ride.time}</span></p>
+              <p>
+                <strong>{ride.route}</strong>
+              </p>
+              <p>
+                <span>
+                  {ride.date} at {ride.time}
+                </span>
+              </p>
             </div>
             <div className="ride-details">
               <p>Details can go here.</p>
