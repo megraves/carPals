@@ -49,6 +49,8 @@ services:
       - registry
     networks:
       - palnet
+    volumes:
+      - ./database/src/data.json:/app/src/data.json
 
   # Api-gateway that directs requests from and to each service
   api-gateway:
