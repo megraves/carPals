@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
@@ -11,33 +11,55 @@ import ProfileRides from "./components/ProfileRides/ProfileRides";
 import InviteFriends from "./components/InviteFriends/InviteFriends";
 import DropDown from "./components/DropDown/DropDown";
 import OfferingRidesModal from "./components/OfferingRidesModal/OfferingRidesModal";
-
+import AuthModal from "./components/AuthModal/AuthModal";
 
 function App() {
-
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"find" | "offer" | null>(null);
-  
 
   const [showPageMap, setShowPageMap] = useState(true);
   const [showOfferingRidesModal, setShowOfferingRidesModal] = useState(false);
+
+  interface User {
+    name: string;
+    email: string;
+    phone: string;
+    password?: string;
+  }
+
+  const [user, setUser] = useState<Partial<User> | null>(null);
+  const [showAuthModal, setShowAuthModal] = useState(true);
+
+  useEffect(() => {
+    const session = null;
+    setShowAuthModal(!session);
+    if (session) setUser(session);
+  }, []);
 
   const openFindModal = () => {
     setModalMode("find");
     setModalOpen(true);
   };
 
-
   const openOfferModal = () => {
     setShowOfferingRidesModal(true);
     setShowPageMap(false);
   };
 
-
-
-
   return (
     <Router>
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => {
+          setShowAuthModal(true);
+        }}
+        onLogin={(userData) => {
+          setUser(userData);
+        }}
+        onSignup={(userData) => {
+          setUser(userData);
+        }}
+      />
       <Routes>
         <Route
           path="/"
@@ -46,7 +68,7 @@ function App() {
               <Header />
               <div className="home-content">
                 <div className="rides-pals-button">
-                  <DropDown/>
+                  <DropDown />
                 </div>
                 <div className="map-wrapper-home">
                   <MapComponent mapId="home-map" className="home-container" />
@@ -56,7 +78,6 @@ function App() {
             </div>
           }
         />
-
 
         <Route
           path="/profile"
@@ -70,7 +91,6 @@ function App() {
             </div>
           }
         />
-
 
         <Route
           path="/plan-rides"
@@ -125,8 +145,5 @@ function App() {
     </Router>
   );
 }
-
-
-
 
 export default App;
