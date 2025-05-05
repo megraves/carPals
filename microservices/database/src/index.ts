@@ -1,12 +1,12 @@
 import express from "express";
 import fs from 'fs';
-//import path from 'path';
+import path from 'path';
 import { pino } from "pino";
 import { Request, Response } from "express";
 
 const PORT = 3000;
 const REGISTRY_URL = "http://registry:3000";
-const DATA_FILE = "./data.json";
+const DATA_FILE = path.join("src", "data.json");
 
 // Set up pino to log to the console
 const log = pino({
@@ -22,6 +22,7 @@ app.use(express.json());
 
 // Register service with registry
 async function registerWithRetry(name: string, url: string, maxRetries = 5) {
+  log.info("Registering . . .");
     for (let i = 0; i < maxRetries; i++) {
       try {
         const res = await fetch(`${REGISTRY_URL}/register`, {
@@ -46,42 +47,38 @@ async function registerWithRetry(name: string, url: string, maxRetries = 5) {
 // Add POST route
 app.post("/", async (req: Request, res: Response) => {
 
-  log.info({source: 'TEST', body: {message: "TEST"}}, 'This is a test');
   // Log communication with api-gateway
   log.info({ source: 'gateway', body: req.body }, 'Received request from api-gateway');
-  log.info(`This message has been reached.`);
-  res.status(200).json(req.body);
 
-  // const data = req.body;
-  // let existingData: unknown[] = [];
-  // log.info({msg: "data made", data: data, existing: existingData})
+  const data = req.body;
+  let existingData: unknown[] = [];
 
-  // if (fs.existsSync(DATA_FILE)) {
-  //   try {
-  //     const raw = fs.readFileSync(DATA_FILE, 'utf8');
-  //     existingData = JSON.parse(raw) || [];
-  //     if (!Array.isArray(existingData)) {
-  //       existingData = [existingData];
-  //     }
-  //   } catch (err) {
-  //     log.info('Error reading file:', err);
-  //     res.status(502).json({error: "failed to read file", msg: err})
-  //   }
-  // }
-  // else {
-  //   log.info("Data file path does not exist")
-  //   res.status(501).json({error: "Failed to find file"})
-  // }
+  if (fs.existsSync(DATA_FILE)) {
+    try {
+      const raw = fs.readFileSync(DATA_FILE, 'utf8');
+      existingData = JSON.parse(raw) || [];
+      if (!Array.isArray(existingData)) {
+        existingData = [existingData];
+      }
+    } catch (err) {
+      log.info('Error reading file:', err);
+      res.status(502).json({error: "failed to read file", msg: err})
+    }
+  }
+  else {
+    log.info("Data file path does not exist");
+    res.status(501).json({error: "File path error"});
+  }
 
-  // existingData.push(data);
+  existingData.push(data);
 
-  // try {
-  //   fs.writeFileSync(DATA_FILE, JSON.stringify(existingData, null, 2));
-  //   res.status(200).json({ message: 'Data received and stored.' });
-  // } catch (err) {
-  //   console.error('Error writing file:', err);
-  //   res.status(500).json({ error: 'Failed to write data.', msg: err });
-  // }
+  try {
+    fs.writeFileSync(DATA_FILE, JSON.stringify(existingData, null, 2));
+    res.status(200).json({ message: 'Data received and stored.' });
+  } catch (err) {
+    console.error('Error writing file:', err);
+    res.status(500).json({ error: 'Failed to write data.', msg: err });
+  }
 });
 
 app.get("/", async (req: Request, res: Response) => {

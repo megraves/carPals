@@ -13,6 +13,7 @@ app.use(express.json());
 
 // Retry logic for registering with the registry
 async function registerWithRetry(name: string, url: string, maxRetries = 5) {
+  log.info("Registering . . .");
   for (let i = 0; i < maxRetries; i++) {
     try {
       const res = await fetch(`${REGISTRY_URL}/register`, {
@@ -37,7 +38,7 @@ async function registerWithRetry(name: string, url: string, maxRetries = 5) {
 async function lookupService(name: string): Promise<string | null> {
   log.info(`lookupService called with name: ${name}`);
   try {
-    log.info(`Trying to get url`)
+    log.info(`Trying to get url`);
     const res = await fetch(`${REGISTRY_URL}/lookup?name=${name}`);
     log.info(`Registry responded with status: ${res.status}`);
     if (!res.ok) throw new Error(`Status ${res.status}`);
@@ -59,7 +60,7 @@ async function handleProxy(
   const url = await lookupService(serviceName);
   if (!url) return res.status(502).send(`Could not resolve ${serviceName}`);
   try {
-    log.info(`Trying to fetch with ${url}`)
+    log.info(`Trying to fetch with ${url}`);
     const response = await fetch(url, {
       method: req.method,
       headers: { "Content-Type": "application/json" },
@@ -75,11 +76,11 @@ async function handleProxy(
 
 // Routes
 app.post("/react", (req: Request, res: Response) => {
-  log.info("Gateway forwarding request to react");
+  log.info(`Gateway forwarding request to react`);
   handleProxy("react", req, res);
 });
 app.post("/database", (req: Request, res: Response) => {
-  log.info("Gateway forwarding request to database");
+  log.info(`Gateway forwarding request to database`);
   handleProxy("database", req, res);
 });
 

@@ -32,6 +32,11 @@ They can also be ran individually by running this script in each service directo
 docker run --name service-name -d --rm --network palnet service-name:latest
 ``
 
+They can also be built and ran simultaneously:
+``bash
+docker compose up --build
+``
+
 To stop and remove the microservices, press ctrl+c and:
 ``bash
 docker compose down
