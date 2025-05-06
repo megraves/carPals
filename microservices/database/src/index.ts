@@ -92,7 +92,7 @@ app.post("/", async (req: Request, res: Response) => {
 
 // User signup
 app.post("/signup", async (req: Request, res: Response) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, phone } = req.body;
   const data = loadData();
 
   if (data.users.some((u: any) => u.email === email)) {
@@ -104,6 +104,7 @@ app.post("/signup", async (req: Request, res: Response) => {
     name,
     email,
     password,
+    phone,
     createdAt: new Date().toISOString(),
     routes: []
   };
@@ -112,6 +113,29 @@ app.post("/signup", async (req: Request, res: Response) => {
   saveData(data);
 
   res.status(201).json({ message: 'User created', userId: newUser.id });
+});
+
+// User Login
+app.post("/login", (req: Request, res: Response) => {
+  const { email, password } = req.body;
+  const data = loadData();
+
+  const user = data.users.find((u: any) => u.email === email && u.password === password);
+
+  if (!user) {
+    return res.status(401).json({ error: "Invalid email or password" });
+  }
+
+  res.status(200).json({
+    message: "Login successful",
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      routes: user.routes,
+    },
+  });
 });
 
 // Add route for a user

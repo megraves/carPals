@@ -40,7 +40,7 @@ function App() {
 
       if (!expired) {
         setUser(session);
-        setShowAuthModal(false); // hide modal
+        setShowAuthModal(false);
         return;
       } else {
         localStorage.removeItem("userSession");
@@ -98,7 +98,7 @@ function App() {
           element={
             <div className="profile-page">
               <Header />
-              <ProfileInfo user={user} />
+              <ProfileInfo />
               <ProfileRides />
               <InviteFriends userId="current-user-id" />
               <Footer />

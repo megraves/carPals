@@ -65,6 +65,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
             name: formData.name,
             email: formData.email,
             password: formData.password,
+            phone: formData.phone,
           }),
         });
 
@@ -98,17 +99,40 @@ const AuthModal: React.FC<AuthModalProps> = ({
       }
     } else {
       // login
-      localStorage.setItem(
-        "userSession",
-        JSON.stringify({
-          email: formData.email,
-          loginTime: Date.now(),
-        })
-      );
-      onLogin({
-        email: formData.email,
-        password: formData.password,
-      });
+      try {
+        const response = await fetch("http://localhost:3000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          setError(errorData.error || "Login failed");
+          return;
+        }
+
+        const data = await response.json();
+        localStorage.setItem("userId", data.user.id);
+        localStorage.setItem(
+          "userSession",
+          JSON.stringify({
+            ...data.user,
+            loginTime: Date.now(),
+          })
+        );
+        onLogin(data.user);
+        alert("Login Successful!");
+        onClose();
+      } catch (err) {
+        console.error("Login error:", err);
+        setError("Login failed. Please try again later.");
+      }
     }
 
     setFormData({

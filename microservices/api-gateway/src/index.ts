@@ -94,6 +94,24 @@ app.post("/signup", async (req, res) => {
     res.status(500).json({ error: "Failed to forward to database" });
   }
 });
+app.post("/login", async (req, res) => {
+  const url = await lookupService("database");
+  if (!url) return res.status(502).send("Could not resolve database");
+
+  try {
+    const response = await fetch(`${url}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(req.body),
+    });
+
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    console.error("Login forwarding failed:", error);
+    res.status(500).json({ error: "Failed to forward to database" });
+  }
+});
 
 
 app.options("*", (req, res) => {

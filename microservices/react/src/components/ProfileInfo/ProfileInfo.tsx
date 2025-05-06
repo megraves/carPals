@@ -1,21 +1,27 @@
+import { useEffect, useState } from "react";
 import "./ProfileInfo.css";
-
-interface ProfileInfoProps {
-  user: {
-    name?: string;
-    email?: string;
-    phone?: string;
-  } | null;
-}
 
 const handleLogout = () => {
   localStorage.removeItem("userSession");
   localStorage.removeItem("userId");
-  window.location.href = "/"; // or use navigate("/") if using `react-router`
+  window.location.href = "/";
 };
 
-const ProfileInfo: React.FC<ProfileInfoProps> = ({ user }) => {
-  if (!user) return <p>Loading User Datas...</p>;
+const ProfileInfo = () => {
+  const [user, setUser] = useState<{
+    name?: string;
+    email?: string;
+    phone?: string;
+  } | null>(null);
+
+  useEffect(() => {
+    const session = localStorage.getItem("userSession");
+    if (session) {
+      setUser(JSON.parse(session));
+    }
+  }, []);
+
+  if (!user) return <p>Loading User Data...</p>;
 
   return (
     <div className="profile-info p-4 bg-white shadow-md rounded-lg">
