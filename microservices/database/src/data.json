@@ -1,22 +1,4 @@
 {
   "users": [
-    {
-      "id": "a377fb37-561a-4332-b7cb-fe4d3aaf4f52",
-      "name": "Edwin Tran",
-      "email": "edwintran235@gmail.com",
-      "password": "f",
-      "phone": "7814281996",
-      "createdAt": "2025-05-06T18:56:53.011Z",
-      "routes": []
-    },
-    {
-      "id": "a43c863f-7e95-467a-9f1a-9f555fa301e4",
-      "name": "ed",
-      "email": "etraniz235@gmail.com",
-      "password": "fansipansi1",
-      "phone": "1234567890",
-      "createdAt": "2025-05-06T19:01:01.224Z",
-      "routes": []
-    }
   ]
 }

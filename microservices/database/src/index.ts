@@ -117,7 +117,17 @@ app.post("/signup", async (req: Request, res: Response) => {
   data.users.push(newUser);
   saveData(data);
 
-  res.status(201).json({ message: 'User created', userId: newUser.id });
+  res.status(201).json({
+    message: 'User created',
+    userId: newUser.id,
+    user: {
+      id: newUser.id,
+      name: newUser.name,
+      email: newUser.email,
+      phone: newUser.phone,
+      routes: newUser.routes,
+    }
+  });  
 });
 
 // User Login
