@@ -1,3 +1,10 @@
+[
+  {
+    "from": "Macy",
+    "message": "I am trying to talk to the database. Here is some data.",
+    "body": "Docker is awesome!"
+  }
+]
 {
   "users": [
     {

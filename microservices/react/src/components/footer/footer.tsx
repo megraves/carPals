@@ -1,5 +1,7 @@
 import "./footer.css";
 
+// Create a footer component for the main page, use tailwindcss to style: grid for responsiveness.
+// Footer will have four sections that align horizontally on bigger screens and vertically on smaller screens.
 function Footer() {
   return (
     <footer className="bg-teal-500 text-white py-8 px-4">
@@ -25,4 +27,5 @@ function Footer() {
   );
 };
 
+// Export the footer so it can be used in the App.tsx
 export default Footer;
