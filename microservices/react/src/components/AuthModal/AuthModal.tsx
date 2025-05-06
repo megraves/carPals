@@ -48,25 +48,93 @@ const AuthModal: React.FC<AuthModalProps> = ({
     }
   }, [formData, isSignup]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSignup) {
       if (formData.password !== formData.confirmPassword) {
         setError("Passwords do not match");
         return;
       }
-      onSignup({
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        password: formData.password,
-      });
+      try {
+        const response = await fetch("http://localhost:3000/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            password: formData.password,
+            phone: formData.phone,
+          }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          setError(errorData.error || "Signup failed");
+          return;
+        }
+
+        const data = await response.json();
+        localStorage.setItem("userId", data.userId);
+        localStorage.setItem(
+          "userSession",
+          JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            loginTime: Date.now(),
+          })
+        );
+        onSignup({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+        });
+        alert("Signup successful!");
+      } catch (err) {
+        console.error("Signup error:", err);
+        setError("Signup failed. Please try again later.");
+        return;
+      }
     } else {
-      onLogin({
-        email: formData.email,
-        password: formData.password,
-      });
+      // login
+      try {
+        const response = await fetch("http://localhost:3000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          setError(errorData.error || "Login failed");
+          return;
+        }
+
+        const data = await response.json();
+        localStorage.setItem("userId", data.user.id);
+        localStorage.setItem(
+          "userSession",
+          JSON.stringify({
+            ...data.user,
+            loginTime: Date.now(),
+          })
+        );
+        onLogin(data.user);
+        alert("Login Successful!");
+        onClose();
+      } catch (err) {
+        console.error("Login error:", err);
+        setError("Login failed. Please try again later.");
+      }
     }
+
     setFormData({
       name: "",
       email: "",

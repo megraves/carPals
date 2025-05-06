@@ -3,6 +3,7 @@ import fs from 'fs';
 //import path from 'path';
 import { pino } from "pino";
 import { Request, Response } from "express";
+import { v4 as uuidv4} from "uuid";
 
 const PORT = 3000;
 const REGISTRY_URL = "http://registry:3000";
@@ -19,6 +20,20 @@ const log = pino({
 
 const app = express();
 app.use(express.json());
+
+// Load and save functions
+function loadData() {
+  if (!fs.existsSync(DATA_FILE)) {
+    return { users: [] };
+  }
+
+  const raw = fs.readFileSync(DATA_FILE, 'utf8');
+  return JSON.parse(raw);
+}
+
+function saveData(data: any) {
+  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+}
 
 // Register service with registry
 async function registerWithRetry(name: string, url: string, maxRetries = 5) {
@@ -75,16 +90,94 @@ app.post("/", async (req: Request, res: Response) => {
   }
 });
 
+// User signup
+app.post("/signup", async (req: Request, res: Response) => {
+  const { name, email, password, phone } = req.body;
+  const data = loadData();
+
+  if (data.users.some((u: any) => u.email === email)) {
+    return res.status(400).json({ error: 'Email already exists' });
+  }
+
+  const newUser = {
+    id: uuidv4(),
+    name,
+    email,
+    password,
+    phone,
+    createdAt: new Date().toISOString(),
+    routes: []
+  };
+
+  data.users.push(newUser);
+  saveData(data);
+
+  res.status(201).json({ message: 'User created', userId: newUser.id });
+});
+
+// User Login
+app.post("/login", (req: Request, res: Response) => {
+  const { email, password } = req.body;
+  const data = loadData();
+
+  const user = data.users.find((u: any) => u.email === email && u.password === password);
+
+  if (!user) {
+    return res.status(401).json({ error: "Invalid email or password" });
+  }
+
+  res.status(200).json({
+    message: "Login successful",
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      routes: user.routes,
+    },
+  });
+});
+
+// Add route for a user
+app.post("/users/:userId/routes", (req: Request, res: Response) => {
+  const { userId } = req.params;
+  const { type, startLocation, endLocation, pickupTime, daysOfWeek } = req.body;
+
+  const data = loadData();
+  const user = data.users.find((u: any) => u.id === userId);
+
+  if (!user) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+
+  const newRoute = {
+    id: uuidv4(),
+    type,
+    startLocation,
+    endLocation,
+    pickupTime,
+    daysOfWeek,
+    createdAt: new Date().toISOString()
+  };
+
+  user.routes.push(newRoute);
+  saveData(data);
+
+  res.status(201).json({ message: 'Route added', routeId: newRoute.id });
+});
+
 app.get("/", async (req: Request, res: Response) => {
 
   // Log communication with api-gateway
   log.info({ source: 'gateway', body: req.body }, 'Received request from api-gateway');
 
   //TODO: set up database and get info in it
+  const data = loadData();
+  res.status(200).json(data);
 });
 
 // Listen on PORT
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     log.info(`Database listening on port ${PORT}`);
     registerWithRetry("database", `http://database:${PORT}`);
 });

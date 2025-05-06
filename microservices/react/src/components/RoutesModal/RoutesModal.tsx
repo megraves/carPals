@@ -58,6 +58,11 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
   const [startSuggestions, setStartSuggestions] = useState<string[]>([]);
   const [endSuggestions, setEndSuggestions] = useState<string[]>([]);
   const [activeInput, setActiveInput] = useState<"start" | "end" | null>(null);
+  const [debounceTimer, setDebounceTimer] = useState<NodeJS.Timeout | null>(
+    null
+  );
+
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     if (!isOpen) {
@@ -149,8 +154,36 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
     setShowFindingRidesModal(true);
   };
 
-  const handleSaveRoute = () => {
-    if (currentRoute && !hasSaved) {
+  const handleSaveRoute = async () => {
+    if (!currentRoute || hasSaved) return;
+
+    const userSession = localStorage.getItem("userSession");
+    if (!userSession) {
+      alert("You must be logged in to save a route.");
+      return;
+    }
+
+    const routeData = {
+      type: mode === "offer" ? "offering" : "needed",
+      startLocation: currentRoute.startingLocation,
+      endLocation: currentRoute.endingLocation,
+      pickupTime: currentRoute.pickupTime,
+      daysOfWeek: currentRoute.selectedDays,
+    };
+
+    try {
+      const res = await fetch(`http://localhost:3000/users/${userId}/routes`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(routeData),
+      });
+
+      if (!res.ok) {
+        const error = await res.json();
+        alert("Failed to save route: " + (error?.error || "Unknown error"));
+        return;
+      }
+
       setSavedRoutes([...savedRoutes, currentRoute]);
       setFormData({
         label: "",
@@ -162,6 +195,9 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
       setCurrentRoute(null);
       setStep("select");
       setHasSaved(true);
+    } catch (error) {
+      console.error("Error saving route:", error);
+      alert("An error occurred while saving your route.");
     }
   };
 
@@ -267,7 +303,11 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
                   onChange={(e) => {
                     const val = e.target.value;
                     setFormData({ ...formData, startingLocation: val });
-                    fetchAddressSuggestions(val, "start");
+                    if (debounceTimer) clearTimeout(debounceTimer);
+                    const timer = setTimeout(() => {
+                      fetchAddressSuggestions(val, "start");
+                    }, 500);
+                    setDebounceTimer(timer);
                     setActiveInput("start");
                   }}
                   onBlur={() => setTimeout(() => setStartSuggestions([]), 200)}
@@ -298,7 +338,11 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
                   onChange={(e) => {
                     const val = e.target.value;
                     setFormData({ ...formData, endingLocation: val });
-                    fetchAddressSuggestions(val, "end");
+                    if (debounceTimer) clearTimeout(debounceTimer);
+                    const timer = setTimeout(() => {
+                      fetchAddressSuggestions(val, "end");
+                    }, 500);
+                    setDebounceTimer(timer);
                     setActiveInput("end");
                   }}
                   onBlur={() => setTimeout(() => setEndSuggestions([]), 200)}
