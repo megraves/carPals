@@ -1,19 +1,4 @@
-[
-  {
-    "from": "Macy",
-    "message": "I am trying to talk to the database. Here is some data.",
-    "body": "Docker is awesome!"
-  }
-]
 {
   "users": [
-    {
-      "id": "9d03c5d1-24f3-4176-8d0d-d253e0203f7f",
-      "name": "Test User",
-      "email": "test@example.com",
-      "password": "test123",
-      "createdAt": "2025-05-05T00:00:00.000Z",
-      "routes": []
-    }
   ]
 }

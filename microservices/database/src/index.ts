@@ -7,7 +7,7 @@ import { v4 as uuidv4} from "uuid";
 
 const PORT = 3000;
 const REGISTRY_URL = "http://registry:3000";
-const DATA_FILE = path.join("src", "data.json");
+const DATA_FILE = path.resolve("/app/src/data.json");
 
 // Set up pino to log to the console
 const log = pino({
@@ -117,7 +117,17 @@ app.post("/signup", async (req: Request, res: Response) => {
   data.users.push(newUser);
   saveData(data);
 
-  res.status(201).json({ message: 'User created', userId: newUser.id });
+  res.status(201).json({
+    message: 'User created',
+    userId: newUser.id,
+    user: {
+      id: newUser.id,
+      name: newUser.name,
+      email: newUser.email,
+      phone: newUser.phone,
+      routes: newUser.routes,
+    }
+  });  
 });
 
 // User Login

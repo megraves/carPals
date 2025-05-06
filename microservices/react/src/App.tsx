@@ -98,7 +98,7 @@ function App() {
           element={
             <div className="profile-page">
               <Header />
-              <ProfileInfo />
+              <ProfileInfo user={user} />
               <ProfileRides />
               <InviteFriends userId="current-user-id" />
               <Footer />

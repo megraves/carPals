@@ -104,14 +104,18 @@ app.post("/react", (req: Request, res: Response) => {
   log.info(`Gateway forwarding request to react`);
   handlePostProxy("react", req, res);
 });
+
 app.post("/database", (req: Request, res: Response) => {
   log.info(`Gateway forwarding post request to database`);
   handlePostProxy("database", req, res);
 });
+
 app.get("/database", (req: Request, res: Response) => {
   log.info(`Gateway forwarding get request to database`);
-  handleGetProxy("database", req, res);
-app.post("/users/:userId/routes", (req, res) => handleProxy("database", req, res));
+  handleGetProxy("database", req, res);});
+
+app.post("/users/:userId/routes", (req, res) => handleGetProxy("database", req, res));
+
 app.post("/signup", async (req, res) => {
   const url = await lookupService("database");
   if (!url) return res.status(502).send("Could not resolve database");
@@ -148,7 +152,6 @@ app.post("/login", async (req, res) => {
     res.status(500).json({ error: "Failed to forward to database" });
   }
 });
-
 
 app.options("*", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");

@@ -80,17 +80,11 @@ const AuthModal: React.FC<AuthModalProps> = ({
         localStorage.setItem(
           "userSession",
           JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
+            ...data.user,
             loginTime: Date.now(),
           })
         );
-        onSignup({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-        });
+        onSignup(data.user);
         alert("Signup successful!");
       } catch (err) {
         console.error("Signup error:", err);
