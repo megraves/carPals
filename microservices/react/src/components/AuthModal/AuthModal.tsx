@@ -80,9 +80,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
         localStorage.setItem(
           "userSession",
           JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
+            ...data.user,
             loginTime: Date.now(),
           })
         );

@@ -7,7 +7,7 @@ import { v4 as uuidv4} from "uuid";
 
 const PORT = 3000;
 const REGISTRY_URL = "http://registry:3000";
-const DATA_FILE = path.join("src", "data.json");
+const DATA_FILE = path.resolve("/app/src/data.json");
 
 // Set up pino to log to the console
 const log = pino({
