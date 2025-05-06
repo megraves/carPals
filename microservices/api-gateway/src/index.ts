@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import { pino } from "pino";
+import cors from "cors";
 
 const PORT = 3000;
 const REGISTRY_URL = "http://registry:3000";
@@ -8,7 +9,10 @@ const REGISTRY_URL = "http://registry:3000";
 const log = pino({ transport: { target: "pino-pretty" } });
 
 const app = express();
-
+app.use(cors({
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "OPTIONS"],
+}));
 app.use(express.json());
 
 // Retry logic for registering with the registry
@@ -61,7 +65,8 @@ async function handlePostProxy(
   if (!url) return res.status(502).send(`Could not resolve ${serviceName}`);
   try {
     log.info(`Trying to fetch with ${url}`);
-    const response = await fetch(url, {
+    const response = await fetch(`${url}${req.originalUrl}`, {
+
       method: req.method,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req.body),
@@ -106,6 +111,50 @@ app.post("/database", (req: Request, res: Response) => {
 app.get("/database", (req: Request, res: Response) => {
   log.info(`Gateway forwarding get request to database`);
   handleGetProxy("database", req, res);
+app.post("/users/:userId/routes", (req, res) => handleProxy("database", req, res));
+app.post("/signup", async (req, res) => {
+  const url = await lookupService("database");
+  if (!url) return res.status(502).send("Could not resolve database");
+
+  try {
+    const response = await fetch(`${url}/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(req.body),
+    });
+
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    console.error("Signup forwarding failed:", error);
+    res.status(500).json({ error: "Failed to forward to database" });
+  }
+});
+app.post("/login", async (req, res) => {
+  const url = await lookupService("database");
+  if (!url) return res.status(502).send("Could not resolve database");
+
+  try {
+    const response = await fetch(`${url}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(req.body),
+    });
+
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    console.error("Login forwarding failed:", error);
+    res.status(500).json({ error: "Failed to forward to database" });
+  }
+});
+
+
+app.options("*", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.sendStatus(200);
 });
 
 app.listen(PORT, () => {

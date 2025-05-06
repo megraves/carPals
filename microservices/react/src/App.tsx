@@ -31,9 +31,23 @@ function App() {
   const [showAuthModal, setShowAuthModal] = useState(true);
 
   useEffect(() => {
-    const session = null;
-    setShowAuthModal(!session);
-    if (session) setUser(session);
+    const stored = localStorage.getItem("userSession");
+
+    if (stored) {
+      const session = JSON.parse(stored);
+      const twoWeeks = 14 * 24 * 60 * 60 * 1000;
+      const expired = Date.now() - session.loginTime > twoWeeks;
+
+      if (!expired) {
+        setUser(session);
+        setShowAuthModal(false);
+        return;
+      } else {
+        localStorage.removeItem("userSession");
+      }
+    }
+
+    setShowAuthModal(true);
   }, []);
 
   const openFindModal = () => {
@@ -51,7 +65,7 @@ function App() {
       <AuthModal
         isOpen={showAuthModal}
         onClose={() => {
-          setShowAuthModal(true);
+          setShowAuthModal(false);
         }}
         onLogin={(userData) => {
           setUser(userData);
