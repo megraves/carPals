@@ -48,7 +48,7 @@ async function registerWithRetry(name: string, url: string, maxRetries = 5) {
 app.post("/", async (req: Request, res: Response) => {
 
   // Log communication with api-gateway
-  log.info({ source: 'gateway', body: req.body }, 'Received request from api-gateway');
+  log.info({ source: 'gateway', body: req.body }, 'Received post request from api-gateway');
 
   const data = req.body;
   let existingData: unknown[] = [];
@@ -76,7 +76,6 @@ app.post("/", async (req: Request, res: Response) => {
     fs.writeFileSync(DATA_FILE, JSON.stringify(existingData, null, 2));
     res.status(200).json({ message: 'Data received and stored.' });
   } catch (err) {
-    console.error('Error writing file:', err);
     res.status(500).json({ error: 'Failed to write data.', msg: err });
   }
 });
@@ -84,10 +83,23 @@ app.post("/", async (req: Request, res: Response) => {
 app.get("/", async (req: Request, res: Response) => {
 
   // Log communication with api-gateway
-  log.info({ source: 'gateway', body: req.body }, 'Received request from api-gateway');
-  res.status(500).json({error: 'this is the get request'})
+  log.info('Received get request from api-gateway');
 
-  //TODO: set up database and get info in it
+  if (fs.existsSync(DATA_FILE)) {
+    try {
+      const raw = fs.readFileSync(DATA_FILE, 'utf8');
+      let existingData = JSON.parse(raw) || [];
+      res.status(200).json(existingData);
+    } catch (err) {
+      log.info("Error reading file:", err);
+      res.status(500).json({error: "Failed to read file", msg: err});
+    }
+  }
+  else {
+    log.info("Data file path does not exist");
+    res.status(501).json({error: "File path error"});
+  }
+  
 });
 
 // Listen on PORT

@@ -51,7 +51,7 @@ async function lookupService(name: string): Promise<string | null> {
 }
 
 // Proxy handler for forwarding requests
-async function handleProxy(
+async function handlePostProxy(
   serviceName: string,
   req: express.Request,
   res: express.Response,
@@ -74,14 +74,38 @@ async function handleProxy(
   }
 }
 
+// Proxy handler for forwarding requests
+async function handleGetProxy(
+  serviceName: string,
+  req: express.Request,
+  res: express.Response,
+) {
+  log.info(`handleProxy called for service: ${serviceName}`);
+  const url = await lookupService(serviceName);
+  if (!url) return res.status(502).send(`Could not resolve ${serviceName}`);
+  try {
+    log.info(`Trying to fetch with ${url}`);
+    const response = await fetch(url);
+    const result = await response.json();
+    res.status(response.status).json(result);
+  } catch (err) {
+    log.error(`Error forwarding to ${serviceName}: ${(err as Error).message}`);
+    res.status(500).send(`Error communicating with ${serviceName}`);
+  }
+}
+
 // Routes
 app.post("/react", (req: Request, res: Response) => {
   log.info(`Gateway forwarding request to react`);
-  handleProxy("react", req, res);
+  handlePostProxy("react", req, res);
 });
 app.post("/database", (req: Request, res: Response) => {
-  log.info(`Gateway forwarding request to database`);
-  handleProxy("database", req, res);
+  log.info(`Gateway forwarding post request to database`);
+  handlePostProxy("database", req, res);
+});
+app.get("/database", (req: Request, res: Response) => {
+  log.info(`Gateway forwarding get request to database`);
+  handleGetProxy("database", req, res);
 });
 
 app.listen(PORT, () => {
