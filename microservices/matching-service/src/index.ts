@@ -2,10 +2,15 @@ import express, { Request, Response } from "express";
 import { pino } from "pino";
 import fetch from "node-fetch";
 
+import cors from "cors";
+
+
 const PORT = 3002;
 const REGISTRY_URL = "http://registry:3000";
 const log = pino({ transport: { target: "pino-pretty" } });
 const app = express();
+
+app.use(cors());
 app.use(express.json());
 
 interface Coordinate {
@@ -33,7 +38,11 @@ async function geocode(address: string): Promise<Coordinate | undefined> {
 
   try {
     const res = await fetch(url, {
-      headers: { "User-Agent": "carPals-matcher/1.0" }, // Nominatim requires a user agent
+      headers: {
+        "User-Agent": "carPals/1.0 (lashea@umass.edu)",
+        "Referer": "http://localhost"
+      }
+      
     });
     const data = await res.json() as any[];
     if (data.length === 0) return undefined;
@@ -106,37 +115,49 @@ async function registerWithRetry(name: string, url: string, maxRetries = 5) {
 // POST /match-routes
 app.post("/match-routes", async (req: Request, res: Response) => {
   const userRoute: Route = req.body;
+  log.info("🔍 Received match request:", userRoute);
 
   try {
     const dbRes = await fetch("http://database:3000");
-    const dbData = (await dbRes.json()) as { routes: Route[] }[];
+    const dbData = await dbRes.json() as any;
+    log.info("🧾 Raw DB data:");
+    log.info(JSON.stringify(dbData, null, 2));
 
-    const allRoutes: Route[] = dbData
-      .flatMap((user: any) => user.routes)
-      .filter((route: any) => route.type === "offering");
 
-    // Geocode the user's route
+    const allRoutes: Route[] = (dbData.routes || [])
+    .filter((route: any) => route.type === "offering");
+  
+
+    log.info(`Found ${allRoutes.length} offering routes`);
+
     userRoute.startCoord = await geocode(userRoute.startLocation);
     userRoute.endCoord = await geocode(userRoute.endLocation);
 
-    // Geocode all offering routes
     for (const route of allRoutes) {
       route.startCoord = await geocode(route.startLocation);
       route.endCoord = await geocode(route.endLocation);
     }
 
-    // Score and sort
     const scored = allRoutes
-      .map((route) => ({
-        ...route,
-        proximityScore: computeProximityScore(userRoute, route),
-      }))
-      .filter((r) => r.proximityScore !== Infinity)
-      .sort((a, b) => a.proximityScore - b.proximityScore);
+    .map((route) => {
+      const score = computeProximityScore(userRoute, route);
+      log.info(`📏 Route ${route.id} → proximity score: ${score}`);
+      log.info(`    user start: ${userRoute.startLocation}`);
+      log.info(`    route start: ${route.startLocation}`);
+      log.info(`    user end:   ${userRoute.endLocation}`);
+      log.info(`    route end:  ${route.endLocation}`);
+      return { ...route, proximityScore: score };
+    })
+    .filter((r) => r.proximityScore !== Infinity)
+    .sort((a, b) => a.proximityScore - b.proximityScore);
+  
 
+    log.info(`Returning top ${scored.length} matches`);
     res.json(scored.slice(0, 10));
   } catch (error) {
-    log.error("Failed to fetch and match routes");
+    log.error("Matching failed:", (error as Error).message);
+    console.error(error);
+    
     res.status(500).json({ error: "Failed to fetch and match routes" });
   }
 });

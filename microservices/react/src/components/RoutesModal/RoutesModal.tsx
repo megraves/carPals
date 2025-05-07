@@ -496,6 +496,15 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
         }}
         restoreMap={() => setShowPageMap(true)}
         onConfirm={handleConfirmRide}
+        userRoute={{
+          id: String(currentRoute?.id || "temp"),
+          type: "requested",
+          startLocation: currentRoute?.startingLocation || "",
+          endLocation: currentRoute?.endingLocation || "",
+          pickupTime: currentRoute?.pickupTime || "",
+          daysOfWeek: currentRoute?.selectedDays || [],
+          createdAt: new Date().toISOString(),
+        }}
       />
     </div>
   );

@@ -159,11 +159,11 @@ app.post("/match-routes", (req: Request, res: Response) => {
   handlePostProxy("matching-service", req, res);
 });
 
-app.options("*", (req, res) => {
+app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.sendStatus(200);
+  next();
 });
 
 app.listen(PORT, () => {

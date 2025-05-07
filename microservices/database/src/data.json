@@ -72,15 +72,24 @@
           "createdAt": "2025-05-06T20:10:07.402Z"
         }
       ]
+    },
+    {
+      "id": "b0b14227-ed84-436f-9314-4e8e1d20d0c4",
+      "name": "test",
+      "email": "testing1@gmail.com",
+      "password": "testing1",
+      "phone": "8888888888",
+      "createdAt": "2025-05-07T20:08:43.291Z",
+      "routes": []
     }
   ],
   "routes": [
     {
       "id": "e7cce2fe-f8ce-430f-b037-54e4f8ea87a2",
       "userId": "12b433b3-4062-479e-abef-5a0c623778a5",
-      "type": "requested",
-      "startLocation": "Aubinwood Road, Amherst, Hampshire County, Massachusetts, 01004, United States",
-      "endLocation": "International Programs Office, 70, Butterfield Terrace, Amherst, Hampshire County, Massachusetts, 01002, United States",
+      "type": "offering",
+      "startLocation": "816, North Pleasant Street, Amherst, Hampshire County, Massachusetts, 01003, United States",
+      "endLocation": "180, Aubinwood Road, Amherst, Hampshire County, Massachusetts, 01004, United States",
       "pickupTime": "08:00",
       "daysOfWeek": [
         "Monday",
