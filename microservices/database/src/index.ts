@@ -153,10 +153,10 @@ app.post("/login", (req: Request, res: Response) => {
   });
 });
 
-// Add route for a user
+// Adding A Route to Users
 app.post("/users/:userId/routes", (req: Request, res: Response) => {
   const { userId } = req.params;
-  const { type, startLocation, endLocation, pickupTime, daysOfWeek } = req.body;
+  const { label, type, startLocation, endLocation, pickupTime, daysOfWeek } = req.body;
 
   const data = loadData();
   const user = data.users.find((u: any) => u.id === userId);
@@ -167,6 +167,8 @@ app.post("/users/:userId/routes", (req: Request, res: Response) => {
 
   const newRoute = {
     id: uuidv4(),
+    label,
+    userId,
     type,
     startLocation,
     endLocation,
@@ -175,11 +177,23 @@ app.post("/users/:userId/routes", (req: Request, res: Response) => {
     createdAt: new Date().toISOString()
   };
 
+  // Add to user's personal routes
   user.routes.push(newRoute);
+
+  // ✅ Add to global routes array
+  if (!Array.isArray(data.routes)) {
+    data.routes = [];
+  }
+  data.routes.push(newRoute);
+
+  // Save everything
   saveData(data);
 
   res.status(201).json({ message: 'Route added', routeId: newRoute.id });
 });
+
+
+
 
 app.get("/", async (req: Request, res: Response) => {
 
@@ -200,8 +214,13 @@ app.get("/", async (req: Request, res: Response) => {
     log.info("Data file path does not exist");
     res.status(501).json({error: "File path error"});
   }
-  
 });
+
+app.get("/routes", (req: Request, res: Response) => {
+  const data = loadData();
+  res.status(200).json(data.routes || []);
+});
+
 
 // Listen on PORT
 app.listen(PORT, "0.0.0.0", () => {

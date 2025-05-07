@@ -15,6 +15,26 @@ interface NominatimResult {
   lon: string;
 }
 
+interface BackendUser {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  password?: string;
+  createdAt: string;
+  routes: BackendRoute[];
+}
+
+interface BackendRoute {
+  id?: string;
+  label: string;
+  startLocation: string;
+  endLocation: string;
+  pickupTime: string;
+  daysOfWeek: string[];
+  type: "offering" | "requested";
+}
+
 type Step = "select" | "form" | "confirm";
 
 interface SavedRoute {
@@ -65,19 +85,37 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    if (!isOpen) {
-      setStep(mode === "find" ? "form" : "select");
-      setFormData({
-        label: "",
-        startingLocation: "",
-        endingLocation: "",
-        pickupTime: "",
-      });
-      setSelectedDays([]);
-      setCurrentRoute(null);
-      setHasSaved(false);
-    }
-  }, [isOpen, mode]);
+    if (!isOpen || !userId) return;
+
+    setStep("select");
+
+    const fetchUserRoutes = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/database`);
+        const data = await res.json();
+
+        const rawUser = (data?.users as BackendUser[]).find(
+          (u) => u.id === userId
+        );
+
+        const userRoutes: SavedRoute[] =
+          rawUser?.routes?.map((route, i) => ({
+            id: i + 1,
+            label: route.label,
+            startingLocation: route.startLocation,
+            endingLocation: route.endLocation,
+            pickupTime: route.pickupTime,
+            selectedDays: route.daysOfWeek,
+          })) || [];
+
+        setSavedRoutes(userRoutes);
+      } catch (err) {
+        console.error("Failed to fetch user routes:", err);
+      }
+    };
+
+    fetchUserRoutes();
+  }, [isOpen, userId]);
 
   const formatTime = (timeStr: string) => {
     const [hourStr, minuteStr] = timeStr.split(":");
@@ -132,6 +170,7 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
     };
     setCurrentRoute(newRoute);
     setStep("confirm");
+    setHasSaved(false);
   };
 
   const handleBack = () => {
@@ -164,11 +203,12 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
     }
 
     const routeData = {
-      type: mode === "offer" ? "offering" : "needed",
+      type: mode === "offer" ? "offering" : "requested",
       startLocation: currentRoute.startingLocation,
       endLocation: currentRoute.endingLocation,
       pickupTime: currentRoute.pickupTime,
       daysOfWeek: currentRoute.selectedDays,
+      label: currentRoute.label,
     };
 
     try {
@@ -184,7 +224,15 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
         return;
       }
 
-      setSavedRoutes([...savedRoutes, currentRoute]);
+      setSavedRoutes([
+        ...savedRoutes,
+        {
+          ...currentRoute,
+          startingLocation: routeData.startLocation,
+          endingLocation: routeData.endLocation,
+        },
+      ]);
+
       setFormData({
         label: "",
         startingLocation: "",
@@ -246,7 +294,7 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
                     }}
                   >
                     <div className="route-info">
-                      <h3>{route.label}</h3>
+                      <h3 style={{ fontWeight: "bold" }}>{route.label}</h3>
                       <p>
                         <strong>From:</strong> {route.startingLocation}
                       </p>
@@ -255,6 +303,9 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
                       </p>
                       <p>
                         <strong>Time:</strong> {formatTime(route.pickupTime)}
+                      </p>
+                      <p>
+                        <strong>Days:</strong> {route.selectedDays.join(", ")}
                       </p>
                     </div>
                     <div className="route-actions">
@@ -403,6 +454,7 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
           <>
             <h2 className="title">Confirm Route</h2>
             <div className="confirmation-details">
+              <h3 style={{ fontWeight: "bold" }}>{currentRoute.label}</h3>
               <p>
                 <strong>From:</strong> {currentRoute.startingLocation}
               </p>
