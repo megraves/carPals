@@ -7,7 +7,23 @@
       "password": "password1",
       "phone": "5089180314",
       "createdAt": "2025-05-06T19:21:35.492Z",
-      "routes": []
+      "routes": [
+        {
+          "id": "91051d42-5a5f-4069-b7b1-39fa945bb7f8",
+          "label": "testing",
+          "userId": "97728408-4308-470b-a07c-45200d50e4b8",
+          "type": "requested",
+          "startLocation": "816, North Pleasant Street, Amherst, Hampshire County, Massachusetts, 01003, United States",
+          "endLocation": "180, Aubinwood Road, Amherst, Hampshire County, Massachusetts, 01004, United States",
+          "pickupTime": "09:30",
+          "daysOfWeek": [
+            "Monday",
+            "Wednesday",
+            "Friday"
+          ],
+          "createdAt": "2025-05-07T18:04:37.183Z"
+        }
+      ]
     },
     {
       "id": "12b433b3-4062-479e-abef-5a0c623778a5",
@@ -96,6 +112,21 @@
         "Friday"
       ],
       "createdAt": "2025-05-06T20:10:07.402Z"
+    },
+    {
+      "id": "91051d42-5a5f-4069-b7b1-39fa945bb7f8",
+      "label": "testing",
+      "userId": "97728408-4308-470b-a07c-45200d50e4b8",
+      "type": "requested",
+      "startLocation": "816, North Pleasant Street, Amherst, Hampshire County, Massachusetts, 01003, United States",
+      "endLocation": "180, Aubinwood Road, Amherst, Hampshire County, Massachusetts, 01004, United States",
+      "pickupTime": "09:30",
+      "daysOfWeek": [
+        "Monday",
+        "Wednesday",
+        "Friday"
+      ],
+      "createdAt": "2025-05-07T18:04:37.183Z"
     }
   ]
 }
