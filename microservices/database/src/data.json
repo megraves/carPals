@@ -8,6 +8,94 @@
       "phone": "5089180314",
       "createdAt": "2025-05-06T19:21:35.492Z",
       "routes": []
+    },
+    {
+      "id": "12b433b3-4062-479e-abef-5a0c623778a5",
+      "name": "Edwin Tran",
+      "email": "edwintran235@gmail.com",
+      "password": "fansipansi1",
+      "phone": "7814281996",
+      "createdAt": "2025-05-06T19:28:54.315Z",
+      "routes": [
+        {
+          "id": "e7cce2fe-f8ce-430f-b037-54e4f8ea87a2",
+          "userId": "12b433b3-4062-479e-abef-5a0c623778a5",
+          "type": "requested",
+          "startLocation": "Aubinwood Road, Amherst, Hampshire County, Massachusetts, 01004, United States",
+          "endLocation": "International Programs Office, 70, Butterfield Terrace, Amherst, Hampshire County, Massachusetts, 01002, United States",
+          "pickupTime": "08:00",
+          "daysOfWeek": [
+            "Monday",
+            "Wednesday"
+          ],
+          "createdAt": "2025-05-06T20:04:21.683Z"
+        },
+        {
+          "id": "85ac5220-7077-4306-91f1-ab9751b8946f",
+          "userId": "12b433b3-4062-479e-abef-5a0c623778a5",
+          "type": "requested",
+          "startLocation": "180, Aubinwood Road, Amherst, Hampshire County, Massachusetts, 01004, United States",
+          "endLocation": "Lederle Graduate Research Center Lowrise, 740, North Pleasant Street, Amherst, Hampshire County, Massachusetts, 01003, United States",
+          "pickupTime": "09:00",
+          "daysOfWeek": [
+            "Tuesday",
+            "Thursday"
+          ],
+          "createdAt": "2025-05-06T20:09:17.188Z"
+        },
+        {
+          "id": "4358c116-2d43-4670-80da-9989b25ef4b3",
+          "userId": "12b433b3-4062-479e-abef-5a0c623778a5",
+          "type": "requested",
+          "startLocation": "180, Aubinwood Road, Amherst, Hampshire County, Massachusetts, 01004, United States",
+          "endLocation": "816, North Pleasant Street, Amherst, Hampshire County, Massachusetts, 01003, United States",
+          "pickupTime": "10:00",
+          "daysOfWeek": [
+            "Friday"
+          ],
+          "createdAt": "2025-05-06T20:10:07.402Z"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "e7cce2fe-f8ce-430f-b037-54e4f8ea87a2",
+      "userId": "12b433b3-4062-479e-abef-5a0c623778a5",
+      "type": "requested",
+      "startLocation": "Aubinwood Road, Amherst, Hampshire County, Massachusetts, 01004, United States",
+      "endLocation": "International Programs Office, 70, Butterfield Terrace, Amherst, Hampshire County, Massachusetts, 01002, United States",
+      "pickupTime": "08:00",
+      "daysOfWeek": [
+        "Monday",
+        "Wednesday"
+      ],
+      "createdAt": "2025-05-06T20:04:21.683Z"
+    },
+    {
+      "id": "85ac5220-7077-4306-91f1-ab9751b8946f",
+      "userId": "12b433b3-4062-479e-abef-5a0c623778a5",
+      "type": "requested",
+      "startLocation": "180, Aubinwood Road, Amherst, Hampshire County, Massachusetts, 01004, United States",
+      "endLocation": "Lederle Graduate Research Center Lowrise, 740, North Pleasant Street, Amherst, Hampshire County, Massachusetts, 01003, United States",
+      "pickupTime": "09:00",
+      "daysOfWeek": [
+        "Tuesday",
+        "Thursday"
+      ],
+      "createdAt": "2025-05-06T20:09:17.188Z"
+    },
+    {
+      "id": "4358c116-2d43-4670-80da-9989b25ef4b3",
+      "userId": "12b433b3-4062-479e-abef-5a0c623778a5",
+      "type": "requested",
+      "startLocation": "180, Aubinwood Road, Amherst, Hampshire County, Massachusetts, 01004, United States",
+      "endLocation": "816, North Pleasant Street, Amherst, Hampshire County, Massachusetts, 01003, United States",
+      "pickupTime": "10:00",
+      "daysOfWeek": [
+        "Friday"
+      ],
+      "createdAt": "2025-05-06T20:10:07.402Z"
     }
   ]
 }

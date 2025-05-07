@@ -114,7 +114,7 @@ app.get("/database", (req: Request, res: Response) => {
   log.info(`Gateway forwarding get request to database`);
   handleGetProxy("database", req, res);});
 
-app.post("/users/:userId/routes", (req, res) => handleGetProxy("database", req, res));
+app.post("/users/:userId/routes", (req, res) => handlePostProxy("database", req, res));
 
 app.post("/signup", async (req, res) => {
   const url = await lookupService("database");
