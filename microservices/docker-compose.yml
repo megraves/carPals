@@ -66,6 +66,17 @@ services:
     ports:
       - "3000:3000"
 
+  matching-service:
+    build:
+      context: ./matching-service
+    container_name: matching-service
+    networks:
+      - palnet
+    depends_on:
+      - registry
+      - database
+
+
 # The network that the services communicate over
 networks:
   palnet:

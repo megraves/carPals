@@ -1,4 +1,13 @@
 {
   "users": [
+    {
+      "id": "97728408-4308-470b-a07c-45200d50e4b8",
+      "name": "Lauren Shea",
+      "email": "las0709@gmail.com",
+      "password": "password1",
+      "phone": "5089180314",
+      "createdAt": "2025-05-06T19:21:35.492Z",
+      "routes": []
+    }
   ]
 }

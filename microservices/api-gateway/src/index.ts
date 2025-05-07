@@ -153,6 +153,12 @@ app.post("/login", async (req, res) => {
   }
 });
 
+
+app.post("/match-routes", (req: Request, res: Response) => {
+  log.info("Forwarding to matching-service");
+  handlePostProxy("matching-service", req, res);
+});
+
 app.options("*", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
