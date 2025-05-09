@@ -26,69 +26,35 @@ interface Route {
   pickupTime: string;
   daysOfWeek: string[];
   createdAt: string;
-  startCoord?: Coordinate;
-  endCoord?: Coordinate;
 }
 
-// Geocode an address using OpenStreetMap
-async function geocode(address: string): Promise<Coordinate | undefined> {
-  const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
-    address
-  )}&format=json&limit=1`;
+function levenshtein(a: string, b: string): number {
+  const matrix: number[][] = Array.from({ length: b.length + 1 }, (_, i) =>
+    Array.from({ length: a.length + 1 }, (_, j) => (i === 0 ? j : j === 0 ? i : 0))
+  );
 
-  try {
-    const res = await fetch(url, {
-      headers: {
-        "User-Agent": "carPals/1.0 (lashea@umass.edu)",
-        "Referer": "http://localhost"
-      }
-      
-    });
-    const data = await res.json() as any[];
-    if (data.length === 0) return undefined;
-    return {
-      lat: parseFloat(data[0].lat),
-      lon: parseFloat(data[0].lon),
-    };
-  } catch (err) {
-    log.warn(`Geocoding failed for ${address}: ${(err as Error).message}`);
-    return undefined;
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      matrix[i][j] = b[i - 1] === a[j - 1]
+        ? matrix[i - 1][j - 1]
+        : 1 + Math.min(
+            matrix[i - 1][j],     // deletion
+            matrix[i][j - 1],     // insertion
+            matrix[i - 1][j - 1]  // substitution
+          );
+    }
   }
+
+  return matrix[b.length][a.length];
 }
 
-//  Haversine distance in km
-function haversineDistance(coord1: Coordinate, coord2: Coordinate): number {
-  const toRad = (x: number) => (x * Math.PI) / 180;
-  const R = 6371;
-
-  const dLat = toRad(coord2.lat - coord1.lat);
-  const dLon = toRad(coord2.lon - coord1.lon);
-
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRad(coord1.lat)) *
-      Math.cos(toRad(coord2.lat)) *
-      Math.sin(dLon / 2) ** 2;
-
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  return R * c;
-}
-
-// Proximity scoring with geographic coords
+// Proximity scoring
 function computeProximityScore(userRoute: Route, candidate: Route): number {
-  if (
-    !userRoute.startCoord ||
-    !userRoute.endCoord ||
-    !candidate.startCoord ||
-    !candidate.endCoord
-  ) {
-    return Infinity;
-  }
-
-  const startDist = haversineDistance(userRoute.startCoord, candidate.startCoord);
-  const endDist = haversineDistance(userRoute.endCoord, candidate.endCoord);
-  return startDist + endDist;
+  const startScore = levenshtein(userRoute.startLocation, candidate.startLocation);
+  const endScore = levenshtein(userRoute.endLocation, candidate.endLocation);
+  return startScore + endScore;
 }
+
 
 // Register with registry
 async function registerWithRetry(name: string, url: string, maxRetries = 5) {
@@ -115,45 +81,52 @@ async function registerWithRetry(name: string, url: string, maxRetries = 5) {
 // POST /match-routes
 app.post("/match-routes", async (req: Request, res: Response) => {
   const userRoute: Route = req.body;
-  log.info("🔍 Received match request:", userRoute);
+  log.info("Received match request:", userRoute);
 
   try {
     const dbRes = await fetch("http://database:3000");
     const dbData = await dbRes.json() as any;
-    log.info("🧾 Raw DB data:");
+    log.info("Raw DB data:");
     log.info(JSON.stringify(dbData, null, 2));
 
 
     const allRoutes: Route[] = (dbData.routes || [])
     .filter((route: any) => route.type === "offering");
-  
-
+    
     log.info(`Found ${allRoutes.length} offering routes`);
 
-    userRoute.startCoord = await geocode(userRoute.startLocation);
-    userRoute.endCoord = await geocode(userRoute.endLocation);
-
-    for (const route of allRoutes) {
-      route.startCoord = await geocode(route.startLocation);
-      route.endCoord = await geocode(route.endLocation);
-    }
-
     const scored = allRoutes
-    .map((route) => {
-      const score = computeProximityScore(userRoute, route);
-      log.info(`📏 Route ${route.id} → proximity score: ${score}`);
-      log.info(`    user start: ${userRoute.startLocation}`);
-      log.info(`    route start: ${route.startLocation}`);
-      log.info(`    user end:   ${userRoute.endLocation}`);
-      log.info(`    route end:  ${route.endLocation}`);
-      return { ...route, proximityScore: score };
-    })
-    .filter((r) => r.proximityScore !== Infinity)
-    .sort((a, b) => a.proximityScore - b.proximityScore);
-  
+      .map((route) => {
+        const score = computeProximityScore(userRoute, route);
+        return { ...route, proximityScore: score };
+      })
+      .filter((r) => r.proximityScore !== Infinity)
+      .sort((a, b) => a.proximityScore - b.proximityScore);
 
     log.info(`Returning top ${scored.length} matches`);
-    res.json(scored.slice(0, 10));
+
+    const results = scored.slice(0, 10).map((route) => {
+      const user = dbData.users.find((u: any) =>
+        u.routes?.some((r: any) => r.id === route.id)
+      );
+
+      const [firstName, ...rest] = (user?.name || "Unknown").split(" ");
+      const lastName = rest.join(" ");
+
+      return {
+        id: route.id,
+        firstName,
+        lastName,
+        pickUpLocation: route.startLocation,
+        dropOffLocation: route.endLocation,
+        pickUpTime: route.pickupTime,
+        daysNeeded: route.daysOfWeek,
+        distance: route.proximityScore,
+      };
+    });
+
+    res.json(results);
+
   } catch (error) {
     log.error("Matching failed:", (error as Error).message);
     console.error(error);
