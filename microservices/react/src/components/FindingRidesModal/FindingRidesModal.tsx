@@ -4,6 +4,16 @@ import RideCard from "../rideCard/rideCard";
 import "./FindingRidesModal.css";
 
 
+interface Route {
+  id: string;
+  type: string;
+  startLocation: string;
+  endLocation: string;
+  pickupTime: string;
+  daysOfWeek: string[];
+  createdAt: string;
+}
+
 export interface RideMatch {
  id: string;
  firstName: string;
@@ -18,17 +28,17 @@ export interface RideMatch {
 }
 
 
-interface RawRideData {
- id?: string;
- firstName: string;
- lastName: string;
- pickUpLocation: string;
- dropOffLocation: string;
- pickUpTime: string;
- daysNeeded?: string[];
- rating?: number;
- vehicle?: string;
-}
+// interface RawRideData {
+//  id?: string;
+//  firstName: string;
+//  lastName: string;
+//  pickUpLocation: string;
+//  dropOffLocation: string;
+//  pickUpTime: string;
+//  daysNeeded?: string[];
+//  rating?: number;
+//  vehicle?: string;
+// }
 
 
 interface MatchingRidesModalProps {
@@ -36,6 +46,7 @@ interface MatchingRidesModalProps {
  closeModal: () => void;
  onConfirm: (ride: RideMatch) => void;
  restoreMap: () => void;
+ userRoute: Route;
 }
 
 
@@ -43,7 +54,8 @@ const MatchingRidesModal: React.FC<MatchingRidesModalProps> = ({
  isOpen,
  closeModal,
  restoreMap,
- onConfirm
+ onConfirm,
+ userRoute
 }) => {
  const [selectedRide, setSelectedRide] = useState<RideMatch | null>(null);
  const [matchedRides, setMatchedRides] = useState<RideMatch[]>([]);
@@ -59,36 +71,31 @@ const MatchingRidesModal: React.FC<MatchingRidesModalProps> = ({
 
 
  useEffect(() => {
-   if (isOpen) {
-     const fetchMockData = async (): Promise<RideMatch[]> => {
-       try {
-         const response = await fetch("./mock_data.json");
-         const data: RawRideData[] = await response.json();
-         return data.slice(1, 16).map((ride: RawRideData) => ({
-           firstName: ride.firstName,
-           lastName: ride.lastName,
-           pickUpLocation: ride.pickUpLocation,
-           dropOffLocation: ride.dropOffLocation,
-           pickUpTime: ride.pickUpTime,
-           daysNeeded: ride.daysNeeded || [],
-           distance: Math.floor(Math.random() * 30) + 1,
-           id: ride.id || Math.random().toString(36).substring(2, 9),
-           rating: ride.rating,
-           vehicle: ride.vehicle
-         }));
-       } catch (error) {
-         console.error("Failed to fetch mock rides: ", error);
-         return [];
-       }
-     };
+  if (isOpen) {
+    const fetchMatchedRides = async (): Promise<RideMatch[]> => {
+      try {
+        const response = await fetch("http://localhost:3000/match-routes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userRoute),
+        });
 
+        if (!response.ok) throw new Error("Matching failed");
+        return await response.json();
+      } catch (error) {
+        console.error("Error fetching matched rides:", error);
+        return [];
+      }
+    };
 
-     fetchMockData().then(rides => {
-       setAllRides(rides);
-       setMatchedRides(rides);
-     });
-   }
- }, [isOpen]);
+    fetchMatchedRides().then((rides) => {
+      setAllRides(rides);
+      setMatchedRides(rides);
+    });
+  }
+}, [isOpen, userRoute]);
 
 
  useEffect(() => {
