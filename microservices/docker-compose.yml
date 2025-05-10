@@ -66,6 +66,18 @@ services:
     ports:
       - "3000:3000"
 
+ # Offer ride service for handling ride offerings
+  offer-ride-service:
+    build:
+      context: ./offer-ride-service
+    container_name: offer-ride-service
+    ports:
+      - "4002:4002"  
+    depends_on:
+      - registry
+    networks:
+      - palnet
+
 # The network that the services communicate over
 networks:
   palnet:
